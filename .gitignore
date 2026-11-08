@@ -1,0 +1,72 @@
+.env
+*.log
+node_modules/
+dist/
+
+# File di lavoro interni: documentazione di processo e checklist operative.
+# Servono allo sviluppo, non fanno parte del sito e non vanno pubblicati.
+CLAUDE.md
+AGENTS.md
+overview.md
+[0-9][0-9]_*.md
+[0-9][0-9]bis_*.md
+MOD_*.md
+UTIL_*.md
+PROMPT_*.md
+PROMEMORIA_*.md
+GUIDA_*.md
+UTIL_*.py
+.claude/
+_bozze/
+sistema-statico/
+sistema-fullstack/
+
+# Materiale di stampa (QR code link-in-bio): non è una risorsa del sito.
+_consegna/
+
+# Cartella di transito per i file in arrivo da lavorare. Netlify pubblica tutto
+# quello che trova nella directory di deploy, cartelle con underscore comprese:
+# senza questa riga la cartella di lavoro finirebbe online. Va rimossa insieme
+# alla cartella, quando i file sono stati spostati al loro posto definitivo.
+_incoming/
+
+# Report delle scansioni di sicurezza. Elencano le debolezze del sito: non
+# vanno pubblicati, e i nomi datati (zap-2026-08-15.html) non conterrebbero
+# la parola "report", quindi un pattern come zap-report.* non li coprirebbe.
+zap-*
+nuclei-*
+_pentest/
+
+# Sorgente di stampa dei due CV in PDF (HTML + CSS + font copiati + script di
+# generazione). Serve solo a rigenerare i PDF, non è una risorsa del sito: i
+# PDF prodotti restano in root e quelli sì che sono versionati.
+_cv-print/
+
+# Suite di test E2E (UTIL_test_e2e_statico.md §5): vive in una sottocartella
+# con un proprio package.json per non violare CLAUDE.md §3.5, che limita il
+# package.json del progetto alle sole devDependencies della catena di build.
+# Le baseline degli screenshot sono strumentazione locale, non un artefatto
+# da consegnare.
+_qa/
+
+# Sessioni temporanee della companion visuale: non sono artefatti del sito.
+.superpowers/
+
+# Checkout Git isolati per lavorare senza coinvolgere l'albero principale.
+.worktrees/
+
+# Log e istantanee del server MCP di Playwright: non sono artefatti del sito.
+.playwright-mcp/
+
+# File di governance aggiunti al 27/09/2026 (CLAUDE.md §2.3; audit 05, Y3)
+RIFERIMENTI_*.md
+SCELTE_FIRMATE.md
+.codex/
+DEBITO.md
+AGGIORNA.md
+_asset-ia/
+REGISTRO_ASSET_IA.md
+
+# Piani e specifiche di lavoro generati durante lo sviluppo: tracce di come
+# il sito e' stato costruito (CLAUDE.md §11), restano solo in locale.
+docs/superpowers/

@@ -1,0 +1,32 @@
+# Giovanni Paolo Fusco
+
+> Portfolio personale di Giovanni Paolo Fusco: sviluppo web, programmazione, automazioni e consulenza informatica. Il sito è disponibile in italiano e in inglese.
+
+> P. IVA 03388590592 · Fondi (LT) · Attività di programmazione informatica.
+
+## Pagine principali
+
+- [Home](https://giovannipaolofusco.it/): presentazione personale, percorso professionale e recapiti diretti.
+- [Servizi](https://giovannipaolofusco.it/servizi/): siti web su misura per attività, professionisti e aziende: cosa c'è dietro ogni sito, cosa comprendono SEO tecnica, indicizzazione e GEO, cosa non è compreso, e le domande frequenti su proprietà, tempi, costi ricorrenti e assistenza.
+- [Progetti](https://giovannipaolofusco.it/progetti/): i progetti in corso (server di casa, automazioni e bot) e quelli di prima, dalla gestione di community in poi.
+- [Certificazioni](https://giovannipaolofusco.it/certificazioni/): attestati e badge verificabili, con il PDF originale dove esiste.
+- [Curriculum](https://giovannipaolofusco.it/cv/): percorso professionale e formazione, con il CV scaricabile in PDF.
+- [Contatti](https://giovannipaolofusco.it/contatti/): email, telefono, WhatsApp e profili social.
+- [Privacy e Cookie Policy](https://giovannipaolofusco.it/privacy/): informativa sul trattamento dei dati personali.
+
+## Versione inglese
+
+- [Home (EN)](https://giovannipaolofusco.it/en/)
+- [Services (EN)](https://giovannipaolofusco.it/en/servizi/)
+- [Projects (EN)](https://giovannipaolofusco.it/en/progetti/)
+- [Certifications (EN)](https://giovannipaolofusco.it/en/certificazioni/)
+- [Curriculum (EN)](https://giovannipaolofusco.it/en/cv/)
+- [Contact (EN)](https://giovannipaolofusco.it/en/contatti/)
+- [Privacy and Cookie Policy (EN)](https://giovannipaolofusco.it/en/privacy/)
+
+## Contatti
+
+- Email: info@giovannipaolofusco.it
+- Telefono e WhatsApp: +39 333 491 9401
+- LinkedIn: https://www.linkedin.com/in/giovannipaolofusco/
+- GitHub: https://github.com/giovannipaolofusco

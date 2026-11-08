@@ -1,0 +1,19 @@
+# Il build conserva le sorgenti leggibili nella root e pubblica solo dist/.
+# Le regole Netlify vengono copiate nella directory di output dallo script.
+# I test di build girano subito dopo: se uno fallisce, il deploy si ferma.
+# Senza, il test della cache del Service Worker e' rimasto rosso per cinque PR.
+[build]
+  command = "npm run build && npm run test:build"
+  publish = "dist"
+
+# Versione di Node fissata: senza, Netlify usa il suo default, che cambia
+# senza preavviso e puo' rompere un build che nessuno ha toccato.
+[build.environment]
+  NODE_VERSION = "22"
+
+# Nessun header per contesto: Netlify li applica a tutti i deploy e non li
+# limita a un contesto (documentazione "Custom headers", verificata il
+# 27/09/2026), quindi un X-Robots-Tag dichiarato qui non proteggerebbe niente.
+# Le deploy preview non sono indicizzabili perche' rispondono 401. Il
+# sottodominio giovannipaolofusco.netlify.app serve lo stesso deploy di
+# produzione: lo chiude il 301 in testa a _redirects.

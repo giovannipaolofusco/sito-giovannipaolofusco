@@ -1,0 +1,66 @@
+name: Update Credly Badges
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Esegue ogni giorno a mezzanotte
+  workflow_dispatch: # Permette l'esecuzione manuale
+
+# Un run alla volta: se quello notturno e' ancora in corso quando ne parte un
+# altro a mano, il secondo aspetta invece di sovrapporsi al push del primo.
+concurrency:
+  group: update-badges
+  cancel-in-progress: false
+
+jobs:
+  update-badges:
+    runs-on: ubuntu-latest
+    # Il default di GitHub e' 6 ore: uno step appeso brucerebbe 360 minuti in una
+    # notte sola, cioe' quasi un quinto della quota mensile dei repository
+    # privati, senza che nulla lo segnali. Il run reale dura una quindicina di
+    # secondi, quindi cinque minuti sono gia' un margine molto largo.
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Prepara Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installa Pillow
+        run: pip install --quiet Pillow
+
+      # Scarica su un file temporaneo e lo promuove solo se e' JSON valido: una
+      # pagina di errore o un rate limit di Credly sovrascriverebbe altrimenti
+      # badges.json con contenuto inutilizzabile, e il sito perderebbe i badge.
+      - name: Fetch Badges from Credly
+        run: |
+          curl -sf --max-time 60 \
+            -A "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36" \
+            https://www.credly.com/users/giovanni-paolo-fusco/badges.json > badges.json.nuovo
+          python3 -c "import json,sys; json.load(open('badges.json.nuovo'))"
+          mv badges.json.nuovo badges.json
+
+      # Porta le immagini dentro il repository e riscrive i percorsi: senza questo
+      # passaggio badges.json torna a puntare al CDN di Credly e ogni visitatore
+      # della pagina certificazioni contatta un dominio terzo senza consenso.
+      - name: Localizza le immagini dei badge
+        run: python3 .github/scripts/localizza-badge.py
+
+      # Scrive le card dentro certificazioni.html invece di lasciarle costruire al
+      # browser dopo un fetch: i dati sono gia' noti qui, quindi non c'e' ragione di
+      # farli scaricare a ogni visitatore. Senza questo passo il contenitore resta
+      # vuoto nell'HTML, il layout si sposta a caricamento avvenuto e i badge non
+      # sono visibili ne' ai motori di ricerca ne' a chi ha JS disattivato.
+      - name: Scrivi le card nelle pagine certificazioni
+        run: python3 .github/scripts/rendi-badge-html.py
+
+      - name: Commit and push if changed
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add badges.json assets/img/badges certificazioni.html en/certificazioni.html
+          git diff --quiet && git diff --staged --quiet || (git commit -m "chore: aggiorna i badge di Credly" && git push)

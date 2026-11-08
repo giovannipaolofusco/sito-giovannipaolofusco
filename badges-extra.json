@@ -1,0 +1,82 @@
+{
+  "data": [
+    {
+      "id": "claude-academy-f904754a07be3bed0aac6fa66aee50ea",
+      "issued_at_date": "2026-08-28",
+      "badge_url": "https://academy.claude.com/verify/f904754a07be3bed0aac6fa66aee50ea",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "Introduction to Model Context Protocol",
+        "image_url": "/assets/img/badge-claude-academy-introduction-to-model-context-protocol.png",
+        "image_webp": "/assets/img/badge-claude-academy-introduction-to-model-context-protocol.webp"
+      }
+    },
+    {
+      "id": "claude-academy-8b519d72435732915a6f028a901284e7",
+      "issued_at_date": "2026-08-28",
+      "badge_url": "https://academy.claude.com/verify/8b519d72435732915a6f028a901284e7",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "Claude Code in Action",
+        "image_url": "/assets/img/badge-claude-academy-claude-code-in-action.png",
+        "image_webp": "/assets/img/badge-claude-academy-claude-code-in-action.webp"
+      }
+    },
+    {
+      "id": "claude-academy-0d0740a9f0ba894fecd0e8adf9cd9f35",
+      "issued_at_date": "2026-08-27",
+      "badge_url": "https://academy.claude.com/verify/0d0740a9f0ba894fecd0e8adf9cd9f35",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "AI Fluency: Framework & Foundations",
+        "image_url": "/assets/img/badge-claude-academy-ai-fluency-framework-foundations.png",
+        "image_webp": "/assets/img/badge-claude-academy-ai-fluency-framework-foundations.webp"
+      }
+    },
+    {
+      "id": "claude-academy-460f0758ff5ea553d84a0c4498db6101",
+      "issued_at_date": "2026-08-25",
+      "badge_url": "https://academy.claude.com/verify/460f0758ff5ea553d84a0c4498db6101",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "Introduction to Agent Skills",
+        "image_url": "/assets/img/badge-claude-academy-introduction-to-agent-skills.png",
+        "image_webp": "/assets/img/badge-claude-academy-introduction-to-agent-skills.webp"
+      }
+    },
+    {
+      "id": "claude-academy-77a521944add092ddc6848ca492dde91",
+      "issued_at_date": "2026-08-25",
+      "badge_url": "https://academy.claude.com/verify/77a521944add092ddc6848ca492dde91",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "Claude Code 101",
+        "image_url": "/assets/img/badge-claude-academy-claude-code-101.png",
+        "image_webp": "/assets/img/badge-claude-academy-claude-code-101.webp"
+      }
+    },
+    {
+      "id": "claude-academy-7ba319d4365d4f8e9f96177afb882f73",
+      "issued_at_date": "2026-08-20",
+      "badge_url": "https://academy.claude.com/verify/7ba319d4365d4f8e9f96177afb882f73",
+      "issuer_name": "Anthropic — Claude Academy",
+      "badge_template": {
+        "name": "AI Fluency for Builders",
+        "image_url": "/assets/img/badge-claude-academy-ai-fluency-for-builders.png",
+        "image_webp": "/assets/img/badge-claude-academy-ai-fluency-for-builders.webp"
+      }
+    },
+    {
+      "id": "bestr-dwp_IcgrQ3SbPeO0W7zgPA",
+      "issued_at_date": "2025-11-21",
+      "badge_url": "https://bestr.it/award/show/dwp_IcgrQ3SbPeO0W7zgPA",
+      "assertion_url": "https://openbadges.bestr.it/public/assertions/dwp_IcgrQ3SbPeO0W7zgPA",
+      "issuer_name": "Università degli Studi di Napoli Federico II — Federica Web Learning",
+      "badge_template": {
+        "name": "Insegnare con l'AI: Progettazione",
+        "image_url": "/assets/img/badge-bestr-insegnare-con-ai-progettazione.png",
+        "image_webp": "/assets/img/badge-bestr-insegnare-con-ai-progettazione.webp"
+      }
+    }
+  ]
+}

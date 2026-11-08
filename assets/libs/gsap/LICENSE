@@ -1,0 +1,21 @@
+GSAP 3.15.0
+https://gsap.com
+
+Copyright 2026, GreenSock. All rights reserved.
+Subject to the terms at https://gsap.com/standard-license
+Author: Jack Doyle, jack@greensock.com
+
+---
+
+Nota sulla forma di questo file.
+
+GreenSock non distribuisce il testo della propria licenza dentro il pacchetto:
+il tarball npm di gsap@3.15.0 non contiene alcun file LICENSE, e il README
+rimanda alla sola pagina https://gsap.com/standard-license.
+
+Questo file riporta quindi l'avviso di copyright così come GreenSock lo pubblica
+in testa a gsap-3.15.0.min.js e ScrollTrigger-3.15.0.min.js, insieme al rimando ai termini.
+Non è una riproduzione del testo della licenza, che vive solo a quella URL.
+
+La "Standard 'no charge' license" è una licenza proprietaria concessa a titolo
+gratuito per l'uso standard — non è una licenza permissiva tipo MIT o BSD.

@@ -1,0 +1,4 @@
+Contact: mailto:giovanni@giovannipaolofusco.it
+Expires: 2027-08-11T23:59:59.000Z
+Preferred-Languages: it, en
+Canonical: https://giovannipaolofusco.it/.well-known/security.txt

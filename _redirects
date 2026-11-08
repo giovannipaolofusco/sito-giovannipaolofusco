@@ -1,0 +1,50 @@
+# Il sottodominio Netlify serve lo stesso deploy di produzione: senza questa
+# regola il sito intero risponde 200 a un secondo indirizzo, frenato solo dal
+# canonical. Le deploy preview hanno un nome diverso e non vengono toccate.
+# Sta in testa perche' Netlify applica la prima regola che corrisponde.
+http://giovannipaolofusco.netlify.app/*   https://giovannipaolofusco.it/:splat   301!
+https://giovannipaolofusco.netlify.app/*  https://giovannipaolofusco.it/:splat   301!
+
+# Canonicalizzazione: /index.html e / servono lo stesso contenuto a due
+# indirizzi diversi. Il canonical lo mitiga, il 301 lo chiude.
+/index.html              /                     301!
+/en/index.html           /en/                  301!
+
+# Il sito e' canonico sulle rotte senza estensione: canonical, hreflang,
+# og:url, JSON-LD e sitemap puntano li', e il post-processing "Pretty URLs"
+# del pannello Netlify serve i link interni nella stessa forma.
+# Netlify continua pero' a servire anche il file .html, con lo stesso
+# contenuto a un secondo indirizzo: sono queste le copie da chiudere.
+# Il ! e' obbligatorio: senza, Netlify serve il file e ignora la regola.
+/cv.html                 /cv/                   301!
+/certificazioni.html     /certificazioni/       301!
+/progetti.html           /progetti/             301!
+/contatti.html           /contatti/             301!
+/privacy.html            /privacy/              301!
+/servizi.html            /servizi/              301!
+
+/en/cv.html              /en/cv/                301!
+/en/certificazioni.html  /en/certificazioni/    301!
+/en/progetti.html        /en/progetti/          301!
+/en/contatti.html        /en/contatti/          301!
+/en/privacy.html         /en/privacy/           301!
+/en/servizi.html         /en/servizi/           301!
+
+# Stessa classe di duplicato. /link e' distribuito con un QR stampato.
+/link.html               /link/                 301!
+/en/link.html            /en/link/              301!
+/404.html                /404                  301!
+/en/404.html             /en/404               301!
+
+# Il vecchio CV in /file/ e' stato tolto il 27/09/2026 (conteneva la gmail
+# personale): chi ha ancora quel link riceve il CV attuale.
+/file/cv.pdf             /CV-Giovanni-Paolo-Fusco.pdf   301!
+
+# Indirizzo breve del QR sul biglietto da visita: se la demo cambia casa si
+# cambia solo questa riga. 302 perche' un 301 resta nella cache dei browser.
+/demo                    https://demo-pannello-git.netlify.app/   302
+
+# Pagine inesistenti sotto /en/: la 404 inglese invece di quella italiana.
+# Senza ! vale solo quando il file non esiste: le pagine vere non sono toccate.
+# Deve restare l'ultima riga: su Netlify vince la prima regola che corrisponde.
+/en/*                    /en/404.html           404
