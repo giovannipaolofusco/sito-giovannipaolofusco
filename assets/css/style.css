@@ -1822,6 +1822,22 @@ footer p a:not([class]) {
   }
 }
 
+.progetti-altrove {
+  margin: 48px 0 0;
+  color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.progetti-altrove a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.progetti-altrove a:focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
 .condividi {
   display: flex;
   flex-wrap: wrap;
