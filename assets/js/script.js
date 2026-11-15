@@ -46,7 +46,7 @@ const navToggle = document.getElementById('nav-toggle');
 const navLinks = document.getElementById('nav-links');
 
 if (navToggle && navLinks) {
-  const mobileQuery = window.matchMedia('(max-width: 820px)');
+  const mobileQuery = window.matchMedia('(max-width: 1080px)');
   const labelOpen = navToggle.getAttribute('aria-label');
   const labelClose = navToggle.dataset.labelClose || labelOpen;
   const background = [document.querySelector('main'), document.querySelector('footer')].filter(Boolean);

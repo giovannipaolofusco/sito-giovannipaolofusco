@@ -1,4 +1,4 @@
-import * as THREE from '../libs/three/three.module-r185.min.js';
+import * as THREE from '../libs/three/three.module-r187.min.js';
 
 export function initHeroScene(container) {
   const width = container.clientWidth;

@@ -13,8 +13,10 @@
     utm_campaign: 'link-bio',
   };
 
-  const destinazione = document.querySelector('.link-bio__btn--primary');
-  if (!destinazione) return;
+  // Tutti i collegamenti interni della pagina (Sito web, Servizi, Formazione AI): fino al
+  // 15/11/2026 lo prendeva solo il primo, e chi sceglieva gli altri perdeva la sorgente.
+  const destinazioni = document.querySelectorAll('.link-bio__links a[href^="/"]');
+  if (!destinazioni.length) return;
 
   function ripulisci(valore) {
     return valore
@@ -36,13 +38,12 @@
 
   const finali = daUrl.utm_source ? Object.assign({}, DEFAULT, daUrl) : DEFAULT;
 
-  const url = new URL(destinazione.getAttribute('href'), window.location.href);
-
-  if (url.origin !== window.location.origin) return;
-
-  Object.keys(finali).forEach(function (chiave) {
-    url.searchParams.set(chiave, finali[chiave]);
+  destinazioni.forEach(function (destinazione) {
+    const url = new URL(destinazione.getAttribute('href'), window.location.href);
+    if (url.origin !== window.location.origin) return;
+    Object.keys(finali).forEach(function (chiave) {
+      url.searchParams.set(chiave, finali[chiave]);
+    });
+    destinazione.setAttribute('href', url.pathname + url.search);
   });
-
-  destinazione.setAttribute('href', url.pathname + url.search);
 })();
