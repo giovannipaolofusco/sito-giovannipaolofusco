@@ -68,7 +68,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v34/);
+  assert.match(worker, /gpf-shell-v35/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {
@@ -377,5 +377,47 @@ test('il menu di ogni pagina ha voci uniche e una sola voce attiva', () => {
     const voci = [...menu[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
     assert.equal(new Set(voci).size, voci.length, `${file}: voce di menu duplicata (${voci.join(', ')})`);
     assert.ok((menu[0].match(/class="active"/g) || []).length <= 1, `${file}: piu' voci attive`);
+  }
+});
+
+// Presidio del 15/11/2026: restyling delle pagine principali. Ogni pagina carica il foglio
+// e lo script comuni, nessuna richiama gli script delle grafiche tolte, e i contatti diretti
+// restano nel markup servito, leggibili anche se JavaScript non parte (CLAUDE.md §13bis.1).
+test('le pagine principali usano lo stile comune e restano leggibili senza JavaScript', () => {
+  const tolti = /home-init|hero-scene|photo-particles|intro-anim|scroll-story|badge-fascia|\/cv\.js|servizi\.js|cv\.css/;
+  for (const pre of ['', 'en/']) {
+    for (const pagina of ['index.html', 'servizi/index.html', 'progetti/index.html', 'certificazioni/index.html', 'cv/index.html', 'contatti/index.html']) {
+      const file = pre + pagina;
+      const html = readFileSync(output(file), 'utf8');
+      assert.match(html, /\/assets\/css\/raggi\.css/, `${file}: foglio comune`);
+      assert.match(html, /\/assets\/js\/raggi\.js/, `${file}: script comune`);
+      assert.doesNotMatch(html, tolti, `${file}: script di una grafica tolta`);
+      assert.match(html, /info@giovannipaolofusco\.it/, `${file}: email nel markup`);
+      assert.match(html, /\+39 333 491 9401/, `${file}: telefono nel markup`);
+    }
+    const servizi = readFileSync(output(pre + 'servizi/index.html'), 'utf8');
+    assert.match(servizi, new RegExp(`href="/${pre}formazione-ai/"`), `${pre}servizi: porta verso la formazione`);
+    assert.equal((servizi.match(/class="rxq__voce"/g) || []).length, 8, `${pre}servizi: otto domande`);
+    assert.equal((servizi.match(/class="rx-dt__pannello"/g) || []).length, 11, `${pre}servizi: undici voci nel markup`);
+    assert.doesNotMatch(servizi, /rx-dt__pannello"[^>]*hidden/, `${pre}servizi: voci nascoste nel markup servito`);
+  }
+});
+
+// Presidio del 15/11/2026: il restyling aveva tolto i marcatori in cui il workflow
+// notturno scrive i badge (.github/scripts/rendi-badge-html.py), che si sarebbe fermato
+// alla prima esecuzione. I contatori della pagina devono seguire le card reali.
+test('certificazioni: badge fra i marcatori e contatori coerenti con le card', () => {
+  for (const file of ['certificazioni/index.html', 'en/certificazioni/index.html']) {
+    const sorgente = readFileSync(file.replace('/index.html', '.html'), 'utf8');
+    assert.equal(sorgente.split('<!-- BADGE:INIZIO -->').length - 1, 1, `${file}: una sola apertura`);
+    assert.equal(sorgente.split('<!-- BADGE:FINE -->').length - 1, 1, `${file}: una sola chiusura`);
+    assert.match(sorgente, /id="credly-badges-container"[^>]*>\s*<!-- BADGE:INIZIO -->/, `${file}: marcatori dentro il contenitore`);
+    const html = readFileSync(output(file), 'utf8');
+    const card = [...html.matchAll(/class="ct-badge pg__carta" data-cat="(\w+)"/g)].map((m) => m[1]);
+    assert.ok(card.length > 0, `${file}: nessuna card`);
+    const conta = (k) => (k === 'tutti' ? card.length : card.filter((c) => c === k).length);
+    for (const m of html.matchAll(/data-conta="?(\w+)"?>(\d+)</g)) {
+      assert.equal(Number(m[2]), conta(m[1]), `${file}: contatore ${m[1]}`);
+    }
   }
 });

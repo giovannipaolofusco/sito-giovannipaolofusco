@@ -16,7 +16,7 @@ nell'HTML si ottengono quattro cose insieme:
   - la pagina funziona senza JavaScript;
   - sparisce una richiesta di rete a ogni visita.
 
-Il markup prodotto e' identico a quello che script.js costruiva con le API del DOM.
+Il markup prodotto e' identico a quello che il ripiego di script.js costruisce con le API del DOM.
 
 Idempotente: riscrive solo cio' che sta fra i marcatori, quindi puo' girare a ogni
 esecuzione del workflow senza accumulare nulla.
@@ -33,8 +33,8 @@ RADICE = Path(__file__).resolve().parents[2]
 BADGE = RADICE / "badges.json"
 BADGE_EXTRA = RADICE / "badges-extra.json"
 
-# La fascia esiste in entrambe le lingue con lo stesso id: cambia solo il
-# formato della data e il file.
+# La griglia esiste in entrambe le lingue con lo stesso id: cambiano solo il
+# formato della data, la parola «Verifica» e il file.
 PAGINE = [
     (RADICE / "certificazioni.html", "it"),
     (RADICE / "en" / "certificazioni.html", "en"),
@@ -121,46 +121,46 @@ def collegamento(badge):
     return "#"
 
 
-def card(badge, lingua, clone=False):
-    """Una card. Con clone=True esce la copia che serve al ciclo della fascia:
-    identica a vedersi, ma invisibile agli screen reader e fuori dall'ordine di
-    tabulazione, altrimenti ogni badge verrebbe annunciato e tabulato due volte.
-    """
-    nome = titolo(badge)
+VERIFICA = {"it": "Verifica", "en": "Verify"}
+
+
+def ente(badge):
+    """Ente per i filtri della pagina: lo stesso criterio del generatore delle pagine."""
+    if "claude.com" in collegamento(badge):
+        return "anthropic"
+    return "google" if titolo(badge).startswith("Google") else "altri"
+
+
+def card(badge, lingua):
+    """Una card della griglia filtrabile (restyling del 15/11/2026). L'immagine ha
+    alt vuoto perche' il titolo e' scritto accanto, dentro lo stesso link: con il
+    nome anche nell'alt lo screen reader lo leggerebbe due volte."""
+    nome_sicuro = html.escape(titolo(badge), quote=True)
     png, webp = immagine(badge)
     quando = data_leggibile(campo_data(badge), lingua)
-    nome_sicuro = html.escape(nome, quote=True)
-
-    extra = ' aria-hidden="true" tabindex="-1"' if clone else ""
-    righe = [
-        f'          <a class="card-credly" href="{html.escape(collegamento(badge), quote=True)}"'
-        f' target="_blank" rel="noopener noreferrer"{extra}>'
+    parti = [
+        f'<li class="ct-badge pg__carta" data-cat="{ente(badge)}">'
+        f'<a href="{html.escape(collegamento(badge), quote=True)}" target="_blank" rel="noopener noreferrer">'
     ]
     if png:
-        # Non "lazy": la fascia sta nella prima schermata e le sue immagini sono
-        # a poca distanza dal bordo, quindi il browser non le richiederebbe mai
-        # stando dietro un contenitore che non scorre. Misurato il 20/09/2026:
-        # 21 immagini su 30 restavano incomplete e window.__ready non diventava
-        # mai true, bloccando la regressione visiva su Chromium e Pixel.
-        # I cloni riusano gli stessi URL: sono 15 richieste, non 30.
-        img = (
-            f'<img src="{html.escape(png, quote=True)}" alt="{nome_sicuro}"'
-            f' width="110" height="110" decoding="async" />'
-        )
-        if webp:
-            righe.append("            <picture>")
-            righe.append(
-                f'              <source srcset="{html.escape(webp, quote=True)}" type="image/webp" />'
-            )
-            righe.append(f"              {img}")
-            righe.append("            </picture>")
-        else:
-            righe.append(f"            {img}")
-    righe.append(f"            <h3>{nome_sicuro}</h3>")
+        img = (f'<img src="{html.escape(png, quote=True)}" alt="" width="110" height="110"'
+               f' loading="lazy" decoding="async" />')
+        parti.append(f'<picture><source srcset="{html.escape(webp, quote=True)}" type="image/webp" />{img}</picture>' if webp else img)
+    parti.append(f'<span class="ct-badge__titolo">{nome_sicuro}</span>')
     if quando:
-        righe.append(f'            <p class="credly-date">{html.escape(quando)}</p>')
-    righe.append("          </a>")
-    return "\n".join(righe)
+        parti.append(f'<span class="ct-badge__data">{html.escape(quando)}</span>')
+    parti.append(f'<span class="ct-badge__verifica">{VERIFICA[lingua]} →</span></a></li>')
+    return "".join(parti)
+
+
+def aggiorna_contatori(testo, conteggi):
+    """I numeri della pagina (badge per ente) seguono i badge reali: senza questo
+    passaggio un badge nuovo comparirebbe nella griglia con il contatore fermo."""
+    return re.sub(
+        r'(<[^>]*\bdata-conta="(\w+)"[^>]*>)\d+(</)',
+        lambda m: f"{m.group(1)}{conteggi.get(m.group(2), 0)}{m.group(3)}",
+        testo,
+    )
 
 
 def sostituisci_blocco(testo, indice_occorrenza, contenuto, percorso):
@@ -173,7 +173,7 @@ def sostituisci_blocco(testo, indice_occorrenza, contenuto, percorso):
             f"sbilanciati (trovate {len(posizioni)} aperture e {len(fini)} chiusure). "
             f"Senza marcatori questo script non sa dove scrivere e non tira a indovinare."
         )
-    # Dal 20/09/2026 la pagina ha una fascia sola: un secondo blocco resterebbe
+    # Dal 20/09/2026 la pagina ha un contenitore solo: un secondo blocco resterebbe
     # fermo ai badge del giorno in cui e' stato scritto, e nessuno lo noterebbe.
     if len(posizioni) > 1:
         sys.exit(
@@ -191,21 +191,21 @@ def main():
     if not tutti:
         sys.exit("nessun badge da rendere: badges.json e badges-extra.json sono vuoti o assenti")
 
-    # Un blocco solo, in cronologico decrescente, seguito dalla copia integrale
-    # che chiude il ciclo della fascia: l'animazione trasla di meta' pista, e
-    # quella meta' torna a combaciare con l'inizio solo se le due serie sono
-    # identiche e nello stesso ordine.
+    # Un blocco solo, in cronologico decrescente. Dal 15/11/2026 la pagina usa una
+    # griglia filtrabile e non piu' la fascia che scorre, quindi niente copia per il ciclo.
     for percorso, lingua in PAGINE:
         if not percorso.exists():
             sys.exit(f"pagina non trovata: {percorso}")
         testo = percorso.read_text(encoding="utf-8")
         originale = testo
-        serie = [card(b, lingua) for b in tutti]
-        cloni = [card(b, lingua, clone=True) for b in tutti]
-        testo = sostituisci_blocco(testo, 0, "\n".join(serie + cloni), percorso)
+        testo = sostituisci_blocco(testo, 0, "\n".join(card(b, lingua) for b in tutti), percorso)
+        conteggi = {"tutti": len(tutti)}
+        for b in tutti:
+            conteggi[ente(b)] = conteggi.get(ente(b), 0) + 1
+        testo = aggiorna_contatori(testo, conteggi)
         if testo != originale:
             percorso.write_text(testo, encoding="utf-8")
-            print(f"{percorso.relative_to(RADICE)}: {len(tutti)} badge piu' {len(cloni)} cloni per il ciclo")
+            print(f"{percorso.relative_to(RADICE)}: {len(tutti)} badge")
         else:
             print(f"{percorso.relative_to(RADICE)}: nessuna modifica")
 

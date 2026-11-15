@@ -112,7 +112,7 @@ if (credlyContainer) {
 
   async function fetchCredlyBadges() {
     try {
-      credlyContainer.innerHTML = `<p>${credlyMessages.loading}</p>`;
+      credlyContainer.innerHTML = `<li>${credlyMessages.loading}</li>`;
       const response = await fetch('/badges.json');
 
       if (!response.ok) {
@@ -140,7 +140,7 @@ if (credlyContainer) {
       credlyContainer.innerHTML = '';
       
       if (badgesArray.length === 0) {
-        credlyContainer.innerHTML = `<p>${credlyMessages.noBadges}</p>`;
+        credlyContainer.innerHTML = `<li>${credlyMessages.noBadges}</li>`;
         return;
       }
 
@@ -159,16 +159,19 @@ if (credlyContainer) {
         const badgeId = badge.id;
         const link = badge.badge_url || (badgeId ? `https://www.credly.com/badges/${badgeId}` : '#');
 
+        const href = /^https?:\/\//.test(link) ? link : '#';
+        const voce = document.createElement('li');
+        voce.className = 'ct-badge pg__carta';
+        voce.dataset.cat = /claude\.com/.test(href) ? 'anthropic' : (/^Google/.test(title) ? 'google' : 'altri');
         const badgeCard = document.createElement('a');
-        badgeCard.className = 'card-credly';
-        badgeCard.href = /^https?:\/\//.test(link) ? link : '#';
+        badgeCard.href = href;
         badgeCard.target = '_blank';
         badgeCard.rel = 'noopener noreferrer';
 
         if (imgUrl) {
           const immagine = document.createElement('img');
           immagine.src = imgUrl;
-          immagine.alt = title;
+          immagine.alt = '';
           immagine.width = 110;
           immagine.height = 110;
           immagine.loading = 'lazy';
@@ -185,25 +188,31 @@ if (credlyContainer) {
           }
         }
 
-        const titolo = document.createElement('h3');
+        const titolo = document.createElement('span');
+        titolo.className = 'ct-badge__titolo';
         titolo.textContent = title;
         badgeCard.appendChild(titolo);
 
         if (formattedDate) {
-          const data = document.createElement('p');
-          data.className = 'credly-date';
+          const data = document.createElement('span');
+          data.className = 'ct-badge__data';
           data.textContent = formattedDate;
           badgeCard.appendChild(data);
         }
-        
-        credlyContainer.appendChild(badgeCard);
+
+        const verifica = document.createElement('span');
+        verifica.className = 'ct-badge__verifica';
+        verifica.textContent = isEn ? 'Verify →' : 'Verifica →';
+        badgeCard.appendChild(verifica);
+        voce.appendChild(badgeCard);
+        credlyContainer.appendChild(voce);
       });
     } catch (error) {
-      credlyContainer.innerHTML = `<p>${credlyMessages.error}</p>`;
+      credlyContainer.innerHTML = `<li>${credlyMessages.error}</li>`;
     }
   }
 
-  if (credlyContainer.querySelector('.card-credly')) {
+  if (credlyContainer.querySelector('.ct-badge')) {
   } else {
     fetchCredlyBadges();
   }

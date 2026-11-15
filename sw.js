@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gpf-shell-v34';
+const CACHE_NAME = 'gpf-shell-v35';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
@@ -20,7 +20,8 @@ const SHELL_ASSETS = [
   '/en/404',
   '/assets/css/style.css',
   '/assets/css/cookieconsent.css',
-  '/assets/css/cv.css',
+  '/assets/css/raggi.css',
+  '/assets/js/raggi.js',
   '/assets/css/servizi.css',
   '/assets/css/formazione.css',
   '/assets/js/formazione.js',
@@ -33,16 +34,8 @@ const SHELL_ASSETS = [
   '/assets/img/foto-chi-sono.webp',
   '/assets/js/motion.js',
   '/assets/js/tema.js',
-  '/assets/js/intro-anim.js',
-  '/assets/js/home-init.js',
-  '/assets/js/scroll-story.js',
-  '/assets/js/cv.js',
-  '/assets/js/servizi.js',
   '/assets/js/webgl-support.js',
-  '/assets/js/hero-scene.js',
-  '/assets/js/photo-particles.js',
   '/assets/js/condividi.js',
-  '/assets/js/badge-fascia.js',
   '/assets/libs/three/three.module-r185.min.js',
   '/assets/libs/three/three.core-r185.min.js',
   '/assets/libs/cookieconsent/cookieconsent-3.1.0.umd.js',
