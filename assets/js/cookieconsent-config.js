@@ -1,4 +1,4 @@
-import '/assets/libs/cookieconsent/cookieconsent-3.1.0.umd.js';
+import '/assets/libs/cookieconsent/cookieconsent-3.3.0.umd.js';
 
 window.dataLayer = window.dataLayer || [];
 function gtag() {

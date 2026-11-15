@@ -71,7 +71,7 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f5f3ff; --testo: #0f0d1
 .rx__foto { height: clamp(90px, 16vw, 150px); border-radius: 10px; background: linear-gradient(135deg, #f4c58a, #c2602b 60%, #7a2e0e); }
 .rx__chip { display: inline-block; justify-self: start; padding: 8px 14px; border-radius: 999px; background: #7a2e0e; color: #fff; font-size: 13px; font-weight: 700; }
 .rx__chip--b { background: transparent; color: #7a2e0e; border: 1px solid #7a2e0e; }
-.rx__codice { margin: 0; background: #0f0d18; color: #ddd6fe; font: 400 clamp(10px, 1.3vw, 13px)/1.7 'IBM Plex Mono', monospace; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; clip-path: inset(0 0 0 var(--pos)); padding-left: calc(var(--pos) + clamp(14px, 2.4vw, 28px)); }
+.rx__codice { margin: 0; background: #0f0d18; color: #ddd6fe; font: 400 clamp(10px, 1.3vw, 13px)/1.7 'IBM Plex Mono', monospace; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; clip-path: inset(0 0 0 var(--pos)); padding-left: calc(50% + clamp(14px, 2.4vw, 28px)); }
 .rx__codice .k { color: #c4b5fd; } .rx__codice .a { color: #93c5fd; } .rx__codice .s { color: #86efac; } .rx__codice .c { color: #8a83a3; }
 .rx__linea { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 2px; background: var(--viola-2); pointer-events: none; }
 .rx__linea span { position: absolute; top: 50%; left: 50%; width: 36px; height: 36px; margin: -18px 0 0 -18px; border-radius: 50%; background: var(--viola-2); box-shadow: 0 0 0 6px rgba(124, 58, 237, 0.25); }
@@ -345,3 +345,9 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f5f3ff; --testo: #0f0d1
   .rx-dt__pannello[hidden], .pg__carta[hidden], .rx-se__elenco[hidden] { display: block !important; }
   .rx-c__scatola, .hp-form__scatola, .rx-pt__porta--2, .hp__porta--1, .pg-gh, .co-az--1 { background: none !important; color: #000 !important; border: 1px solid #999 !important; }
 }
+
+/* Correzioni del 15/11/2026 dagli audit 08 e 10. */
+[data-theme='dark'] body.rxp .rx-barra a:first-child { background: var(--viola-btn); }
+.hp-foto__chip--b { right: -4%; }
+@media (min-width: 960px) and (max-width: 1180px) { .hp-foto__chip--b { right: 0; } .hp-foto__chip--a { left: 0; } }
+@media (max-width: 639px) { .rx__codice { overflow-wrap: break-word; word-break: normal; font-size: 10px; } }

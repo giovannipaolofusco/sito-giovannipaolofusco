@@ -15,7 +15,8 @@ Sono Giovanni Paolo Fusco, sviluppatore web a Fondi (LT). Realizzo siti statici 
 | Test | `node --test` controlla l'output del build (se fallisce, il deploy su Netlify si ferma) e il testo dei PDF |
 | Hosting | Netlify, con header di sicurezza in `_headers` e redirect in `_redirects` |
 | Offline | Service Worker (`sw.js`) per la cache delle risorse |
-| Certificazioni | GitHub Actions aggiorna ogni giorno i badge Credly in `badges.json` |
+| Certificazioni | GitHub Actions aggiorna ogni notte i badge Credly in `badges.json` e li scrive nelle pagine Certificazioni IT/EN |
+| Librerie | Ospitate sul sito, nessuna CDN: CookieConsent per il banner, GSAP e Three.js solo nella pagina Formazione AI e nella pagina link |
 | Sicurezza | `/.well-known/security.txt` con il contatto per le segnalazioni |
 
 ## Avvio in locale
@@ -45,6 +46,7 @@ I'm Giovanni Paolo Fusco, a web developer in Fondi, Italy. I build fast static w
 - `scripts/build.mjs` keeps readable sources in the root and publishes only `dist/`, minified, with images optimized by `sharp`.
 - `node --test` checks the build output (a failure stops the Netlify deploy) and the PDF text.
 - Hosted on Netlify with security headers (`_headers`) and redirects (`_redirects`), plus a Service Worker for caching.
-- A daily GitHub Actions job refreshes Credly badges.
+- A nightly GitHub Actions job refreshes Credly badges and writes them into the Certifications pages.
+- Third-party libraries are self-hosted, no CDN: CookieConsent for the banner, GSAP and Three.js only on the AI training and link pages.
 
 **Run locally:** `npm install && npm run build && npx serve dist` (Node 22).

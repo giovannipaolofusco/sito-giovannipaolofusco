@@ -68,7 +68,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v35/);
+  assert.match(worker, /gpf-shell-v36/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {
@@ -418,6 +418,19 @@ test('certificazioni: badge fra i marcatori e contatori coerenti con le card', (
     const conta = (k) => (k === 'tutti' ? card.length : card.filter((c) => c === k).length);
     for (const m of html.matchAll(/data-conta="?(\w+)"?>(\d+)</g)) {
       assert.equal(Number(m[2]), conta(m[1]), `${file}: contatore ${m[1]}`);
+    }
+  }
+});
+
+// Presidio del 15/11/2026: senza preload il titolo a peso 800 si reimpaginava all'arrivo del font
+// (CLS desktop 0,246 su Servizi). Le pagine principali precaricano i due font della prima schermata.
+test('le pagine principali precaricano i font della prima schermata', () => {
+  for (const pre of ['', 'en/']) {
+    for (const pagina of ['index.html', 'servizi/index.html', 'formazione-ai/index.html', 'progetti/index.html', 'certificazioni/index.html', 'cv/index.html', 'contatti/index.html']) {
+      const head = readFileSync(output(pre + pagina), 'utf8').split('</head>')[0];
+      for (const font of ['inter-v20-latin-800.woff2', 'inter-v20-latin-regular.woff2']) {
+        assert.match(head, new RegExp(`<link[^>]*rel="?preload"?[^>]*${font.replace(/\./g, '\\.')}[^>]*crossorigin`), `${pre}${pagina}: preload di ${font}`);
+      }
     }
   }
 });

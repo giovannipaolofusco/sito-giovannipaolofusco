@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gpf-shell-v35';
+const CACHE_NAME = 'gpf-shell-v36';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
@@ -36,11 +36,11 @@ const SHELL_ASSETS = [
   '/assets/js/tema.js',
   '/assets/js/webgl-support.js',
   '/assets/js/condividi.js',
-  '/assets/libs/three/three.module-r185.min.js',
-  '/assets/libs/three/three.core-r185.min.js',
-  '/assets/libs/cookieconsent/cookieconsent-3.1.0.umd.js',
-  '/assets/libs/gsap/gsap-3.15.0.min.js',
-  '/assets/libs/gsap/ScrollTrigger-3.15.0.min.js',
+  '/assets/libs/three/three.module-r187.min.js',
+  '/assets/libs/three/three.core-r187.min.js',
+  '/assets/libs/cookieconsent/cookieconsent-3.3.0.umd.js',
+  '/assets/libs/gsap/gsap-3.15.1.min.js',
+  '/assets/libs/gsap/ScrollTrigger-3.15.1.min.js',
   '/assets/fonts/ibm-plex-mono-latin-regular.woff2',
   '/assets/fonts/ibm-plex-mono-latin-500.woff2',
   '/assets/favicon/favicon.ico',

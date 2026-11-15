@@ -1,4 +1,4 @@
-import * as THREE from '../libs/three/three.module-r185.min.js';
+import * as THREE from '../libs/three/three.module-r187.min.js';
 
 const SAMPLE_SIZE = 110;
 const SCATTER_RADIUS = 6;

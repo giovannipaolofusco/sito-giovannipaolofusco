@@ -10,7 +10,7 @@ async function avvia() {
   // Sotto i 768 px la scena e' troppo piccola per leggerla: resta la mappa piatta.
   if (!fig || window.innerWidth < 768 || !canUseWebGL3D()) return;
   // Three.js si scarica solo qui, quando la scena parte davvero: su telefono non arriva.
-  const THREE = await import('/assets/libs/three/three.module-r185.min.js');
+  const THREE = await import('/assets/libs/three/three.module-r187.min.js');
   const box = document.createElement('div');
   box.className = 't3d';
   box.setAttribute('aria-hidden', 'true');
