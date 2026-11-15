@@ -1086,7 +1086,8 @@ html.menu-aperto {
   align-items: center;
   gap: 12px;
   padding: 16px 20px;
-  border-radius: 10px;
+  min-height: 56px;
+  border-radius: 999px;
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   font-weight: 600;
@@ -1131,6 +1132,35 @@ html.menu-aperto {
 [data-theme='dark'] .link-bio__btn--primary {
   background: #7c3aed;
   border-color: #7c3aed;
+}
+
+/* Formazione AI: secondo servizio, pillola scura per distinguerla da Sito web e Servizi. */
+.link-bio__btn--formazione {
+  background: #0f0d18;
+  border-color: #0f0d18;
+}
+[data-theme='dark'] .link-bio__btn--formazione {
+  background: #1d1830;
+  border-color: #3a3352;
+}
+
+/* Social su una riga: icona sopra il nome, cosi' tre voci stanno anche a 320px. */
+.link-bio__social {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+.link-bio__social .link-bio__btn {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 6px;
+  min-height: 68px;
+  padding: 10px 4px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+.link-bio__social .link-bio__etichetta {
+  overflow-wrap: anywhere;
 }
 
 .not-found-main {

@@ -38,6 +38,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script src="/assets/js/tema.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/raggi.css" />
     <link rel="stylesheet" href="/assets/css/cookieconsent.css" />
 
 
@@ -87,7 +88,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="rxp">
     <a href="#contenuto" class="skip-link">Skip to content</a>
     <nav>
       <a href="/en/" class="nav-left">
@@ -123,275 +124,42 @@
       </div>
     </nav>
 
-    <main id="contenuto">
-      <div class="story-pin-wrap">
-        <h1 class="story-pin-wrap__title">Projects & Digital Ecosystem</h1>
-        <p class="story-pin-wrap__intro">
-          The projects I'm working on now, and the ones that got me here:
-          infrastructure, automation, websites, content and community.
-        </p>
-      </div>
-
-      <!-- Services CTA destination; replace with the section once a first card is authorised. -->
-      <span id="websites-built" class="progetti__ancora" aria-hidden="true"></span>
-      <h2>What I do now</h2>
-      <div class="grid">
-        <div class="card reveal-card">
-          <h3>This website <span class="project-year">2026 - Ongoing</span></h3>
-          <p>The site you are reading, in Italian and English, written in plain HTML, CSS and JavaScript with no framework. A Node build publishes only the optimized version, and automated tests stop the release if something breaks. The code is public: you can see how I work before you even write to me.</p>
-          <ul class="card-tags">
-            <li class="card-tag">HTML/CSS/JS</li>
-            <li class="card-tag">Node</li>
-            <li class="card-tag">Netlify</li>
-            <li class="card-tag">Automated tests</li>
-          </ul>
-          <a
-            href="https://github.com/giovannipaolofusco/sito-giovannipaolofusco"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >See the code on GitHub</a
-          >
+    <main id="contenuto" class="bz s3 rxp">
+      <section class="rxh rxp-h">
+        <div class="bz__wrap">
+          <p class="rx__pillola">Projects</p>
+          <h1 class="rxh__titolo"><span class="kin__maschera"><span class="kin__parola">Things</span></span> <span class="kin__maschera"><span class="kin__parola">I</span></span> <span class="kin__maschera"><span class="kin__parola">built,</span></span> <span class="kin__maschera"><span class="kin__parola">still</span></span> <span class="kin__maschera"><span class="kin__parola">running.</span></span> </h1>
+          <p class="rxh__sotto">Websites and demos, my home server, the bots I work with every day. Filter by type and open what interests you.</p>
+          
         </div>
-        <div class="card reveal-card">
-          <h3>Demo: website with an editing panel <span class="project-year">2026</span></h3>
-          <p>The website of a fictional trattoria, showing how the sites I deliver work: the owner changes menu, opening hours and events from a panel, with no database and no monthly fee. Every change is kept in the history and can be undone.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Decap CMS</li>
-            <li class="card-tag">Cloudflare Pages</li>
-            <li class="card-tag">Automatic backups</li>
-          </ul>
-          <a
-            href="https://demo-pannello-git.pages.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Try the demo</a
-          >
+      </section>
+      <section class="pg" aria-labelledby="pg-ora">
+        <div class="bz__wrap">
+          <h2 id="pg-ora" class="rx__h2">What I do now</h2>
+          <ul class="rx-dt__elenco pg__filtri" aria-label="Filter projects"><li><button class="rx-dt__voce pg__filtro" type="button" aria-pressed="true" data-f="tutti">All <span class="rx-dt__n">11</span></button></li><li><button class="rx-dt__voce pg__filtro" type="button" aria-pressed="false" data-f="siti">Websites & demos <span class="rx-dt__n">4</span></button></li><li><button class="rx-dt__voce pg__filtro" type="button" aria-pressed="false" data-f="server">Server <span class="rx-dt__n">3</span></button></li><li><button class="rx-dt__voce pg__filtro" type="button" aria-pressed="false" data-f="bot">Bots & AI <span class="rx-dt__n">3</span></button></li><li><button class="rx-dt__voce pg__filtro" type="button" aria-pressed="false" data-f="social">Social <span class="rx-dt__n">1</span></button></li></ul>
+          <ul class="pg__griglia" aria-live="polite"><li class="pg__carta" data-cat="siti"><p class="pg__anno">2026 - Ongoing</p><h3 class="pg__titolo">This website</h3><p class="pg__testo">The site you are reading, in Italian and English, written in plain HTML, CSS and JavaScript with no framework.</p><ul class="pg__tag"><li>HTML/CSS/JS</li><li>Node</li><li>Netlify</li><li>Automated tests</li></ul><a class="pg__link" href="https://github.com/giovannipaolofusco/sito-giovannipaolofusco" target="_blank" rel="noopener noreferrer">See the code on GitHub →</a></li><li class="pg__carta" data-cat="siti"><p class="pg__anno">2026</p><h3 class="pg__titolo">Demo: website with an editing panel</h3><p class="pg__testo">The website of a fictional trattoria, showing how the sites I deliver work: the owner changes menu, opening hours and events from a panel, with no database and no monthly fee.</p><ul class="pg__tag"><li>Decap CMS</li><li>Cloudflare Pages</li><li>Automatic backups</li></ul><a class="pg__link" href="https://demo-pannello-git.pages.dev/" target="_blank" rel="noopener noreferrer">Try the demo →</a></li><li class="pg__carta" data-cat="siti"><p class="pg__anno">2026</p><h3 class="pg__titolo">Demo: medical practice website</h3><p class="pg__testo">The website of a fictional medical practice, in Italian and English.</p><ul class="pg__tag"><li>Decap CMS</li><li>Cloudflare Pages</li><li>Privacy</li></ul><a class="pg__link" href="https://demo-studio-medico.pages.dev/" target="_blank" rel="noopener noreferrer">Try the demo →</a></li><li class="pg__carta" data-cat="siti"><p class="pg__anno">2026 - Ongoing</p><h3 class="pg__titolo">piazzapaese</h3><p class="pg__testo">A platform for southern Lazio that gathers everything you can do in the area in one place: events, races, local festivals, anything with a date.</p><ul class="pg__tag"><li>Astro</li><li>Maps</li><li>Local discovery</li></ul><a class="pg__link" href="https://piazzapaese.it/" target="_blank" rel="noopener noreferrer">Visit piazzapaese →</a></li><li class="pg__carta" data-cat="server"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Infrastructure</h3><p class="pg__testo">An old family Windows 11 PC, sitting unused in a corner, turned into an Ubuntu server and administered from the command line.</p><ul class="pg__tag"><li>Ubuntu</li><li>Docker</li><li>Tailscale</li><li>Uptime Kuma</li></ul></li><li class="pg__carta" data-cat="server"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Personal cloud</h3><p class="pg__testo">Immich automatically backs up the photos from my phone and Nextcloud holds my files, both running in containers on the server at home.</p><ul class="pg__tag"><li>Immich</li><li>Nextcloud</li><li>Docker</li><li>Backup</li></ul></li><li class="pg__carta" data-cat="server"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Network filtering</h3><p class="pg__testo">AdGuard runs on the server and blocks ads and trackers at the DNS level for every connected device, before they ever reach the browser: roughly one request in five doesn't get through.</p><ul class="pg__tag"><li>AdGuard Home</li><li>DNS</li><li>Privacy</li></ul></li><li class="pg__carta" data-cat="bot"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Telegram control bot</h3><p class="pg__testo">Written by me, with a fixed set of commands and no room to improvise: container status, RAM, machine temperature, and a MAC address scan for devices that show up on the network and I don't recognize.</p><ul class="pg__tag"><li>Python</li><li>Telegram Bot API</li><li>Docker</li></ul></li><li class="pg__carta" data-cat="bot"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Hermes</h3><p class="pg__testo">An open source assistant I took from GitHub, moved onto my server and wired up to the OpenAI APIs with GPT-5 mini.</p><ul class="pg__tag"><li>Self-hosting</li><li>OpenAI API</li><li>Telegram</li></ul></li><li class="pg__carta" data-cat="bot"><p class="pg__anno">2025 - Ongoing</p><h3 class="pg__titolo">Forex trading bot</h3><p class="pg__testo">An automation that trades currency markets according to defined rules.</p><ul class="pg__tag"><li>Python</li><li>API</li><li>Trading</li></ul></li><li class="pg__carta" data-cat="social"><p class="pg__anno">2024 - Ongoing</p><h3 class="pg__titolo">Digital Ecosystem &amp; Social Management</h3><p class="pg__testo">Social media management and digital presence for Ristorante N'Dino.</p><a class="pg__link" href="https://www.instagram.com/ristorantendino/" target="_blank" rel="noopener noreferrer">View on Instagram →</a></li></ul>
+          <a class="pg-gh" href="https://github.com/giovannipaolofusco" target="_blank" rel="noopener noreferrer"><span class="pg-gh__titolo">All projects on GitHub</span><span class="pg-gh__testo">The code of my public projects, demos and the tools I work with, all in one place.</span><span class="pg-gh__vai">Go to my GitHub profile →</span></a>
         </div>
-        <div class="card reveal-card">
-          <h3>Demo: medical practice website <span class="project-year">2026</span></h3>
-          <p>The website of a fictional medical practice, in Italian and English. The front desk updates opening hours and notices from an editing panel. No forms collecting health data, no tracking, bookings by phone.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Decap CMS</li>
-            <li class="card-tag">Cloudflare Pages</li>
-            <li class="card-tag">Privacy</li>
-          </ul>
-          <a
-            href="https://demo-studio-medico.pages.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Try the demo</a
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>piazzapaese <span class="project-year">2026 - Ongoing</span></h3>
-          <p>A platform for southern Lazio that gathers everything you can do in the area in one place: events, races, local festivals, anything with a date. My own project, from the idea to the code.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Astro</li>
-            <li class="card-tag">Maps</li>
-            <li class="card-tag">Local discovery</li>
-          </ul>
-          <a
-            href="https://piazzapaese.it/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Visit piazzapaese</a
-          >
-        </div>
-        <!-- CARD HIDDEN UNTIL OCTOBER 2026: the Ristorante N'Dino website goes
-             live in October and is not shown until then. To restore it, remove
-             this opening line and the "END OF HIDDEN CARD" line at the bottom
-             of the block.
-        <div class="card reveal-card">
-          <h3>Ristorante N'Dino <span class="project-year">2026</span></h3>
-          <p>Multilingual showcase website for a historic trattoria in Fondi, with digital menu and wine list, photo gallery and scroll animations.</p>
-          <ul class="card-tags">
-            <li class="card-tag">GSAP scrollytelling</li>
-            <li class="card-tag">Multilingual IT/EN/DE/FR</li>
-            <li class="card-tag">Digital menu</li>
-            <li class="card-tag">Lightbox gallery</li>
-            <li class="card-tag">GDPR cookie banner</li>
-          </ul>
-          <a
-            href="https://www.ristorantendino.it/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Visit the site</a
-          >
-        </div>
-        END OF HIDDEN CARD -->
-
-        <div class="card reveal-card">
-          <h3>Infrastructure <span class="project-year">2025 - Ongoing</span></h3>
-          <p>An old family Windows 11 PC, sitting unused in a corner, turned into an Ubuntu server and administered from the command line. It runs services in containers, with Uptime Kuma watching their status and Dozzle reading their logs, and remote access goes through Tailscale, which keeps my devices on a private network without opening a single port to the internet. Every night Restic backs the server up to a dedicated disk, Docker volumes included, and the databases are dumped separately first: copied hot, they wouldn't restore. Once a month a second job re-reads the archive to make sure nothing has gone corrupt without anyone noticing. A UPS keeps it up when the power goes out and, if it doesn't come back within ten minutes, shuts it down cleanly instead of letting it die mid-write.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Ubuntu</li>
-            <li class="card-tag">Docker</li>
-            <li class="card-tag">Tailscale</li>
-            <li class="card-tag">Uptime Kuma</li>
-            <li class="card-tag">Dozzle</li>
-            <li class="card-tag">Restic</li>
-            <li class="card-tag">UPS</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Personal cloud <span class="project-year">2025 - Ongoing</span></h3>
-          <p>Immich automatically backs up the photos from my phone and Nextcloud holds my files, both running in containers on the server at home. They're the two things people usually pay a monthly subscription for, and that put your data on someone else's disk.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Immich</li>
-            <li class="card-tag">Nextcloud</li>
-            <li class="card-tag">Docker</li>
-            <li class="card-tag">Backup</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Network filtering <span class="project-year">2025 - Ongoing</span></h3>
-          <p>AdGuard runs on the server and blocks ads and trackers at the DNS level for every connected device, before they ever reach the browser: roughly one request in five doesn't get through. Tailscale carries the filter with me: on mobile data my phone browses just as clean as it does at home. It's the same principle I apply to the websites I build: what shouldn't fire, doesn't.</p>
-          <ul class="card-tags">
-            <li class="card-tag">AdGuard Home</li>
-            <li class="card-tag">DNS</li>
-            <li class="card-tag">Privacy</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Telegram control bot <span class="project-year">2025 - Ongoing</span></h3>
-          <p>Written by me, with a fixed set of commands and no room to improvise: container status, RAM, machine temperature, and a MAC address scan for devices that show up on the network and I don't recognize.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Python</li>
-            <li class="card-tag">Telegram Bot API</li>
-            <li class="card-tag">Docker</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Hermes <span class="project-year">2025 - Ongoing</span></h3>
-          <p>An open source assistant I took from GitHub, moved onto my server and wired up to the OpenAI APIs with GPT-5 mini. Every day it sends me the main news on tech, AI and finance, and it lets me reach the server even when I'm not home. Unlike the control bot, there are no fixed commands here: you have a conversation.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Self-hosting</li>
-            <li class="card-tag">OpenAI API</li>
-            <li class="card-tag">Telegram</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Forex trading bot <span class="project-year">2025 - Ongoing</span></h3>
-          <p>An automation that trades currency markets according to defined rules. For now it runs in testing, not live.</p>
-          <ul class="card-tags">
-            <li class="card-tag">Python</li>
-            <li class="card-tag">API</li>
-            <li class="card-tag">Trading</li>
-          </ul>
-          <span
-            class="card-link card-link--statico"
-            >Private project</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Digital Ecosystem &amp; Social Management <span class="project-year">2024 - Ongoing</span></h3>
-          <p>Social media management and digital presence for Ristorante N'Dino.</p>
-          <a
-            href="https://www.instagram.com/ristorantendino/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >View on Instagram</a
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>All projects on GitHub</h3>
-          <p>The code of my public projects, demos and the tools I work with, all in one place.</p>
-          <a
-            href="https://github.com/giovannipaolofusco"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Go to my GitHub profile</a
-          >
-        </div>
-      </div>
-
-      <h2>Before this</h2>
-      <div class="grid">
-        <div class="card reveal-card">
-          <h3>Kairos Team <span class="project-year">2023 - 2026</span></h3>
-          <p>Trading Community and Discord server with over 460 active members. Server created from scratch with the addition of a series of automations via bots.</p>
-          <span
-            class="card-link card-link--statico"
-            >Private Community</span
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Giovanni Paolo Fusco <span class="project-year">2024</span></h3>
-          <p>YouTube channel focused on Trading &amp; Finance.</p>
-          <a
-            href="https://www.youtube.com/@GiovanniPaoloFusco"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Visit Channel</a
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Gioppy &amp; Matte <span class="project-year">2024</span></h3>
-          <p>Open Trading Community and Discord server. Server equipped with automation bots like Kairos Team.</p>
-          <a
-            href="https://discord.gg/Zr7xpBnEjq"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Join on Discord</a
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Personal Blog <span class="project-year">2020 - 2024</span></h3>
-          <p>Articles and in-depth guides on tech and financial topics.</p>
-          <a
-            href="https://giovannipaolofusco.wordpress.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Read Blog</a
-          >
-        </div>
-        <div class="card reveal-card">
-          <h3>Informatica Tech <span class="project-year">2020 - 2021</span></h3>
-          <p>YouTube channel dedicated to Coding &amp; Education.</p>
-          <a
-            href="https://www.youtube.com/@informaticatech9193"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="card-link magnetic"
-            >Visit Channel</a
-          >
-        </div>
-      </div>
-    
-      <div class="condividi">
+      </section>
+      <section class="rx-dt pg-prima" aria-labelledby="pg-prima">
+        <div class="bz__wrap">
+          <h2 id="pg-prima" class="rx__h2">Before this</h2>
+          <ol class="pg-linea"><li class="pg-linea__voce"><p class="pg__anno">2023 - 2026</p><div><h3 class="pg-linea__titolo">Kairos Team</h3><p class="pg-linea__testo">Trading Community and Discord server with over 460 active members.</p></div></li><li class="pg-linea__voce"><p class="pg__anno">2024</p><div><h3 class="pg-linea__titolo">Giovanni Paolo Fusco</h3><p class="pg-linea__testo">YouTube channel focused on Trading &amp; Finance.</p><a class="pg__link" href="https://www.youtube.com/@GiovanniPaoloFusco" target="_blank" rel="noopener noreferrer">Visit Channel →</a></div></li><li class="pg-linea__voce"><p class="pg__anno">2024</p><div><h3 class="pg-linea__titolo">Gioppy &amp; Matte</h3><p class="pg-linea__testo">Open Trading Community and Discord server.</p><a class="pg__link" href="https://discord.gg/Zr7xpBnEjq" target="_blank" rel="noopener noreferrer">Join on Discord →</a></div></li><li class="pg-linea__voce"><p class="pg__anno">2020 - 2024</p><div><h3 class="pg-linea__titolo">Personal Blog</h3><p class="pg-linea__testo">Articles and in-depth guides on tech and financial topics.</p><a class="pg__link" href="https://giovannipaolofusco.wordpress.com/" target="_blank" rel="noopener noreferrer">Read Blog →</a></div></li><li class="pg-linea__voce"><p class="pg__anno">2020 - 2021</p><div><h3 class="pg-linea__titolo">Informatica Tech</h3><p class="pg-linea__testo">YouTube channel dedicated to Coding &amp; Education.</p><a class="pg__link" href="https://www.youtube.com/@informaticatech9193" target="_blank" rel="noopener noreferrer">Visit Channel →</a></div></li></ol>
+          <div class="condividi">
         <button type="button" class="condividi__btn">Share this page</button>
         <span class="condividi__esito" role="status" aria-live="polite"></span>
       </div>
+        </div>
+      </section>
+      <section id="parliamone" class="rx-c" aria-labelledby="chiusura-titolo">
+        <div class="bz__wrap rx-c__scatola">
+          <h2 id="chiusura-titolo" class="rx-c__titolo">Have a project in mind?</h2>
+          <p class="rx-c__testo">Tell me about it: I'll tell you what you need and what you don't.</p>
+          <div class="rxh__azioni"><a class="bz-btn rx-btn--chiaro" href="https://wa.me/393334919401?text=Hi%20Giovanni%2C%20I%27m%20writing%20from%20your%20website." target="_blank" rel="noopener noreferrer">Message me on WhatsApp</a><a class="bz-btn rx-btn--linea-chiara" href="mailto:info@giovannipaolofusco.it?subject=Contact%20from%20your%20website&amp;body=Hi%20Giovanni%2C%20">Send me an email</a></div>
+          
+        </div>
+      </section>
+      <div class="rx-barra" aria-label="Quick contacts"><a href="https://wa.me/393334919401?text=Hi%20Giovanni%2C%20I%27m%20writing%20from%20your%20website." target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@giovannipaolofusco.it?subject=Contact%20from%20your%20website&amp;body=Hi%20Giovanni%2C%20">Email</a></div>
     </main>
 
     <footer>
@@ -411,11 +179,8 @@
       <p class="footer-legge">Professional under Italian Law No. 4 of 14 January 2013, profession not organised in professional orders or colleges.</p>
     </footer>
 
-    <script src="/assets/js/motion.js" defer></script>
-    <script src="/assets/libs/gsap/gsap-3.15.0.min.js" defer></script>
-    <script src="/assets/libs/gsap/ScrollTrigger-3.15.0.min.js" defer></script>
-    <script src="/assets/js/scroll-story.js" defer></script>
     <script src="/assets/js/script.js" defer></script>
+    <script src="/assets/js/raggi.js" defer></script>
     <script type="module" src="/assets/js/cookieconsent-config.js"></script>
     <script src="/assets/js/pwa-install.js" defer></script>
     <script src="/assets/js/condividi.js" defer></script>

@@ -37,8 +37,8 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <script src="/assets/js/tema.js"></script>
     <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/raggi.css" />
     <link rel="stylesheet" href="/assets/css/cookieconsent.css" />
-    <link rel="stylesheet" href="/assets/css/cv.css" />
     <link rel="canonical" href="https://giovannipaolofusco.it/en/cv/" />
     <link rel="alternate" hreflang="it" href="https://giovannipaolofusco.it/cv/" />
     <link rel="alternate" hreflang="en" href="https://giovannipaolofusco.it/en/cv/" />
@@ -86,7 +86,7 @@
       }
     </script>
   </head>
-  <body>
+  <body class="rxp">
     <a href="#contenuto" class="skip-link">Skip to content</a>
     <nav>
       <a href="/en/" class="nav-left">
@@ -115,121 +115,49 @@
         </button>
       </div>
     </nav>
-  <main id="contenuto" class="cv">
-
-    <header class="cv-hero" data-cv-reveal>
-      <h1 class="cv-name">
-        <span class="cv-word"><span>Giovanni</span></span>
-        <span class="cv-word"><span>Paolo</span></span>
-        <span class="cv-word"><span class="cv-name__light">Fusco</span></span>
-      </h1>
-
-      <p class="cv-tagline">
-        <span class="cv-role">Web developer &amp; automation</span>
-        <span class="cv-where"><span class="cv-dot"></span>Fondi, Italy — available remotely</span>
-      </p>
-
-      <nav class="cv-links" aria-label="Contacts and download">
-        <a class="cv-chip cv-chip--primary" href="/CV-Giovanni-Paolo-Fusco-EN.pdf" download>Download CV as PDF</a>
-        <a class="cv-chip" href="mailto:info@giovannipaolofusco.it">info@giovannipaolofusco.it</a>
-        <a class="cv-chip" href="tel:+393334919401">+39 333 491 9401</a>
-        <a class="cv-chip" href="https://www.linkedin.com/in/giovannipaolofusco/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-      </nav>
-    </header>
-
-    <section class="cv-blk" data-cv-reveal>
-      <div class="cv-lbl"><p class="cv-num">01</p><h2>Profile</h2></div>
-      <div>
-        <p class="cv-lede cv-rise"><strong>Web developer</strong>. I build fast brochure websites for local businesses in plain HTML, CSS and JavaScript, and I run my own Ubuntu server with Docker for the automations I use daily. Before writing code for a living I spent five years answering people under pressure, on restaurant floors and on Discord: it is the part of the job no course teaches.</p>
-      </div>
-    </section>
-
-    <section class="cv-blk" data-cv-reveal>
-      <div class="cv-lbl"><p class="cv-num">02</p><h2>Development work</h2></div>
-      <div>
-
-        <article class="cv-item cv-rise">
-          <div class="cv-item__head">
-            <h3>Web developer <span class="cv-org">— independent projects, Fondi, Italy</span></h3>
-            <span class="cv-meta">2026 — present</span>
+  <main id="contenuto" class="bz s3 rxp">
+      <section class="rxh rxp-h cv-h">
+        <div class="bz__wrap">
+          <div class="cv-scheda">
+            <picture><source srcset="/assets/img/foto-chi-sono.webp" type="image/webp" /><img class="cv-scheda__foto" src="/assets/img/foto-chi-sono.jpg" alt="Giovanni Paolo Fusco" width="512" height="512" /></picture>
+            <div class="cv-scheda__testo">
+              <h1 class="cv-scheda__nome"><span class="kin__maschera"><span class="kin__parola">Giovanni</span></span> <span class="kin__maschera"><span class="kin__parola">Paolo</span></span> <span class="kin__maschera"><span class="kin__parola">Fusco</span></span> </h1>
+              <p class="cv-scheda__ruolo">Web developer &amp; automation</p>
+              <p class="cv-scheda__dove">Fondi, Italy, available remotely</p>
+              <ul class="cv-scheda__contatti"><li><a href="mailto:info@giovannipaolofusco.it">info@giovannipaolofusco.it</a></li><li><a href="tel:+393334919401">+39 333 491 9401</a></li><li><a href="https://www.linkedin.com/in/giovannipaolofusco/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li></ul>
+            </div>
+            <a class="bz-btn rx-btn--pieno cv-scheda__pdf" href="/CV-Giovanni-Paolo-Fusco-EN.pdf">Download CV as PDF</a>
           </div>
-          <ul class="cv-dash">
-            <li>Multilingual brochure sites for local businesses: HTML, CSS and vanilla JavaScript, no frameworks and no third-party CDNs.</li>
-            <li>GDPR compliance as part of delivery: cookie banners, privacy notices, forms with no intermediaries.</li>
-          </ul>
-          <p class="cv-tags"><b>HTML</b><b>CSS</b><b>vanilla JS</b><b>GSAP</b><b>i18n</b><b>Netlify</b></p>
-        </article>
-
-        <article class="cv-item cv-rise">
-          <div class="cv-item__head">
-            <h3>Self-hosted automation <span class="cv-org">— Ubuntu server and Docker</span></h3>
-            <span class="cv-meta">Ongoing</span>
-          </div>
-          <ul class="cv-dash">
-            <li>Server run entirely from the command line: containers, encrypted remote access, backups and service monitoring.</li>
-            <li>Scheduled Python automations process data through language models and deliver results over Telegram.</li>
-          </ul>
-          <p class="cv-tags"><b>Ubuntu</b><b>Docker</b><b>Python</b><b>SSH</b><b>cron</b><b>LLM APIs</b></p>
-        </article>
-
-        <p class="cv-note cv-rise">Work and case studies: <a href="/en/progetti/">giovannipaolofusco.it/en/progetti</a></p>
-
-      </div>
-    </section>
-
-    <section class="cv-blk" data-cv-reveal>
-      <div class="cv-lbl"><p class="cv-num">03</p><h2>Experience</h2></div>
-      <div>
-
-        <article class="cv-item cv-rise">
-          <div class="cv-item__head">
-            <h3>Community Manager &amp; Technical Support <span class="cv-org">— Azienda BE, remote</span></h3>
-            <span class="cv-meta">Apr 2023 — Jan 2026</span>
-          </div>
-          <ul class="cv-dash">
-            <li>Built and ran the team's Discord server from scratch, over 250 active members.</li>
-            <li>Access verification, anti-spam, roles and automated ticketing through dedicated bots. First point of contact for users' technical issues.</li>
-          </ul>
-        </article>
-
-        <article class="cv-item cv-rise">
-          <div class="cv-item__head">
-            <h3>Front-of-house &amp; customer experience <span class="cv-org">— Ristorante N'Dino and other venues</span></h3>
-            <span class="cv-meta">Jun 2021 — present</span>
-          </div>
-          <ul class="cv-dash">
-            <li>Floor supervisor: direct guest and complaint handling through peak season, coordinating with the kitchen to keep service times. Fondi, Sperlonga and Terracina.</li>
-          </ul>
-        </article>
-
-      </div>
-    </section>
-
-    <section class="cv-blk" data-cv-reveal>
-      <div class="cv-lbl"><p class="cv-num">04</p><h2>Stack</h2></div>
-      <dl>
-        <div class="cv-srow cv-rise"><dt>Front-end</dt><dd>HTML5, CSS3, vanilla JavaScript, GSAP, responsive layout, performance optimization</dd></div>
-        <div class="cv-srow cv-rise"><dt>Tooling &amp; deploy</dt><dd>Python, Git, GitHub, Docker, Ubuntu / Linux CLI, Netlify, GitHub Pages, REST APIs</dd></div>
-        <div class="cv-srow cv-rise"><dt>AI &amp; compliance</dt><dd>Language model APIs, Telegram and Discord bots, GDPR compliance for websites (cookie banners, notices, forms with no third parties)</dd></div>
-        <div class="cv-srow cv-rise"><dt>Languages</dt><dd>Italian (native), English (technical reading and writing), Spanish (basic)</dd></div>
-      </dl>
-    </section>
-
-    <section class="cv-blk" data-cv-reveal>
-      <div class="cv-lbl"><p class="cv-num">05</p><h2>Education &amp; certifications</h2></div>
-      <div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">Agents and Workflows <span class="cv-inst">&mdash; OpenAI Academy</span></span><span class="cv-year">Aug 2026</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">AI Fluency ×2 · Claude Code in Action · Agent Skills · Claude Code 101 · MCP <span class="cv-inst">— Anthropic</span></span><span class="cv-year">Aug 2026</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">Google AI Professional Certificate <span class="cv-inst">— Google</span></span><span class="cv-year">Jul 2026</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">Python Programming course <span class="cv-inst">— University of Naples Federico II · TRIO, Tuscany Region</span></span><span class="cv-year">Mar — May 2026</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">ICDL IT Security <span class="cv-inst">— TRIO, Tuscany Region</span></span><span class="cv-year">Mar 2026</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">Advanced specialization in Teaching and AI <span class="cv-inst">— University of Naples Federico II</span></span><span class="cv-year">Nov 2025</span></div>
-        <div class="cv-erow cv-rise"><span class="cv-erow__txt">Technical diploma in IT and Telecommunications <span class="cv-inst">— I.T.I. Pacinotti, Fondi, Italy</span></span><span class="cv-year">2019 — Jun 2024</span></div>
-        <p class="cv-note cv-rise">Certificates and verifiable badges on <a href="/en/certificazioni/">certifications</a> and on <a href="https://www.credly.com/users/giovanni-paolo-fusco" target="_blank" rel="noopener noreferrer">Credly</a></p>
-      </div>
-    </section>
-
-  </main>
+          <nav class="cv-indice" aria-label="CV sections"><ul class="rx-dt__elenco"><li><a class="rx-dt__voce" href="#cv-profilo">Profile</a></li><li><a class="rx-dt__voce" href="#cv-percorso">Experience</a></li><li><a class="rx-dt__voce" href="#cv-stack">Stack</a></li><li><a class="rx-dt__voce" href="#cv-titoli">Education</a></li></ul></nav>
+        </div>
+      </section>
+      <section id="cv-profilo" class="cv-sez" aria-labelledby="cv-profilo-t">
+        <div class="bz__wrap cv-sez__griglia"><h2 id="cv-profilo-t" class="cv-sez__titolo">Profile</h2>
+          <p class="cv-profilo">Web developer. I build fast brochure websites for local businesses in plain HTML, CSS and JavaScript, and I run my own Ubuntu server with Docker for the automations I use daily. Before writing code for a living I spent five years answering people under pressure, on restaurant floors and on Discord: it is the part of the job no course teaches.</p></div>
+      </section>
+      <section id="cv-percorso" class="cv-sez rx-dt" aria-labelledby="cv-percorso-t">
+        <div class="bz__wrap cv-sez__griglia"><h2 id="cv-percorso-t" class="cv-sez__titolo">Experience</h2>
+          <div><ol class="cv-linea"><li class="cv-voce"><p class="pg__anno">2026 — present</p><h3 class="cv-voce__titolo">Web developer</h3><p class="cv-voce__dove">Independent projects, Fondi, Italy</p><ul class="cv-voce__punti"><li>Multilingual brochure sites for local businesses: HTML, CSS and vanilla JavaScript, no frameworks and no third-party CDNs.</li><li>GDPR compliance as part of delivery: cookie banners, privacy notices, forms with no intermediaries.</li></ul><ul class="pg__tag"><li>HTML</li><li>CSS</li><li>vanilla JS</li><li>GSAP</li><li>i18n</li><li>Netlify</li></ul></li><li class="cv-voce"><p class="pg__anno">Ongoing</p><h3 class="cv-voce__titolo">Self-hosted automation</h3><p class="cv-voce__dove">Ubuntu server and Docker</p><ul class="cv-voce__punti"><li>Server run entirely from the command line: containers, encrypted remote access, backups and service monitoring.</li><li>Scheduled Python automations process data through language models and deliver results over Telegram.</li></ul><ul class="pg__tag"><li>Ubuntu</li><li>Docker</li><li>Python</li><li>SSH</li><li>cron</li><li>LLM APIs</li></ul></li><li class="cv-voce"><p class="pg__anno">Apr 2023 — Jan 2026</p><h3 class="cv-voce__titolo">Community Manager &amp; Technical Support</h3><p class="cv-voce__dove">Azienda BE, remote</p><ul class="cv-voce__punti"><li>Built and ran the team's Discord server from scratch, over 250 active members.</li><li>Access verification, anti-spam, roles and automated ticketing through dedicated bots. First point of contact for users' technical issues.</li></ul></li><li class="cv-voce"><p class="pg__anno">Jun 2021 — present</p><h3 class="cv-voce__titolo">Front-of-house &amp; customer experience</h3><p class="cv-voce__dove">Ristorante N'Dino and other venues</p><ul class="cv-voce__punti"><li>Floor supervisor: direct guest and complaint handling through peak season, coordinating with the kitchen to keep service times. Fondi, Sperlonga and Terracina.</li></ul></li></ol><p class="cv-nota">Work and case studies: <a href="/en/progetti/">giovannipaolofusco.it/en/progetti</a></p></div></div>
+      </section>
+      <section id="cv-stack" class="cv-sez" aria-labelledby="cv-stack-t">
+        <div class="bz__wrap cv-sez__griglia"><h2 id="cv-stack-t" class="cv-sez__titolo">Stack</h2>
+          <dl class="cv-stack"><div><dt>Front-end</dt><dd>HTML5, CSS3, vanilla JavaScript, GSAP, responsive layout, performance optimization</dd></div><div><dt>Tooling &amp; deploy</dt><dd>Python, Git, GitHub, Docker, Ubuntu / Linux CLI, Netlify, GitHub Pages, REST APIs</dd></div><div><dt>AI &amp; compliance</dt><dd>Language model APIs, Telegram and Discord bots, GDPR compliance for websites (cookie banners, notices, forms with no third parties)</dd></div><div><dt>Languages</dt><dd>Italian (native), English (technical reading and writing), Spanish (basic)</dd></div></dl></div>
+      </section>
+      <section id="cv-titoli" class="cv-sez rx-dt" aria-labelledby="cv-titoli-t">
+        <div class="bz__wrap cv-sez__griglia"><h2 id="cv-titoli-t" class="cv-sez__titolo">Education &amp; certifications</h2>
+          <div><ul class="cv-titoli"><li><span class="cv-titoli__t">Agents and Workflows</span><span class="cv-titoli__e">OpenAI Academy</span><span class="pg__anno">Aug 2026</span></li><li><span class="cv-titoli__t">AI Fluency ×2 · Claude Code in Action · Agent Skills · Claude Code 101 · MCP</span><span class="cv-titoli__e">Anthropic</span><span class="pg__anno">Aug 2026</span></li><li><span class="cv-titoli__t">Google AI Professional Certificate</span><span class="cv-titoli__e">Google</span><span class="pg__anno">Jul 2026</span></li><li><span class="cv-titoli__t">Python Programming course</span><span class="cv-titoli__e">University of Naples Federico II · TRIO, Tuscany Region</span><span class="pg__anno">Mar — May 2026</span></li><li><span class="cv-titoli__t">ICDL IT Security</span><span class="cv-titoli__e">TRIO, Tuscany Region</span><span class="pg__anno">Mar 2026</span></li><li><span class="cv-titoli__t">Advanced specialization in Teaching and AI</span><span class="cv-titoli__e">University of Naples Federico II</span><span class="pg__anno">Nov 2025</span></li><li><span class="cv-titoli__t">Technical diploma in IT and Telecommunications</span><span class="cv-titoli__e">I.T.I. Pacinotti, Fondi, Italy</span><span class="pg__anno">2019 — Jun 2024</span></li></ul>
+          <p class="cv-nota">Certificates and verifiable badges on <a href="/en/certificazioni/">certifications</a> and on <a href="https://www.credly.com/users/giovanni-paolo-fusco" target="_blank" rel="noopener noreferrer">Credly</a></p></div></div>
+      </section>
+      <section id="parliamone" class="rx-c" aria-labelledby="chiusura-titolo">
+        <div class="bz__wrap rx-c__scatola">
+          <h2 id="chiusura-titolo" class="rx-c__titolo">Shall we work together?</h2>
+          <p class="rx-c__testo">For collaborations, email remains the best channel: you can attach documents.</p>
+          <div class="rxh__azioni"><a class="bz-btn rx-btn--chiaro" href="https://wa.me/393334919401?text=Hi%20Giovanni%2C%20I%27m%20writing%20from%20your%20website." target="_blank" rel="noopener noreferrer">Message me on WhatsApp</a><a class="bz-btn rx-btn--linea-chiara" href="mailto:info@giovannipaolofusco.it?subject=Contact%20from%20your%20website&amp;body=Hi%20Giovanni%2C%20">Send me an email</a></div>
+          
+        </div>
+      </section>
+      <div class="rx-barra" aria-label="Quick contacts"><a href="https://wa.me/393334919401?text=Hi%20Giovanni%2C%20I%27m%20writing%20from%20your%20website." target="_blank" rel="noopener noreferrer">WhatsApp</a><a href="mailto:info@giovannipaolofusco.it?subject=Contact%20from%20your%20website&amp;body=Hi%20Giovanni%2C%20">Email</a></div>
+    </main>
     <footer>
       <p class="footer-firma">
         <svg class="footer-firma__gpf" viewBox="1 6.9 30 18.2" width="24" height="15" fill="currentColor" aria-hidden="true" focusable="false"><path d="M5.95 25.1L5.95 25.1Q4.67 25.1 3.73 24.78Q2.78 24.46 2.19 23.89Q1.6 23.33 1.37 22.61L1.37 22.61L3.72 21.96Q3.85 22.24 4.11 22.51Q4.38 22.77 4.83 22.95Q5.27 23.12 5.93 23.12L5.93 23.12Q6.97 23.12 7.57 22.64Q8.17 22.17 8.17 21.16L8.17 21.16L8.17 19.28L7.96 19.28Q7.77 19.69 7.43 20.07Q7.08 20.46 6.52 20.7Q5.97 20.94 5.14 20.94L5.14 20.94Q3.99 20.94 3.06 20.4Q2.12 19.86 1.56 18.76Q1 17.66 1 15.98L1 15.98Q1 14.26 1.57 13.11Q2.14 11.95 3.08 11.37Q4.02 10.79 5.15 10.79L5.15 10.79Q6 10.79 6.58 11.08Q7.17 11.36 7.52 11.79Q7.88 12.23 8.07 12.63L8.07 12.63L8.18 12.63L8.18 10.92L10.87 10.92L10.87 21Q10.87 22.37 10.23 23.28Q9.6 24.19 8.49 24.65Q7.38 25.1 5.95 25.1M5.99 18.86L5.99 18.86Q6.69 18.86 7.18 18.52Q7.67 18.17 7.92 17.52Q8.17 16.87 8.17 15.96L8.17 15.96Q8.17 15.06 7.92 14.39Q7.67 13.72 7.18 13.34Q6.69 12.97 5.99 12.97L5.99 12.97Q5.27 12.97 4.79 13.36Q4.3 13.74 4.05 14.42Q3.8 15.09 3.8 15.96L3.8 15.96Q3.8 16.85 4.05 17.51Q4.3 18.16 4.79 18.51Q5.28 18.86 5.99 18.86M15.92 24.88L13.19 24.88L13.19 10.92L15.88 10.92L15.88 12.63L16 12.63Q16.2 12.23 16.55 11.8Q16.9 11.37 17.47 11.08Q18.04 10.79 18.91 10.79L18.91 10.79Q20.03 10.79 20.97 11.37Q21.91 11.95 22.47 13.12Q23.02 14.28 23.02 16.02L23.02 16.02Q23.02 17.71 22.48 18.88Q21.93 20.05 21 20.65Q20.06 21.26 18.89 21.26L18.89 21.26Q18.06 21.26 17.49 20.97Q16.91 20.69 16.55 20.28Q16.2 19.86 16 19.46L16 19.46L15.92 19.46L15.92 24.88M18.05 19.06L18.05 19.06Q18.76 19.06 19.25 18.67Q19.73 18.28 19.98 17.59Q20.23 16.9 20.23 16.01L20.23 16.01Q20.23 15.12 19.98 14.44Q19.73 13.75 19.25 13.36Q18.77 12.97 18.05 12.97L18.05 12.97Q17.35 12.97 16.86 13.35Q16.37 13.73 16.11 14.4Q15.86 15.08 15.86 16.01L15.86 16.01Q15.86 16.93 16.12 17.61Q16.38 18.3 16.87 18.68Q17.36 19.06 18.05 19.06M23.95 10.92L30.59 10.92L30.59 13L23.95 13L23.95 10.92M28.46 21.08L25.74 21.08L25.74 10.13Q25.74 9.05 26.18 8.33Q26.61 7.62 27.35 7.26Q28.1 6.9 29.04 6.9L29.04 6.9Q29.69 6.9 30.22 7Q30.75 7.11 31 7.18L31 7.18L30.51 9.23Q30.34 9.19 30.1 9.14Q29.87 9.1 29.6 9.1L29.6 9.1Q28.98 9.1 28.72 9.39Q28.46 9.69 28.46 10.23L28.46 10.23L28.46 21.08"/></svg>
@@ -247,9 +175,8 @@
       <p class="footer-legge">Professional under Italian Law No. 4 of 14 January 2013, profession not organised in professional orders or colleges.</p>
     </footer>
 
-    <script src="/assets/js/motion.js" defer></script>
     <script src="/assets/js/script.js" defer></script>
-    <script src="/assets/js/cv.js" defer></script>
+    <script src="/assets/js/raggi.js" defer></script>
     <script type="module" src="/assets/js/cookieconsent-config.js"></script>
     <script src="/assets/js/pwa-install.js" defer></script>
   </body>
