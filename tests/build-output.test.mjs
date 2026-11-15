@@ -477,12 +477,17 @@ test('_redirects funziona sia su Netlify sia su Cloudflare Pages', () => {
 
 // Presidio del 15/11/2026 (migrazione a Cloudflare Pages): il parser di Netlify prende le righe
 // "https://..." per un header e aggancia il noindex al blocco precedente, e scarta "! Header".
-// Quindi il _headers pubblicato per Netlify non ne contiene, e quello per Cloudflare li riceve dal build.
+// Quindi il _headers pubblicato per Netlify e' il sorgente senza quelle righe, e quello per Cloudflare
+// e' headersPerCloudflare(sorgente). La piattaforma si riconosce dal file pubblicato, perche'
+// "CF_PAGES=1 npm run build && npm run test:build" passa CF_PAGES solo al build; se l'ambiente
+// la dichiara (CF_PAGES=1 su Cloudflare, NETLIFY=true su Netlify) deve coincidere.
 test('_headers: per Netlify senza righe solo-Cloudflare, per Cloudflare con detach e pages.dev', () => {
-  const netlify = readFileSync(output('_headers'), 'utf8');
-  assert.doesNotMatch(netlify, /^https?:\/\//m, 'riga con host nel _headers di Netlify');
-  assert.doesNotMatch(netlify, /^\s+!\s/m, 'riga "! Header" nel _headers di Netlify');
-  const cf = headersPerCloudflare(readFileSync('_headers', 'utf8'));
+  const sorgente = readFileSync('_headers', 'utf8');
+  const pubblicato = readFileSync(output('_headers'), 'utf8');
+  const cf = headersPerCloudflare(sorgente);
+
+  assert.doesNotMatch(sorgente, /^https?:\/\//m, 'riga con host nel _headers del repository');
+  assert.doesNotMatch(sorgente, /^\s+!\s/m, 'riga "! Header" nel _headers del repository');
   for (const percorso of ['/assets/css/*', '/assets/js/*', '/assets/fonts/*']) {
     const blocco = cf.split(percorso + '\n')[1].split('\n\n')[0];
     assert.match(blocco, /^\s+! Cache-Control\n\s+Cache-Control:/, `${percorso}: detach prima del Cache-Control`);
@@ -490,6 +495,11 @@ test('_headers: per Netlify senza righe solo-Cloudflare, per Cloudflare con deta
   assert.doesNotMatch(cf.split('/assets/*\n')[1].split('\n\n')[0], /!/, '/assets/*: niente da staccare');
   assert.match(cf, /^https:\/\/:project\.pages\.dev\/\*\n\s+X-Robots-Tag: noindex$/m);
   assert.match(cf, /^https:\/\/:version\.:project\.pages\.dev\/\*\n\s+X-Robots-Tag: noindex$/m);
+
+  const piattaforma = pubblicato === sorgente ? 'netlify' : pubblicato === cf ? 'cloudflare' : null;
+  assert.ok(piattaforma, 'dist/_headers non e\' ne\' la versione Netlify ne\' quella Cloudflare del sorgente');
+  if (process.env.CF_PAGES === '1') assert.equal(piattaforma, 'cloudflare', 'build su Cloudflare con _headers da Netlify');
+  if (process.env.NETLIFY === 'true') assert.equal(piattaforma, 'netlify', 'build su Netlify con _headers da Cloudflare');
 });
 
 test('versione.json dice quale commit e quale piattaforma hanno costruito il sito', () => {
