@@ -4,6 +4,7 @@ import CleanCSS from 'clean-css';
 import { minify as minifyHtml } from 'html-minifier-terser';
 import sharp from 'sharp';
 import { minify as minifyJavaScript } from 'terser';
+import { headersPerCloudflare, suCloudflare, versione } from './piattaforma.mjs';
 
 const sourceRoot = process.cwd();
 const outputRoot = join(sourceRoot, 'dist');
@@ -141,6 +142,17 @@ async function main() {
   await buildPages();
   await createWebpVariants();
   await minifyOutputAssets();
+  await scriviFileDiPiattaforma();
+}
+
+// Su Cloudflare Pages il _headers riceve i blocchi solo-Cloudflare (vedi piattaforma.mjs);
+// su Netlify e in locale resta quello del repository. versione.json dice quale commit e' online.
+async function scriviFileDiPiattaforma() {
+  if (suCloudflare()) {
+    const headers = join(outputRoot, '_headers');
+    await writeFile(headers, headersPerCloudflare(await readFile(headers, 'utf8')));
+  }
+  await writeFile(join(outputRoot, 'versione.json'), JSON.stringify(versione(), null, 2) + '\n');
 }
 
 await main();

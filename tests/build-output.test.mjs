@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import test from 'node:test';
+import { headersPerCloudflare, versione } from '../scripts/piattaforma.mjs';
 
 const output = (path) => join('dist', path);
 const routePages = [
@@ -453,4 +454,48 @@ test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@'
   for (const f of readdirSync('dist', { recursive: true }).map(String).filter((f) => /\.(html|txt|vcf|json)$/.test(f))) {
     assert.doesNotMatch(readFileSync(output(f), 'utf8'), /giovanni@giovannipaolofusco\.it/, `${f}: indirizzo di servizio pubblicato`);
   }
+});
+
+// Presidio del 15/11/2026 (migrazione a Cloudflare Pages): Cloudflare scarta le righe con "301!"
+// (verificato con wrangler pages dev 4.156.0), Netlify ha bisogno del "!" solo se il file esiste.
+// Quindi: niente "!" dove il file non c'e', e una regola senza "!" non puo' avere un file dietro.
+test('_redirects funziona sia su Netlify sia su Cloudflare Pages', () => {
+  const righe = readFileSync(output('_redirects'), 'utf8').split('\n').map((r) => r.trim()).filter((r) => r && !r.startsWith('#'));
+  const conHost = /^https?:\/\//;
+  for (const riga of righe) {
+    const [da, , stato] = riga.split(/\s+/);
+    if (conHost.test(da)) continue; // solo Netlify, Cloudflare le ignora
+    if (stato === '404') continue; // solo Netlify, Cloudflare usa da solo il 404.html piu' vicino
+    const file = output(da.replace(/^\//, ''));
+    const esiste = existsSync(file) && !da.endsWith('/');
+    if (stato.endsWith('!')) assert.ok(esiste, `${da}: "!" senza file dietro, su Cloudflare la riga verrebbe scartata`);
+    else assert.ok(!esiste, `${da}: su Netlify la regola non scatta perche' il file esiste`);
+  }
+  assert.ok(righe.some((r) => r.startsWith('/link.html ') && /\s301$/.test(r)), 'il QR stampato su /link.html deve avere un 301 valido ovunque');
+});
+
+
+// Presidio del 15/11/2026 (migrazione a Cloudflare Pages): il parser di Netlify prende le righe
+// "https://..." per un header e aggancia il noindex al blocco precedente, e scarta "! Header".
+// Quindi il _headers pubblicato per Netlify non ne contiene, e quello per Cloudflare li riceve dal build.
+test('_headers: per Netlify senza righe solo-Cloudflare, per Cloudflare con detach e pages.dev', () => {
+  const netlify = readFileSync(output('_headers'), 'utf8');
+  assert.doesNotMatch(netlify, /^https?:\/\//m, 'riga con host nel _headers di Netlify');
+  assert.doesNotMatch(netlify, /^\s+!\s/m, 'riga "! Header" nel _headers di Netlify');
+  const cf = headersPerCloudflare(readFileSync('_headers', 'utf8'));
+  for (const percorso of ['/assets/css/*', '/assets/js/*', '/assets/fonts/*']) {
+    const blocco = cf.split(percorso + '\n')[1].split('\n\n')[0];
+    assert.match(blocco, /^\s+! Cache-Control\n\s+Cache-Control:/, `${percorso}: detach prima del Cache-Control`);
+  }
+  assert.doesNotMatch(cf.split('/assets/*\n')[1].split('\n\n')[0], /!/, '/assets/*: niente da staccare');
+  assert.match(cf, /^https:\/\/:project\.pages\.dev\/\*\n\s+X-Robots-Tag: noindex$/m);
+  assert.match(cf, /^https:\/\/:version\.:project\.pages\.dev\/\*\n\s+X-Robots-Tag: noindex$/m);
+});
+
+test('versione.json dice quale commit e quale piattaforma hanno costruito il sito', () => {
+  const v = JSON.parse(readFileSync(output('versione.json'), 'utf8'));
+  assert.match(v.commit, /^[0-9a-f]{7,40}$/);
+  assert.ok(!Number.isNaN(Date.parse(v.data)));
+  assert.deepEqual(versione({ CF_PAGES_COMMIT_SHA: 'abc', COMMIT_REF: 'def' }).fonte, 'cloudflare-pages');
+  assert.deepEqual(versione({ COMMIT_REF: 'def' }), { commit: 'def', fonte: 'netlify', data: versione({ COMMIT_REF: 'def' }).data });
 });
