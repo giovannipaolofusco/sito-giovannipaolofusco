@@ -19,6 +19,14 @@
   </url>
 
   <url>
+    <loc>https://giovannipaolofusco.it/formazione-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://giovannipaolofusco.it/formazione-ai/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://giovannipaolofusco.it/en/formazione-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://giovannipaolofusco.it/formazione-ai/"/>
+    <lastmod>2026-11-14</lastmod>
+  </url>
+
+  <url>
     <loc>https://giovannipaolofusco.it/progetti/</loc>
     <xhtml:link rel="alternate" hreflang="it" href="https://giovannipaolofusco.it/progetti/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://giovannipaolofusco.it/en/progetti/"/>
@@ -80,6 +88,14 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://giovannipaolofusco.it/en/servizi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://giovannipaolofusco.it/servizi/"/>
     <lastmod>2026-10-10</lastmod>
+  </url>
+
+  <url>
+    <loc>https://giovannipaolofusco.it/en/formazione-ai/</loc>
+    <xhtml:link rel="alternate" hreflang="it" href="https://giovannipaolofusco.it/formazione-ai/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://giovannipaolofusco.it/en/formazione-ai/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://giovannipaolofusco.it/formazione-ai/"/>
+    <lastmod>2026-11-14</lastmod>
   </url>
 
   <url>

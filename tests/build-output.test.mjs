@@ -7,6 +7,7 @@ import test from 'node:test';
 const output = (path) => join('dist', path);
 const routePages = [
   'servizi',
+  'formazione-ai',
   'progetti',
   'certificazioni',
   'cv',
@@ -67,7 +68,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v33/);
+  assert.match(worker, /gpf-shell-v34/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {
@@ -91,6 +92,7 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
     'index.html',
     '404.html',
     'servizi/index.html',
+    'formazione-ai/index.html',
     'progetti/index.html',
     'certificazioni/index.html',
     'cv/index.html',
@@ -101,6 +103,7 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
     'en/index.html',
     'en/404.html',
     'en/servizi/index.html',
+    'en/formazione-ai/index.html',
     'en/progetti/index.html',
     'en/certificazioni/index.html',
     'en/cv/index.html',
@@ -110,12 +113,14 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
   const structuredDataPages = [
     'index.html',
     'servizi/index.html',
+    'formazione-ai/index.html',
     'progetti/index.html',
     'certificazioni/index.html',
     'cv/index.html',
     'contatti/index.html',
     'en/index.html',
     'en/servizi/index.html',
+    'en/formazione-ai/index.html',
     'en/progetti/index.html',
     'en/certificazioni/index.html',
     'en/cv/index.html',
@@ -307,4 +312,70 @@ test('la chiave IndexNow e\' pubblicata in root con il proprio nome come contenu
   const chiavi = readdirSync(output('')).filter((f) => /^[0-9a-f]{32}\.txt$/.test(f));
   assert.equal(chiavi.length, 1, 'serve una e una sola chiave IndexNow in root');
   assert.equal(readFileSync(output(chiavi[0]), 'utf8').trim(), chiavi[0].replace('.txt', ''));
+});
+
+// Presidio del 14/11/2026: nessun test leggeva il JSON-LD come JSON. Un blocco
+// malformato non da' errori in pagina: Google lo scarta e basta.
+test('il JSON-LD di ogni pagina della sitemap e\' JSON valido, senza recensioni', () => {
+  for (const pagina of paginaDellaSitemap()) {
+    const file = pagina === '/' ? 'index.html' : `${pagina.replace(/^\//, '')}index.html`;
+    const blocchi = [...readFileSync(output(file), 'utf8').matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+    for (const [, testo] of blocchi) {
+      assert.doesNotThrow(() => JSON.parse(testo), `JSON-LD non valido in ${file}`);
+      assert.doesNotMatch(testo, /AggregateRating|"Review"/, `recensioni marcate in ${file}`);
+    }
+  }
+});
+
+test('la formazione AI dichiara quattro Course completi, FAQPage e BreadcrumbList', () => {
+  for (const file of ['formazione-ai/index.html', 'en/formazione-ai/index.html']) {
+    const html = readFileSync(output(file), 'utf8');
+    const grafo = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
+    const corsi = grafo.filter((nodo) => nodo['@type'] === 'Course');
+    assert.equal(corsi.length, 4, `${file}: quattro livelli`);
+    // Il livello 4 ha il prezzo su richiesta: nessuna offerta inventata nel JSON-LD.
+    assert.deepEqual(corsi.map((c) => c.offers?.price ?? null), ['390', '390', '490', null], `${file}: prezzi`);
+    for (const corso of corsi) {
+      assert.ok(corso.name && corso.description && corso.provider, `${file}: ${corso.name}`);
+      if (corso.offers) {
+        assert.equal(corso.offers.priceCurrency, 'EUR');
+        assert.equal(corso.offers.category, 'Paid');
+      }
+      assert.equal(corso.hasCourseInstance.courseMode, 'Onsite');
+      assert.match(corso.hasCourseInstance.courseWorkload, /^PT\dH$/);
+    }
+    const faq = grafo.find((nodo) => nodo['@type'] === 'FAQPage');
+    assert.equal(faq.mainEntity.length, 7, `${file}: sette domande`);
+    for (const domanda of faq.mainEntity) {
+      assert.ok(html.includes(domanda.name), `${file}: domanda non visibile in pagina: ${domanda.name}`);
+    }
+    assert.ok(grafo.some((nodo) => nodo['@type'] === 'BreadcrumbList'), `${file}: breadcrumb`);
+    // §10ter: prezzi e testi non entrano mai in un effetto di comparsa. Dal 15/11/2026 la mappa
+    // porta in legenda anche i supplementi di viaggio, quindi la pagina non ha comparse.
+    assert.doesNotMatch(html, /\bdata-motion\b/, `${file}: effetto di comparsa in pagina`);
+    // Presidio del 15/11/2026: il titolo della pagina inglese era rimasto in italiano.
+    if (file.startsWith('en/')) {
+      const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, '');
+      assert.doesNotMatch(h1, /\b(Corso|intelligenza|aziende|per)\b/, `${file}: titolo H1 in italiano: ${h1}`);
+    }
+    assert.equal((html.match(/class="lv__prezzo"/g) || []).length, 4, `${file}: quattro prezzi fermi`);
+    const persona = grafo.find((nodo) => nodo['@type'] === 'Person');
+    assert.equal(persona.vatID, 'IT03388590592');
+    assert.equal(persona.areaServed.length, 6);
+  }
+});
+
+// Presidio del 14/11/2026: la pagina nuova, generata copiando il menu di
+// Servizi, aveva «Formazione AI» due volte. Il controllo sui link guardava che
+// la voce ci fosse, non che fosse una sola.
+test('il menu di ogni pagina ha voci uniche e una sola voce attiva', () => {
+  const pagine = readdirSync('dist', { recursive: true }).map(String)
+    .filter((file) => file.endsWith('.html') && !file.startsWith('presentazione'));
+  for (const file of pagine) {
+    const menu = readFileSync(output(file), 'utf8').match(/id="nav-links"[\s\S]*?<\/div>/);
+    if (!menu) continue;
+    const voci = [...menu[0].matchAll(/href="([^"]+)"/g)].map((m) => m[1]);
+    assert.equal(new Set(voci).size, voci.length, `${file}: voce di menu duplicata (${voci.join(', ')})`);
+    assert.ok((menu[0].match(/class="active"/g) || []).length <= 1, `${file}: piu' voci attive`);
+  }
 });

@@ -683,6 +683,13 @@ svg {
   }
 }
 
+/* Sette voci: sopra 820px stanno in riga, e «Formazione AI» non va a capo. */
+@media (min-width: 821px) {
+  .nav-links a {
+    white-space: nowrap;
+  }
+}
+
 @media (min-width: 821px) and (max-width: 900px) {
   body > nav {
     padding: 0 24px;
@@ -778,6 +785,10 @@ html.menu-aperto {
 
   .nav-links.is-open a:nth-child(6) {
     animation-delay: 200ms;
+  }
+
+  .nav-links.is-open a:nth-child(7) {
+    animation-delay: 240ms;
   }
 }
 
