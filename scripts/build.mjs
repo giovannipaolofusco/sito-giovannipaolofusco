@@ -7,7 +7,7 @@ import { minify as minifyJavaScript } from 'terser';
 
 const sourceRoot = process.cwd();
 const outputRoot = join(sourceRoot, 'dist');
-const routePages = ['servizi', 'progetti', 'certificazioni', 'cv', 'contatti', 'privacy', 'link'];
+const routePages = ['servizi', 'formazione-ai', 'progetti', 'certificazioni', 'cv', 'contatti', 'privacy', 'link'];
 const publicFiles = [
   '_headers',
   '_redirects',

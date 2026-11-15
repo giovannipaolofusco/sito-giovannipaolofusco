@@ -3149,3 +3149,271 @@ main.servizi {
   .faq__segno::before,
   .faq__segno::after { transition: none; }
 }
+
+/* Formazione AI: la pagina riusa i blocchi di Servizi; qui solo le distanze
+   che altrove arrivano dalle classi della hero animata. */
+.formazione__spazio { margin-top: 20px; }
+.formazione__azioni { margin-top: 32px; }
+.formazione__nota { margin-top: 28px; }
+.formazione__hero .servizi__titolo { max-width: 18ch; overflow-wrap: anywhere; }
+.servizi__testo a { color: var(--text-primary); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Scene dei tre livelli: decorative (aria-hidden), solo HTML e CSS.
+   Stato di partenza = scena completa: e' quello che vede chi non ha JS o ha
+   chiesto meno movimento. Con .js (scroll-reveal.js) gli elementi partono
+   nascosti e compaiono in sequenza quando la scena riceve .is-in; uscendo
+   dallo schermo tornano nascosti e ripartono al passaggio dopo (§10ter).
+   Titolo, testo e prezzo della scheda restano fuori dall'effetto. */
+.scena {
+  display: grid;
+  gap: 7px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-color) 5%, var(--bg-color));
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-primary);
+  min-width: 0;
+}
+
+.scena__el {
+  display: block;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.scena__bolla {
+  justify-self: end;
+  max-width: 90%;
+  padding: 7px 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 10px 10px 2px 10px;
+  background: var(--bg-color);
+}
+
+.scena__riga {
+  height: 6px;
+  width: 92%;
+  border-radius: 3px;
+  background: var(--border-color);
+}
+
+.scena__riga--corta { width: 58%; }
+
+.scena__chip {
+  justify-self: start;
+  padding: 3px 9px;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background: var(--bg-color);
+  font-size: 11px;
+}
+
+.scena__chip--ok {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.scena__chip--no {
+  color: var(--text-secondary);
+  text-decoration: line-through;
+}
+
+.scena__chip--no::before { content: '✕ '; text-decoration: none; }
+
+.scena__testata {
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.scena__doc {
+  padding: 5px 8px;
+  border: 1px dashed var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.scena__passo {
+  position: relative;
+  padding: 6px 8px 6px 24px;
+  border: 1px solid var(--accent-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+}
+
+.scena__passo::before {
+  content: '';
+  position: absolute;
+  left: 9px;
+  top: 50%;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  transform: translateY(-50%);
+}
+
+.scena__passo + .scena__passo::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  bottom: 100%;
+  width: 1px;
+  height: 8px;
+  background: var(--accent-color);
+}
+
+.js .scena .scena__el {
+  opacity: 0;
+  transform: translate3d(0, 6px, 0);
+  transition: opacity 0.32s var(--s-ease), transform 0.32s var(--s-ease);
+}
+
+.js .scena.is-in .scena__el {
+  opacity: 1;
+  transform: none;
+}
+
+.js .scena.is-in .scena__el:nth-child(2) { transition-delay: 0.12s; }
+.js .scena.is-in .scena__el:nth-child(3) { transition-delay: 0.24s; }
+.js .scena.is-in .scena__el:nth-child(4) { transition-delay: 0.36s; }
+.js .scena.is-in .scena__el:nth-child(5) { transition-delay: 0.48s; }
+.js .scena.is-in .scena__el:nth-child(6) { transition-delay: 0.6s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .js .scena .scena__el { opacity: 1; transform: none; transition: none; }
+}
+
+@media print {
+  .scena { display: none; }
+}
+
+/* Prerequisito e scaletta ora per ora delle schede dei livelli. La scaletta e'
+   un details nativo: si apre da tastiera, nessuno script. */
+.formazione__requisito {
+  margin-top: 12px !important;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.formazione__scaletta {
+  margin-top: 14px;
+  border-top: 1px solid var(--border-color);
+}
+
+.formazione__scaletta summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.formazione__scaletta ol {
+  display: grid;
+  gap: 8px;
+  padding-bottom: 4px !important;
+}
+
+.formazione__scaletta li {
+  display: grid;
+  grid-template-columns: 38px 1fr;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.formazione__ora {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+/* Pulsante primario: la classe era nel markup di Servizi ma senza stile, quindi
+   la CTA principale non si distingueva. Testo in --bg-color: bianco sul viola
+   del tema chiaro, scuro sul viola del tema scuro (4,65:1; il bianco li' e' 4,2:1). */
+.servizi__pulsante--primario {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  color: var(--bg-color);
+}
+
+.servizi__pulsante--primario:hover {
+  border-color: var(--text-primary);
+}
+
+/* Formazione AI: richiami all'azione. */
+.formazione__fatti {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 24px !important;
+}
+
+.formazione__fatto {
+  padding: 6px 14px;
+  border: 1px solid var(--accent-color);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.formazione__gancio {
+  margin-top: 16px !important;
+  padding-left: 14px;
+  border-left: 3px solid var(--accent-color);
+}
+
+.formazione__rassicura {
+  margin-top: 12px !important;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.formazione__prenota {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.formazione__invito {
+  padding: clamp(24px, 5vw, 56px);
+  border: 1px solid var(--accent-color);
+  border-radius: 16px;
+  background: color-mix(in srgb, var(--accent-color) 6%, var(--bg-color));
+}
+
+.formazione__punti {
+  display: grid;
+  gap: 10px;
+  margin-top: 20px !important;
+}
+
+.formazione__punti li {
+  position: relative;
+  padding-left: 26px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.formazione__punti li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  font-weight: 800;
+  color: var(--accent-color);
+}
+
+/* Gradino del «secondo cervello» sopra il titolo di ogni livello. */
+.formazione__gradino { margin-top: 4px !important; font-size: 13px; font-weight: 700; color: var(--accent-color); }
+/* Quattro livelli: due per riga invece di tre piu' uno. */
+.pagina-formazione #livelli .servizi__griglia { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); }

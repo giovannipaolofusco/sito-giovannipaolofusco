@@ -8,6 +8,7 @@
 
 - [Home](https://giovannipaolofusco.it/): presentazione personale, percorso professionale e recapiti diretti.
 - [Servizi](https://giovannipaolofusco.it/servizi/): siti web su misura per attività, professionisti e aziende: cosa c'è dietro ogni sito, cosa comprendono SEO tecnica, indicizzazione e GEO, cosa non è compreso, e le domande frequenti su proprietà, tempi, costi ricorrenti e assistenza.
+- [Formazione AI](https://giovannipaolofusco.it/formazione-ai/): corsi pratici di intelligenza artificiale per aziende, in sede a Fondi, Latina e nel sud pontino. Quattro livelli da 3 ore (ChatGPT e Claude in ufficio, da chat ad assistente, l'AI che lavora per voi, strumenti avanzati e archivio aziendale), fino a 8 persone, prezzi pubblici da 390 € (livello 4 su richiesta), questionario prima e dopo il corso, domande frequenti su AI Act, dati aziendali e attestato.
 - [Progetti](https://giovannipaolofusco.it/progetti/): i progetti in corso (server di casa, automazioni e bot) e quelli di prima, dalla gestione di community in poi.
 - [Certificazioni](https://giovannipaolofusco.it/certificazioni/): attestati e badge verificabili, con il PDF originale dove esiste.
 - [Curriculum](https://giovannipaolofusco.it/cv/): percorso professionale e formazione, con il CV scaricabile in PDF.
@@ -18,6 +19,7 @@
 
 - [Home (EN)](https://giovannipaolofusco.it/en/)
 - [Services (EN)](https://giovannipaolofusco.it/en/servizi/)
+- [AI Training (EN)](https://giovannipaolofusco.it/en/formazione-ai/)
 - [Projects (EN)](https://giovannipaolofusco.it/en/progetti/)
 - [Certifications (EN)](https://giovannipaolofusco.it/en/certificazioni/)
 - [Curriculum (EN)](https://giovannipaolofusco.it/en/cv/)
