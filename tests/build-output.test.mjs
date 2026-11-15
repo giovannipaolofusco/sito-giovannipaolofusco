@@ -156,7 +156,7 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
   ]).map((page) => readFileSync(output(page), 'utf8')).join('\n');
   const excludedTerms = [
     'FSC' + 'GNN',
-    'forfet' + 'tario',
+    // «forfettario» e' ammesso dal 15/11/2026: la dicitura IVA dei prezzi nomina il regime, per decisione del titolare.
     'IN' + 'PS',
     'gestione' + ' previdenziale',
     '4/' + '2013'
@@ -432,5 +432,25 @@ test('le pagine principali precaricano i font della prima schermata', () => {
         assert.match(head, new RegExp(`<link[^>]*rel="?preload"?[^>]*${font.replace(/\./g, '\\.')}[^>]*crossorigin`), `${pre}${pagina}: preload di ${font}`);
       }
     }
+  }
+});
+
+// Presidio del 15/11/2026 (fase A): durata, dicitura IVA ed email allineate su Formazione AI.
+test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@', () => {
+  const casi = [
+    ['formazione-ai/index.html', /3 ore circa, fino a 8 persone, da 390/, /<b>3 ore circa<\/b> per livello/, 'Prezzi finali: IVA non applicata (regime forfettario).'],
+    ['en/formazione-ai/index.html', /about 3 hours, up to 8 people, from €390/, /<b>About 3 hours<\/b> per level/, 'Final prices: no VAT applied (Italian flat-rate scheme).'],
+  ];
+  for (const [file, meta, striscia, iva] of casi) {
+    const html = readFileSync(output(file), 'utf8');
+    const head = html.split('</head>')[0];
+    assert.ok([...head.matchAll(new RegExp(meta.source, 'g'))].length >= 4, `${file}: meta, og, twitter e JSON-LD con la durata nuova`);
+    assert.match(html, striscia, `${file}: striscia`);
+    assert.equal(html.split(iva).length - 1, 2, `${file}: dicitura IVA nei due punti`);
+    assert.doesNotMatch(html, /senza IVA da aggiungere|no VAT to add/, `${file}: dicitura vecchia`);
+  }
+  assert.match(readFileSync(output('.well-known/security.txt'), 'utf8'), /^Contact: mailto:info@giovannipaolofusco\.it$/m);
+  for (const f of readdirSync('dist', { recursive: true }).map(String).filter((f) => /\.(html|txt|vcf|json)$/.test(f))) {
+    assert.doesNotMatch(readFileSync(output(f), 'utf8'), /giovanni@giovannipaolofusco\.it/, `${f}: indirizzo di servizio pubblicato`);
   }
 });
