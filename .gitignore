@@ -70,3 +70,6 @@ REGISTRO_ASSET_IA.md
 # Piani e specifiche di lavoro generati durante lo sviluppo: tracce di come
 # il sito e' stato costruito (CLAUDE.md §11), restano solo in locale.
 docs/superpowers/
+
+# Stato locale di wrangler pages dev (simulatore Cloudflare Pages), mai nel repository.
+.wrangler/
