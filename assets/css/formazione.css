@@ -25,20 +25,6 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 
 /* Titolo che sale dalle maschere: il testo e' nel DOM da subito, l'animazione
    e' solo trasformazione. Con meno movimento resta fermo (regola in base). */
-.kin__maschera { display: inline-block; overflow: hidden; vertical-align: bottom; padding-bottom: 0.08em; margin-bottom: -0.08em; }
-.kin__parola { display: inline-block; animation: kin-sale 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
-.kin__maschera:nth-child(2) .kin__parola { animation-delay: 0.05s; }
-.kin__maschera:nth-child(3) .kin__parola { animation-delay: 0.10s; }
-.kin__maschera:nth-child(4) .kin__parola { animation-delay: 0.15s; }
-.kin__maschera:nth-child(5) .kin__parola { animation-delay: 0.20s; }
-.kin__maschera:nth-child(6) .kin__parola { animation-delay: 0.25s; }
-.kin__maschera:nth-child(7) .kin__parola { animation-delay: 0.30s; }
-.kin__maschera:nth-child(8) .kin__parola { animation-delay: 0.35s; }
-.kin__maschera:nth-child(9) .kin__parola { animation-delay: 0.40s; }
-.kin__maschera:nth-child(10) .kin__parola { animation-delay: 0.45s; }
-.kin__maschera:nth-child(11) .kin__parola { animation-delay: 0.50s; }
-.kin__maschera:nth-child(12) .kin__parola { animation-delay: 0.55s; }
-@keyframes kin-sale { from { transform: translate3d(0, 105%, 0); } }
 
 .notte .bz-btn { border-radius: 10px; }
 /* Il livello 2 a ore: senza JS e' una lista con gli orari. */

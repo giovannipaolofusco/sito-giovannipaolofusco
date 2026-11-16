@@ -184,12 +184,7 @@ main.servizi {
   .faq__segno::after { transition: none; }
 }
 
-/* Scene dei tre livelli: decorative (aria-hidden), solo HTML e CSS.
-   Stato di partenza = scena completa: e' quello che vede chi non ha JS o ha
-   chiesto meno movimento. Con .js (scroll-reveal.js) gli elementi partono
-   nascosti e compaiono in sequenza quando la scena riceve .is-in; uscendo
-   dallo schermo tornano nascosti e ripartono al passaggio dopo.
-   Titolo, testo e prezzo della scheda restano fuori dall'effetto. */
+/* Scene dei tre livelli: decorative (aria-hidden), solo HTML e CSS. */
 .scena {
   display: grid;
   gap: 7px;
