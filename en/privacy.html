@@ -125,7 +125,7 @@
     <main id="contenuto">
       <h1>Privacy & Cookie Policy</h1>
       <p>Giovanni Paolo Fusco</p>
-      <p>Last updated: October 5, 2026</p>
+      <p>Last updated: November 16, 2026</p>
       <p class="informativa__premessa">
         This notice is provided pursuant to Articles 13 and 14 of Regulation (EU) 2016/679 (the "GDPR"), to Italian Legislative Decree No. 196 of 30 June 2003 (the "Personal Data Protection Code", as amended by Legislative Decree No. 101/2018), and to Order No. 231 of 10 June 2021 of the Italian Data Protection Authority, setting out the "Guidelines on cookies and other tracking tools".
       </p>
@@ -169,7 +169,7 @@
 
       <h3>3.1 Browsing data</h3>
       <p>
-        In the course of their normal operation, the computer systems and software procedures used to run this website automatically acquire certain data whose transmission is implicit in the use of Internet communication protocols (e.g. IP addresses, browser type, operating system, domain names of the computers used, time of the request, other parameters relating to the user's operating system). This data is used for the sole purpose of checking that the website functions correctly and securely, and it remains in the hosting provider's access logs for 30 days (section 8), save where it may be necessary to establish liability for computer crimes.
+        In the course of their normal operation, the computer systems and software procedures used to run this website automatically acquire certain data whose transmission is implicit in the use of Internet communication protocols (e.g. IP addresses, browser type, operating system, domain names of the computers used, time of the request, other parameters relating to the user's operating system). This data is used for the sole purpose of checking that the website functions correctly and securely, and it remains in the hosting provider's records for the period stated in section 8, save where it may be necessary to establish liability for computer crimes.
       </p>
       <p>
         <strong>Legal basis:</strong> the legitimate interest of the Data Controller in ensuring the security and correct functioning of the website (Article 6(1)(f) GDPR).
@@ -200,7 +200,7 @@
 
       <h3>4.2 Types of cookies used on this website</h3>
       <ul>
-        <li><strong>Technical and session cookies:</strong> strictly necessary for the correct functioning of the website (for example, to save the state of cookie consent through the consent management tool, or to remember display preferences such as the light or dark theme). Pursuant to Article 122 of the Italian Personal Data Protection Code, these do not require the user's prior consent.</li>
+        <li><strong>Technical and session cookies:</strong> strictly necessary for the correct functioning of the website (for example, to save the state of cookie consent through the consent management tool, or to remember display preferences such as the light or dark theme, or access to the trainees' area, section 4.7). Pursuant to Article 122 of the Italian Personal Data Protection Code, these do not require the user's prior consent.</li>
         <li><strong>Analytics and statistical cookies:</strong> used to collect information, in aggregate form, on the number of users and on how they visit the website (Google Analytics 4). These are installed only after the user has given explicit consent through the dedicated banner.</li>
       </ul>
 
@@ -223,6 +223,13 @@
               <td>Technical</td>
               <td>Stores the user's cookie consent preferences</td>
               <td>186 days</td>
+            </tr>
+            <tr>
+              <td><code>corsi_1</code>, <code>corsi_2</code>, <code>corsi_3</code>, <code>corsi_4</code>, <code>corsi_tutti</code></td>
+              <td>First party (trainees' area)</td>
+              <td>Technical</td>
+              <td>Only on corsi.giovannipaolofusco.it, after the correct password: remembers that you have access to the material of that level, or of all levels (section 4.7)</td>
+              <td>60 days</td>
             </tr>
             <tr>
               <td><code>_ga</code></td>
@@ -320,6 +327,17 @@
         You can remove this copy at any time, in two ways: by clearing your browser's browsing data for this website, or by uninstalling the application from your device's Home screen.
       </p>
 
+      <h3 id="trainees-area">4.7 Trainees' area</h3>
+      <p>
+        The course material is on <strong>corsi.giovannipaolofusco.it</strong>, an area run by the same Data Controller and protected by a password. The password is given out during the course and is not tied to a person: the access form asks only for the password, with no name or email.
+      </p>
+      <p>
+        If the password is correct, the area sets a <strong>technical</strong> cookie (<code>corsi_1</code>, <code>corsi_2</code>, <code>corsi_3</code>, <code>corsi_4</code> or <code>corsi_tutti</code>) that contains only an expiry date and a check signature: no data that identifies you. It lasts <strong>60 days</strong>, cannot be read by the page's scripts and only serves to avoid asking for the password at every visit. Under Article 122 of the Italian Personal Data Protection Code it does not require prior consent. You can delete it earlier with the area's "Esci" (log out) button or by clearing your browser's cookies.
+      </p>
+      <p>
+        The area does not use Google Analytics or any other third-party service and is hosted on Cloudflare Pages, like this website (section 8).
+      </p>
+
       <h2 id="third-party-services">5. Third-Party Services Integrated into the Website</h2>
 
       <h3>5.1 Google Analytics 4</h3>
@@ -355,22 +373,22 @@
         The data collected through this website is not sold, transferred or disclosed to third parties for their own purposes. It is processed solely by the following parties, each for its own part:
       </p>
       <ul>
-        <li><strong>Netlify, Inc.</strong> — hosting provider, acting as data processor: it technically handles the HTTP requests directed to the website (section 8).</li>
+        <li><strong>Cloudflare, Inc.</strong> — hosting and delivery network provider, acting as data processor: it technically handles the HTTP requests directed to the website (section 8).</li>
         <li><strong>Google Ireland Limited</strong> — analytics provider, limited to users who consent to analytics cookies (section 5.1).</li>
         <li><strong>Aruba S.p.A.</strong> and <strong>Google</strong> (Gmail) — email providers: they receive the emails you choose to send me (section 3.3).</li>
         <li><strong>WhatsApp Ireland Limited</strong> — only if you choose to contact me on WhatsApp (section 3.3).</li>
       </ul>
       <p>
-        No other recipient receives users' personal data: the website has no forms, collects no sign-ups and embeds no third-party widgets. The links to social profiles are plain hyperlinks and transmit no data before they are clicked (section 5.2).
+        No other recipient receives users' personal data: the website has no forms that collect personal data (the trainees' area form asks only for the password, section 4.7), collects no sign-ups and embeds no third-party widgets. The links to social profiles are plain hyperlinks and transmit no data before they are clicked (section 5.2).
       </p>
 
-      <h2 id="hosting">8. Hosting — Netlify</h2>
+      <h2 id="hosting">8. Hosting — Cloudflare</h2>
       <p>
-        This website is hosted on Netlify, a service provided by Netlify, Inc. (101 2nd Street, San Francisco, CA 94105, USA). Netlify's servers technically handle the HTTP requests reaching the website, automatically recording visitors' IP addresses for the purposes of security and infrastructure stability, in line with the standard practice of any web hosting service. According to the provider, Netlify keeps these access logs for 30 days.
+        This website is hosted on Cloudflare Pages, a service provided by Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA), which also runs the domain's name servers (DNS). Cloudflare's network technically handles the HTTP requests reaching the website, automatically recording visitors' IP addresses for the purposes of security and infrastructure stability, in line with the standard practice of any web hosting service. According to its privacy policy, Cloudflare keeps this data for as long as needed for these purposes; the website does not enable any additional logging.
       </p>
       <p>
         <strong>Legal basis:</strong> the legitimate interest of the Data Controller in ensuring the availability, performance and security of the website (Article 6(1)(f) GDPR).<br>
-        <strong>Data transfer:</strong> Netlify, Inc. adheres to the EU-U.S. Data Privacy Framework (DPF), the international arrangement recognized as adequate by the European Commission, which ensures compliance with European data protection standards for transfers to the United States. For further information, please consult the <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Netlify Privacy Policy</a>.
+        <strong>Data transfer:</strong> Cloudflare, Inc. adheres to the EU-U.S. Data Privacy Framework (DPF), the international arrangement recognized as adequate by the European Commission, which ensures compliance with European data protection standards for transfers to the United States. For further information, please consult the <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Cloudflare Privacy Policy</a>.
       </p>
 
       <h2 id="rights">9. Your Rights (Articles 15-22 GDPR)</h2>

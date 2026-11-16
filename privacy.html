@@ -125,7 +125,7 @@
     <main id="contenuto">
       <h1>Privacy & Cookie Policy</h1>
       <p>Giovanni Paolo Fusco</p>
-      <p>Ultimo aggiornamento: 5 ottobre 2026</p>
+      <p>Ultimo aggiornamento: 16 novembre 2026</p>
       <p class="informativa__premessa">
         Informativa resa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 ("GDPR"), del D.Lgs. 30 giugno 2003, n. 196 ("Codice in materia di protezione dei dati personali", come modificato dal D.Lgs. 101/2018) e del Provvedimento del Garante per la protezione dei dati personali n. 231 del 10 giugno 2021 recante "Linee guida cookie e altri strumenti di tracciamento".
       </p>
@@ -169,7 +169,7 @@
       
       <h3>3.1 Dati di navigazione</h3>
       <p>
-        Nel corso del loro normale funzionamento, i sistemi informatici e le procedure software preposte al funzionamento di questo sito acquisiscono, in via automatica, alcuni dati la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet (es. indirizzi IP, tipo di browser, sistema operativo, nomi a dominio dei computer utilizzati, orario della richiesta, altri parametri relativi al sistema operativo dell'utente). Questi dati vengono utilizzati al solo fine di controllare il corretto funzionamento e la sicurezza del sito, e restano nei registri di accesso del fornitore di hosting per 30 giorni (sezione 8), salvo eventuali necessità di accertamento di reati informatici.
+        Nel corso del loro normale funzionamento, i sistemi informatici e le procedure software preposte al funzionamento di questo sito acquisiscono, in via automatica, alcuni dati la cui trasmissione è implicita nell'uso dei protocolli di comunicazione di Internet (es. indirizzi IP, tipo di browser, sistema operativo, nomi a dominio dei computer utilizzati, orario della richiesta, altri parametri relativi al sistema operativo dell'utente). Questi dati vengono utilizzati al solo fine di controllare il corretto funzionamento e la sicurezza del sito, e restano nei registri del fornitore di hosting per il tempo indicato nella sezione 8, salvo eventuali necessità di accertamento di reati informatici.
       </p>
       <p>
         <strong>Base giuridica:</strong> legittimo interesse del Titolare a garantire la sicurezza e il corretto funzionamento del sito web (art. 6, par. 1, lett. f, GDPR).
@@ -200,7 +200,7 @@
 
       <h3>4.2 Tipologie di cookie utilizzati sul sito</h3>
       <ul>
-        <li><strong>Cookie tecnici e di sessione:</strong> strettamente necessari al corretto funzionamento del sito (es. per salvare lo stato del consenso ai cookie tramite lo strumento di gestione del consenso, o per ricordare preferenze di visualizzazione come il tema chiaro/scuro). Ai sensi dell'art. 122 del Codice Privacy, non necessitano del consenso preventivo dell'utente.</li>
+        <li><strong>Cookie tecnici e di sessione:</strong> strettamente necessari al corretto funzionamento del sito (es. per salvare lo stato del consenso ai cookie tramite lo strumento di gestione del consenso, o per ricordare preferenze di visualizzazione come il tema chiaro/scuro, oppure l'accesso all'area riservata ai corsisti, sezione 4.7). Ai sensi dell'art. 122 del Codice Privacy, non necessitano del consenso preventivo dell'utente.</li>
         <li><strong>Cookie analitici/statistici:</strong> utilizzati per raccogliere informazioni, in forma aggregata, sul numero degli utenti e sulle modalità con cui visitano il sito (Google Analytics 4). Vengono installati solo previa accettazione esplicita da parte dell'utente tramite l'apposito banner.</li>
       </ul>
 
@@ -223,6 +223,13 @@
               <td>Tecnico</td>
               <td>Memorizza le preferenze di consenso cookie dell'utente</td>
               <td>186 giorni</td>
+            </tr>
+            <tr>
+              <td><code>corsi_1</code>, <code>corsi_2</code>, <code>corsi_3</code>, <code>corsi_4</code>, <code>corsi_tutti</code></td>
+              <td>Proprio (area corsisti)</td>
+              <td>Tecnico</td>
+              <td>Solo su corsi.giovannipaolofusco.it, dopo la password corretta: ricorda che hai accesso al materiale di quel livello, o di tutti i livelli (sezione 4.7)</td>
+              <td>60 giorni</td>
             </tr>
             <tr>
               <td><code>_ga</code></td>
@@ -320,6 +327,17 @@
         Puoi rimuovere questa copia in qualsiasi momento, in due modi: cancellando i dati di navigazione del browser per questo sito, oppure disinstallando l'applicazione dalla schermata Home del dispositivo.
       </p>
 
+      <h3 id="area-corsisti">4.7 Area riservata ai corsisti</h3>
+      <p>
+        Il materiale didattico dei corsi è su <strong>corsi.giovannipaolofusco.it</strong>, un'area dello stesso Titolare protetta da password. La password si riceve durante il corso e non è legata alla persona: il modulo di accesso chiede solo quella, senza nome né email.
+      </p>
+      <p>
+        Se la password è corretta, l'area imposta un cookie <strong>tecnico</strong> (<code>corsi_1</code>, <code>corsi_2</code>, <code>corsi_3</code>, <code>corsi_4</code> oppure <code>corsi_tutti</code>) che contiene solo una data di scadenza e una firma di controllo: nessun dato che ti identifichi. Dura <strong>60 giorni</strong>, non è leggibile dagli script della pagina e serve solo a non chiederti la password a ogni visita. Ai sensi dell'art. 122 del Codice Privacy non richiede il consenso preventivo. Puoi cancellarlo prima con il pulsante «Esci» dell'area o cancellando i cookie del browser.
+      </p>
+      <p>
+        L'area non usa Google Analytics né altri servizi di terze parti ed è ospitata su Cloudflare Pages, come questo sito (sezione 8).
+      </p>
+
       <h2 id="servizi-terze-parti">5. Servizi di Terze Parti Integrati nel Sito</h2>
       
       <h3>5.1 Google Analytics 4</h3>
@@ -355,22 +373,22 @@
         I dati raccolti tramite questo sito non vengono ceduti, venduti o comunicati a terzi per finalità proprie di questi ultimi. Sono trattati esclusivamente dai seguenti soggetti, ciascuno per la parte che gli compete:
       </p>
       <ul>
-        <li><strong>Netlify, Inc.</strong> — fornitore di hosting, in qualità di responsabile del trattamento: tratta tecnicamente le richieste HTTP dirette al sito (sezione 8).</li>
+        <li><strong>Cloudflare, Inc.</strong> — fornitore di hosting e della rete che consegna il sito, in qualità di responsabile del trattamento: tratta tecnicamente le richieste HTTP dirette al sito (sezione 8).</li>
         <li><strong>Google Ireland Limited</strong> — fornitore del servizio di statistica, limitatamente agli utenti che prestano il consenso ai cookie di analisi (sezione 5.1).</li>
         <li><strong>Aruba S.p.A.</strong> e <strong>Google</strong> (Gmail) — fornitori della posta: ricevono le email che mi invii volontariamente (sezione 3.3).</li>
         <li><strong>WhatsApp Ireland Limited</strong> — solo se scegli di contattarmi su WhatsApp (sezione 3.3).</li>
       </ul>
       <p>
-        Nessun altro destinatario riceve dati personali degli utenti: il sito non contiene form, non raccoglie iscrizioni e non integra widget di terze parti. I link ai profili social sono semplici collegamenti ipertestuali e non trasmettono dati prima del click (sezione 5.2).
+        Nessun altro destinatario riceve dati personali degli utenti: il sito non contiene form che raccolgano dati personali (il modulo dell'area corsisti chiede solo la password, sezione 4.7), non raccoglie iscrizioni e non integra widget di terze parti. I link ai profili social sono semplici collegamenti ipertestuali e non trasmettono dati prima del click (sezione 5.2).
       </p>
 
-      <h2 id="hosting">8. Hosting — Netlify</h2>
+      <h2 id="hosting">8. Hosting — Cloudflare</h2>
       <p>
-        Questo sito è ospitato su Netlify, servizio fornito da Netlify, Inc. (101 2nd Street, San Francisco, CA 94105, USA). I server di Netlify gestiscono tecnicamente le richieste HTTP in arrivo al sito, registrando automaticamente gli indirizzi IP dei visitatori a fini di sicurezza e stabilità dell'infrastruttura, secondo le prassi standard di qualunque servizio di hosting web. Netlify conserva questi registri di accesso per 30 giorni, secondo quanto dichiarato dal fornitore.
+        Questo sito è ospitato su Cloudflare Pages, servizio fornito da Cloudflare, Inc. (101 Townsend St, San Francisco, CA 94107, USA), che gestisce anche i server dei nomi (DNS) del dominio. La rete di Cloudflare gestisce tecnicamente le richieste HTTP in arrivo al sito, registrando automaticamente gli indirizzi IP dei visitatori a fini di sicurezza e stabilità dell'infrastruttura, secondo le prassi standard di qualunque servizio di hosting web. Cloudflare conserva questi dati per il tempo necessario a queste finalità, secondo quanto dichiarato nella propria informativa; il sito non attiva registri aggiuntivi.
       </p>
       <p>
         <strong>Base giuridica:</strong> legittimo interesse del Titolare a garantire la disponibilità, le prestazioni e la sicurezza del sito web (art. 6, par. 1, lett. f, GDPR).<br>
-        <strong>Trasferimento dati:</strong> Netlify, Inc. aderisce all'EU-U.S. Data Privacy Framework (DPF), l'accordo internazionale riconosciuto adeguato dalla Commissione Europea che assicura la conformità agli standard europei di protezione dei dati per i trasferimenti verso gli Stati Uniti. Per maggiori informazioni consulta la <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy di Netlify</a>.
+        <strong>Trasferimento dati:</strong> Cloudflare, Inc. aderisce all'EU-U.S. Data Privacy Framework (DPF), l'accordo internazionale riconosciuto adeguato dalla Commissione Europea che assicura la conformità agli standard europei di protezione dei dati per i trasferimenti verso gli Stati Uniti. Per maggiori informazioni consulta la <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy di Cloudflare</a>.
       </p>
 
       <h2 id="diritti">9. I Tuoi Diritti (Artt. 15-22 GDPR)</h2>
