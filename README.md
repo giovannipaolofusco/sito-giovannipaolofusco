@@ -12,8 +12,8 @@ Sono Giovanni Paolo Fusco, sviluppatore web a Fondi (LT). Realizzo siti statici 
 |---|---|
 | Pagine | HTML, CSS e JavaScript senza framework, in italiano e inglese (`/en/`) |
 | Build | `scripts/build.mjs`: lascia le sorgenti leggibili nella root e pubblica solo `dist/`, con HTML, CSS e JS minificati e immagini ottimizzate con `sharp` |
-| Test | `node --test` controlla l'output del build (se fallisce, il deploy su Netlify si ferma) e il testo dei PDF |
-| Hosting | Netlify, con header di sicurezza in `_headers` e redirect in `_redirects` |
+| Test | `node --test` controlla l'output del build (se fallisce, il deploy si ferma) e il testo dei PDF |
+| Hosting | Cloudflare Pages, con header di sicurezza in `_headers` e redirect in `_redirects`; `dist/versione.json` dice quale commit è online |
 | Offline | Service Worker (`sw.js`) per la cache delle risorse |
 | Certificazioni | GitHub Actions aggiorna ogni notte i badge Credly in `badges.json` e li scrive nelle pagine Certificazioni IT/EN |
 | Librerie | Ospitate sul sito, nessuna CDN: CookieConsent per il banner, GSAP e Three.js solo nella pagina Formazione AI e nella pagina link |
@@ -44,8 +44,8 @@ I'm Giovanni Paolo Fusco, a web developer in Fondi, Italy. I build fast static w
 
 - Plain HTML, CSS and JavaScript, no framework, in Italian and English (`/en/`).
 - `scripts/build.mjs` keeps readable sources in the root and publishes only `dist/`, minified, with images optimized by `sharp`.
-- `node --test` checks the build output (a failure stops the Netlify deploy) and the PDF text.
-- Hosted on Netlify with security headers (`_headers`) and redirects (`_redirects`), plus a Service Worker for caching.
+- `node --test` checks the build output (a failure stops the deploy) and the PDF text.
+- Hosted on Cloudflare Pages with security headers (`_headers`) and redirects (`_redirects`), plus a Service Worker for caching.
 - A nightly GitHub Actions job refreshes Credly badges and writes them into the Certifications pages.
 - Third-party libraries are self-hosted, no CDN: CookieConsent for the banner, GSAP and Three.js only on the AI training and link pages.
 
