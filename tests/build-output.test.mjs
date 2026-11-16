@@ -386,7 +386,8 @@ test('le pagine principali usano lo stile comune e restano leggibili senza JavaS
     const servizi = readFileSync(output(pre + 'servizi/index.html'), 'utf8');
     assert.match(servizi, new RegExp(`href="/${pre}formazione-ai/"`), `${pre}servizi: porta verso la formazione`);
     assert.equal((servizi.match(/class="rxq__voce"/g) || []).length, 8, `${pre}servizi: otto domande`);
-    assert.equal((servizi.match(/class="rx-dt__punto"/g) || []).length, 11, `${pre}servizi: undici voci nel markup`);
+    const dentro = (servizi.match(/<ul class="rx-dt__lista">(.*?)<\/ul>/s) || ['', ''])[1];
+    assert.equal((dentro.match(/class="rx-dt__punto"/g) || []).length, 9, `${pre}servizi: nove voci in «Cosa c'è dentro ogni sito»`);
     assert.doesNotMatch(servizi, /rx-dt__punto"[^>]*hidden/, `${pre}servizi: voci nascoste nel markup servito`);
   }
 });

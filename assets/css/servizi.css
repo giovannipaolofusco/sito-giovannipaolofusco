@@ -1,8 +1,5 @@
 .servizi {
-  --s-gutter: clamp(16px, 4vw, 40px);
-  --s-max: 1180px;
   --s-testo: 640px;
-  --s-spazio: clamp(72px, 12vw, 160px);
   --s-ease: cubic-bezier(0.16, 1, 0.3, 1);
   --s-nav: 80px;
 }
@@ -72,23 +69,6 @@ main.servizi {
   .servizi [aria-hidden='true'] {
     display: none !important;
   }
-}
-
-@keyframes raggi-scansione {
-  0% { transform: translateY(0); opacity: 0; }
-  12% { opacity: 0.9; }
-  88% { opacity: 0.9; }
-  100% { transform: translateY(var(--raggi-corsa, 300px)); opacity: 0; }
-}
-
-@keyframes spiegazione-entra {
-  from { opacity: 0; transform: translateY(8px) scale(0.98); }
-  to { opacity: 1; transform: none; }
-}
-
-@keyframes spiegazione-sfondo {
-  from { opacity: 0; }
-  to { opacity: 1; }
 }
 
 /* Domande frequenti: details/summary nativi, si aprono e chiudono da tastiera
