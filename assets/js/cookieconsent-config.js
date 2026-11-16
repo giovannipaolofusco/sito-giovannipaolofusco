@@ -64,7 +64,7 @@ CookieConsent.run({
     translations: {
       it: {
         consentModal: {
-          title: 'Cookie tecnici sempre attivi',
+          title: 'Statistiche solo se accetti',
           description: 'Google Analytics 4 misura le visite solo se accetti. La X chiude senza attivarlo.',
           acceptAllBtn: 'Accetta tutti',
           acceptNecessaryBtn: 'Rifiuta tutti',
@@ -73,23 +73,23 @@ CookieConsent.run({
           footer: '<a href="/privacy/">Privacy Policy</a>'
         },
         preferencesModal: {
-          title: 'Preferenze Consenso Cookie',
+          title: 'Preferenze sui cookie',
           acceptAllBtn: 'Accetta tutti',
           acceptNecessaryBtn: 'Rifiuta tutti',
           savePreferencesBtn: 'Salva preferenze',
           closeIconLabel: 'Chiudi',
           sections: [
             {
-              title: 'Utilizzo dei Cookie',
-              description: 'I cookie sono piccoli file di testo usati per migliorare l\'esperienza di navigazione e analizzare il traffico.'
+              title: 'Cosa scegli qui',
+              description: 'Se attivare Google Analytics. I cookie tecnici ricordano solo la tua scelta.'
             },
             {
-              title: 'Cookie Necessari <span class="pm__badge">Sempre Attivi</span>',
+              title: 'Cookie tecnici <span class="pm__badge">Sempre attivi</span>',
               description: 'Questi cookie sono essenziali per il funzionamento del sito, incluso il salvataggio delle tue preferenze di consenso.',
               linkedCategory: 'necessary'
             },
             {
-              title: 'Cookie Analitici e Statistici',
+              title: 'Statistiche',
               description: 'Google Analytics 4, fornito da Google Ireland Limited, raccoglie a fini statistici le pagine visitate, il tempo trascorso e il dispositivo utilizzato, con un identificativo del browser (cookie _ga). I dati possono essere trasferiti negli Stati Uniti (EU-U.S. Data Privacy Framework): dettagli nella Privacy Policy.',
               linkedCategory: 'analytics'
             }
@@ -98,7 +98,7 @@ CookieConsent.run({
       },
       en: {
         consentModal: {
-          title: 'Essential cookies always on',
+          title: 'Analytics only if you accept',
           description: 'Google Analytics 4 measures visits only if you accept. The X closes without enabling it.',
           acceptAllBtn: 'Accept all',
           acceptNecessaryBtn: 'Reject all',
@@ -107,23 +107,23 @@ CookieConsent.run({
           footer: '<a href="/en/privacy/">Privacy Policy</a>'
         },
         preferencesModal: {
-          title: 'Cookie Consent Preferences',
+          title: 'Cookie preferences',
           acceptAllBtn: 'Accept all',
           acceptNecessaryBtn: 'Reject all',
           savePreferencesBtn: 'Save preferences',
           closeIconLabel: 'Close',
           sections: [
             {
-              title: 'Cookie Usage',
-              description: 'Cookies are small text files used to improve the browsing experience and analyze traffic.'
+              title: 'What you choose here',
+              description: 'Whether to turn on Google Analytics. Essential cookies only remember your choice.'
             },
             {
-              title: 'Necessary Cookies <span class="pm__badge">Always Enabled</span>',
+              title: 'Essential cookies <span class="pm__badge">Always on</span>',
               description: 'These cookies are essential for the operation of the website, including saving your consent preferences.',
               linkedCategory: 'necessary'
             },
             {
-              title: 'Analytical & Statistical Cookies',
+              title: 'Analytics',
               description: 'Google Analytics 4, provided by Google Ireland Limited, collects pages visited, time spent and device used for statistical purposes, with a browser identifier (_ga cookie). Data may be transferred to the United States (EU-U.S. Data Privacy Framework): details in the Privacy Policy.',
               linkedCategory: 'analytics'
             }

@@ -39,8 +39,8 @@
   --ink: #ededed;
   --muted: #a0a0a0;
   --border: #333333;
-  --accent: #8b5cf6;
-  --accent-deep: #5b21b6;
+  --accent: #d58bc4;
+  --accent-deep: #6b2560;
   --stage-bg: #000;
   --slide-bg: #0a0a0a;
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -99,13 +99,6 @@ img, video, canvas, svg {
   max-width: 100%;
   max-height: 100%;
 }
-.deck-controls {
-  position: fixed;
-  left: 50%;
-  bottom: 22px;
-  transform: translateX(-50%);
-  z-index: 1000;
-}
 @media print {
   html, body { width: 1920px; height: auto; overflow: visible; background: #fff; }
   .deck-viewport { position: static; overflow: visible; background: #fff; }
@@ -116,7 +109,6 @@ img, video, canvas, svg {
     width: 1920px; height: 1080px; break-after: page; page-break-after: always;
   }
   .slide:last-child { break-after: auto; page-break-after: auto; }
-  .deck-controls { display: none !important; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
@@ -155,22 +147,6 @@ img, video, canvas, svg {
   letter-spacing: 0.14em;
   color: var(--muted);
 }
-
-
-.tier {
-  position: absolute;
-  right: 120px;
-  top: 100px;
-  display: flex;
-  gap: 8px;
-}
-.tier .seg {
-  width: 36px;
-  height: 6px;
-  border-radius: 3px;
-  background: var(--border);
-}
-.tier .seg.on { background: var(--accent); }
 
 .cover .slide-inner {
   justify-content: center;
@@ -230,13 +206,6 @@ img, video, canvas, svg {
   border-radius: 50%;
   background: var(--accent);
   flex: none;
-  transform: translateY(-6px);
-}
-.pkg .tag-row {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  margin-top: 8px;
 }
 .pkg .tag {
   font-size: 24px;
@@ -256,10 +225,6 @@ img, video, canvas, svg {
   border-radius: 20px;
   padding: 32px 40px;
   max-width: 1400px;
-}
-.callout .callout-icon {
-  font-size: 56px;
-  flex: none;
 }
 .callout .callout-text {
   font-size: 32px;
@@ -292,13 +257,6 @@ img, video, canvas, svg {
   gap: 18px;
 }
 .after .option.pick { border-color: var(--accent); }
-.after .option .opt-label {
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--accent);
-}
 .after .option h3 {
   font-size: 38px;
   font-weight: 700;
@@ -308,21 +266,6 @@ img, video, canvas, svg {
   font-size: 24px;
   color: var(--muted);
   line-height: 1.5;
-}
-.after .option .price-tag {
-  margin-top: auto;
-  padding-top: 18px;
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--ink);
-}
-.after .option.pick .price-tag { color: var(--accent); }
-.after .option .price-note {
-  display: block;
-  margin-top: 8px;
-  font-size: 19px;
-  font-weight: 500;
-  color: var(--muted);
 }
 
 .pkg-split .slide-inner { gap: 8px; }
@@ -340,21 +283,6 @@ img, video, canvas, svg {
 }
 .split-left .price { font-size: 168px; }
 .split-left .features li { font-size: 32px; }
-
-.split-right {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding-top: 14px;
-}
-.split-right .acc-title {
-  font-size: 22px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--muted);
-  margin-bottom: 14px;
-}
 .acc-item {
   display: flex;
   justify-content: space-between;
@@ -373,39 +301,6 @@ img, video, canvas, svg {
   font-weight: 700;
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
-}
-.acc-item--condizione {
-  border-bottom: none;
-  padding-top: 18px;
-}
-.deal {
-  max-width: 1400px;
-  margin-top: 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  border: 1px solid var(--accent);
-  border-radius: 16px;
-  padding: 22px 30px;
-}
-.deal .deal-label {
-  font-size: 22px;
-  font-weight: 700;
-  color: var(--ink);
-}
-.deal .deal-price {
-  font-size: 34px;
-  font-weight: 800;
-  color: var(--accent);
-  white-space: nowrap;
-}
-.deal .deal-price s {
-  font-size: 20px;
-  font-weight: 500;
-  color: var(--muted);
-  margin-left: 8px;
-  text-decoration-color: var(--muted);
 }
 
 .consent .slide-inner { justify-content: center; gap: 48px; }
@@ -430,23 +325,12 @@ img, video, canvas, svg {
   border-radius: 20px;
   padding: 36px 44px;
 }
-.consent .choice .mark {
-  font-size: 40px;
-  flex: none;
-  line-height: 1;
-}
-.consent .choice.yes .mark { color: var(--accent); }
 .consent .choice p {
   font-size: 32px;
   color: var(--ink);
   line-height: 1.45;
 }
 .consent .choice p b { font-weight: 700; }
-.consent .footnote {
-  font-size: 26px;
-  color: var(--muted);
-}
-
 
 .nav-btn {
   position: fixed;
@@ -526,22 +410,6 @@ img, video, canvas, svg {
   color: var(--muted);
 }
 
-.after .options--due {
-  width: 100%;
-  max-width: 1240px;
-  align-self: center;
-}
-.after .option .opt-note {
-  padding-left: 18px;
-  border-left: 2px solid var(--border);
-  font-size: 20px;
-  line-height: 1.45;
-}
-
-.acc-item--esteso { font-size: 21px; }
-.acc-item--esteso .name { line-height: 1.35; }
-.acc-item--esteso .price { font-size: 21px; }
-
 /* Bundle alternativo alle tre voci singole (Maps, TripAdvisor, Recensioni):
    non si somma agli accessori e non entra nel riquadro "Completo", quindi va
    letto come una riga a se' e non come la nona voce dell'elenco. */
@@ -551,7 +419,7 @@ img, video, canvas, svg {
   padding: 12px 18px;
   border: 1px solid var(--accent-deep);
   border-radius: 12px;
-  background: rgba(139, 92, 246, 0.09);
+  background: rgba(213, 139, 196, 0.09);
 }
 .acc-item--bundle .name { font-weight: 600; }
 .acc-item--bundle .price { font-size: 21px; }
@@ -562,24 +430,7 @@ img, video, canvas, svg {
   text-decoration-color: var(--muted);
 }
 
-/* Slide 02 e 03: nove voci piu' il riquadro finale non entrano nel canvas fisso
-   1920x1080, che taglia senza avvisare. Recupera l'altezza necessaria stringendo
-   il passo delle righe, invece di rimpicciolire il testo. */
-.split-right--fitto .acc-item { padding: 11px 0; }
-.split-right--fitto .acc-item--bundle { padding: 12px 18px; }
-.split-right--fitto .deal { margin-top: 14px; }
-
-/* Il riquadro delle sequenze video porta ora anche le esclusioni, e a 32px
-   arrivava a 23px dal bordo della slide mangiando il margine inferiore.
-   Recupera l'altezza dal passo interno, non dal corpo del testo. */
-.callout--fitto {
-  gap: 20px;
-  padding: 24px 32px;
-}
-.callout--fitto .callout-icon { font-size: 46px; }
-.callout--fitto .callout-text { font-size: 29px; }
-
-/* ===== Componenti della struttura del 26/09/2026 ===== */
+/* Componenti delle slide */
 
 /* Prezzo di lancio: il markup porta il listino, presentazione.js aggiunge il
    prezzo di lancio solo fino alla scadenza. Senza script resta il listino. */
@@ -665,7 +516,6 @@ img, video, canvas, svg {
   border-radius: 50%;
   background: var(--accent);
   flex: none;
-  transform: translateY(-5px);
 }
 .inclusi li small {
   display: block;
@@ -816,7 +666,6 @@ img, video, canvas, svg {
   border-radius: 50%;
   background: var(--accent);
   flex: none;
-  transform: translateY(-6px);
 }
 .punti li small {
   display: block;
@@ -922,7 +771,7 @@ html.pagina-scelta body {
   height: auto;
   min-height: 100%;
   overflow: auto;
-  background: radial-gradient(ellipse 70% 55% at 85% 0%, rgba(139, 92, 246, 0.16), transparent 70%) no-repeat, var(--bg);
+  background: var(--bg);
 }
 .scelta {
   min-height: 100dvh;
@@ -959,7 +808,7 @@ html.pagina-scelta body {
   transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
 }
 .scelta-opzione:hover,
-.scelta-opzione:focus-visible { border-color: var(--accent); transform: translateY(-2px); }
+.scelta-opzione:focus-visible { border-color: var(--accent); }
 .scelta-opzione:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 .scelta-tipo {
   font-size: 14px;
@@ -997,10 +846,10 @@ html.pagina-scelta body {
   white-space: nowrap;
 }
 
-/* Copertina e chiusura: marchio e alone viola, come nel sito */
+/* Copertina e chiusura */
 .cover,
 .chiusura {
-  background: radial-gradient(ellipse 55% 65% at 90% 12%, rgba(139, 92, 246, 0.2), transparent 70%), var(--slide-bg);
+  background: var(--slide-bg);
 }
 .copertina-marchio {
   position: absolute;
@@ -1076,7 +925,7 @@ html.pagina-scelta body {
   height: 48px;
   padding: 10px;
   border-radius: 12px;
-  background: rgba(139, 92, 246, 0.14);
+  background: rgba(213, 139, 196, 0.14);
   color: var(--accent);
 }
 
@@ -1120,7 +969,7 @@ html.pagina-scelta body {
   position: absolute;
   inset: 0;
   border-radius: 12px;
-  box-shadow: 0 0 60px rgba(139, 92, 246, 0.35), 0 0 140px rgba(139, 92, 246, 0.18);
+  box-shadow: 0 0 60px rgba(213, 139, 196, 0.35), 0 0 140px rgba(213, 139, 196, 0.18);
   animation: respiro 4.5s ease-in-out infinite;
 }
 .chiusura.active .qr img { animation: qr-rivela 0.9s var(--ease) both; }
@@ -1138,7 +987,7 @@ html.pagina-scelta body {
 .confronto thead th { vertical-align: bottom; }
 .confronto thead th.consigliato { border-bottom-color: var(--accent); padding-top: 14px; }
 .badge-consigliato {
-  box-shadow: 0 0 28px rgba(139, 92, 246, 0.65);
+  box-shadow: 0 0 28px rgba(213, 139, 196, 0.65);
   display: block;
   width: fit-content;
   margin: 0 auto 10px;
@@ -1171,21 +1020,21 @@ html.pagina-scelta body {
   bottom: -6px;
   left: calc(300px + (100% - 300px) / 2);
   width: calc((100% - 300px) / 4);
-  border: 1px solid rgba(167, 139, 250, 0.7);
+  border: 1px solid rgba(214, 150, 198, 0.7);
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(139, 92, 246, 0.26), rgba(139, 92, 246, 0.08) 60%, rgba(139, 92, 246, 0.16));
-  box-shadow: 0 0 60px rgba(139, 92, 246, 0.35), 0 0 140px rgba(139, 92, 246, 0.18);
+  background: linear-gradient(180deg, rgba(213, 139, 196, 0.26), rgba(213, 139, 196, 0.08) 60%, rgba(213, 139, 196, 0.16));
+  box-shadow: 0 0 60px rgba(213, 139, 196, 0.35), 0 0 140px rgba(213, 139, 196, 0.18);
   animation: respiro 4.5s ease-in-out infinite;
   pointer-events: none;
 }
 @keyframes respiro {
-  0%, 100% { box-shadow: 0 0 50px rgba(139, 92, 246, 0.3), 0 0 120px rgba(139, 92, 246, 0.14); }
-  50% { box-shadow: 0 0 80px rgba(139, 92, 246, 0.5), 0 0 180px rgba(139, 92, 246, 0.24); }
+  0%, 100% { box-shadow: 0 0 50px rgba(213, 139, 196, 0.3), 0 0 120px rgba(213, 139, 196, 0.14); }
+  50% { box-shadow: 0 0 80px rgba(213, 139, 196, 0.5), 0 0 180px rgba(213, 139, 196, 0.24); }
 }
 @media (prefers-reduced-motion: reduce) {
   .confronto-box::before { animation: none; }
 }
-.confronto td.consigliato { border-bottom-color: rgba(167, 139, 250, 0.25); }
+.confronto td.consigliato { border-bottom-color: rgba(214, 150, 198, 0.25); }
 
 /* Marchio piccolo su ogni slide, tranne la copertina che lo ha grande */
 .marchio-slide {
@@ -1236,7 +1085,7 @@ html.pagina-scelta body {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  box-shadow: 0 0 28px rgba(139, 92, 246, 0.55);
+  box-shadow: 0 0 28px rgba(213, 139, 196, 0.55);
 }
 .pillole {
   list-style: none;
@@ -1247,9 +1096,9 @@ html.pagina-scelta body {
 }
 .pillole li {
   padding: 14px 26px;
-  border: 1px solid rgba(139, 92, 246, 0.45);
+  border: 1px solid rgba(213, 139, 196, 0.45);
   border-radius: 999px;
-  background: rgba(139, 92, 246, 0.1);
+  background: rgba(213, 139, 196, 0.1);
   font-size: 28px;
   font-weight: 600;
 }
