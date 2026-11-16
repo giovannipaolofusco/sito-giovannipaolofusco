@@ -14,8 +14,12 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .rx-dt__punto { padding-block: 20px; border-top: 1px solid var(--linea-forte); }
 .rx-dt__punto .rx-dt__titolo { margin-top: 0 !important; font-size: 20px; letter-spacing: -0.01em; }
 .rx-dt__punto .rx-dt__testo { margin-top: 8px !important; font-size: 16px; }
-@media (min-width: 768px) { .rx-dt__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .rx-dt__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 768px) { .rx-dt__lista { grid-template-columns: repeat(2, minmax(0, 1fr)); } .rx-dt__lista--righe { grid-template-columns: 1fr; } }
+@media (min-width: 1024px) { .rx-dt__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); } .rx-dt__lista--righe { grid-template-columns: 1fr; max-width: 760px; } .rx-dt__lista--due { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.rx-dt__titolo a { color: inherit; text-decoration: underline; text-decoration-color: var(--linea-forte); text-underline-offset: 4px; }
+.rx-dt__titolo a:hover { text-decoration-color: var(--viola); }
+.rx-dt__prova { margin-top: 24px !important; color: var(--secondario); }
+.rx-dt__prova a { color: var(--viola); font-weight: 600; }
 
 /* Componenti comuni: pulsanti, etichette, apertura con confronto pagina/codice, voci da esplorare. */
 
@@ -47,7 +51,6 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f4f2f7; --testo: #14131
 
 .rx { margin-top: 48px; width: 100%; max-width: 980px; }
 .rx__finestra { border: 1px solid var(--linea); border-radius: 12px; overflow: hidden; background: var(--carta); text-align: left; }
-@keyframes rx-sale { from { opacity: 0; transform: translate3d(0, 40px, 0) scale(0.98); } }
 .rx__barra { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--linea); background: var(--tenue); }
 .rx__barra span { width: 10px; height: 10px; border-radius: 50%; background: var(--linea-forte); }
 .rx__barra p { margin-left: 10px !important; font: 400 12px/1 'IBM Plex Mono', monospace; color: var(--secondario); }
@@ -58,7 +61,7 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f4f2f7; --testo: #14131
 .rx__logo { font-weight: 700; color: #7a2e0e; }
 .rx__h { font-size: clamp(26px, 4vw, 36px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; color: #2b1407; max-width: 12ch; }
 .rx__p { color: #6b4a33; }
-.rx__foto { height: clamp(90px, 16vw, 150px); border-radius: 10px; background: linear-gradient(135deg, #f4c58a, #c2602b 60%, #7a2e0e); }
+.rx__foto { height: clamp(90px, 16vw, 150px); border-radius: 10px; background: #c2602b; }
 .rx__chip { display: inline-block; justify-self: start; padding: 8px 14px; border-radius: 10px; background: #7a2e0e; color: #fff; font-size: 13px; font-weight: 700; }
 .rx__chip--b { background: transparent; color: #7a2e0e; border: 1px solid #7a2e0e; }
 .rx__codice { margin: 0; background: #141317; color: #e4dbf6; font: 400 clamp(10px, 1.3vw, 13px)/1.7 'IBM Plex Mono', monospace; white-space: pre-wrap; overflow-wrap: anywhere; overflow: hidden; clip-path: inset(0 0 0 var(--pos)); padding-left: calc(50% + clamp(14px, 2.4vw, 28px)); }

@@ -404,7 +404,7 @@ img, video, canvas, svg {
 .cover p.launch-note {
   max-width: 1240px;
   padding-left: 22px;
-  border-left: 3px solid var(--accent);
+  border: 1px solid var(--accent);
   font-size: 24px;
   line-height: 1.45;
   color: var(--muted);
@@ -957,8 +957,7 @@ html.pagina-scelta body {
   height: 240px;
   border-radius: 12px;
 }
-/* QR personalizzato: compare dal centro quando si apre la slide, poi resta
-   fermo con lo stesso alone che respira del pacchetto consigliato. */
+/* QR personalizzato: compare dal centro quando si apre la slide, poi resta fermo. */
 .qr-tessera {
   position: relative;
   display: block;
@@ -969,8 +968,6 @@ html.pagina-scelta body {
   position: absolute;
   inset: 0;
   border-radius: 12px;
-  box-shadow: 0 0 60px rgba(185, 163, 232, 0.35), 0 0 140px rgba(185, 163, 232, 0.18);
-  animation: respiro 4.5s ease-in-out infinite;
 }
 .chiusura.active .qr img { animation: qr-rivela 0.9s var(--ease) both; }
 @keyframes qr-rivela {
@@ -987,7 +984,6 @@ html.pagina-scelta body {
 .confronto thead th { vertical-align: bottom; }
 .confronto thead th.consigliato { border-bottom-color: var(--accent); padding-top: 14px; }
 .badge-consigliato {
-  box-shadow: 0 0 28px rgba(185, 163, 232, 0.65);
   display: block;
   width: fit-content;
   margin: 0 auto 10px;
@@ -1003,7 +999,7 @@ html.pagina-scelta body {
 .confronto .riga-perchi td { font-size: 24px; color: var(--muted); line-height: 1.3; }
 .confronto .riga-perchi td.consigliato { color: var(--ink); }
 
-/* Alone del pacchetto consigliato: un solo elemento dietro la colonna B. La
+/* Evidenza del pacchetto consigliato: un solo elemento dietro la colonna B. La
    posizione segue la tabella a layout fisso: prima colonna 300px, poi quattro
    colonne uguali. */
 .confronto-box {
@@ -1020,16 +1016,10 @@ html.pagina-scelta body {
   bottom: -6px;
   left: calc(300px + (100% - 300px) / 2);
   width: calc((100% - 300px) / 4);
-  border: 1px solid rgba(194, 174, 236, 0.7);
+  border: 1px solid #b9a3e8;
   border-radius: 22px;
-  background: linear-gradient(180deg, rgba(185, 163, 232, 0.26), rgba(185, 163, 232, 0.08) 60%, rgba(185, 163, 232, 0.16));
-  box-shadow: 0 0 60px rgba(185, 163, 232, 0.35), 0 0 140px rgba(185, 163, 232, 0.18);
-  animation: respiro 4.5s ease-in-out infinite;
+  background: #26212e;
   pointer-events: none;
-}
-@keyframes respiro {
-  0%, 100% { box-shadow: 0 0 50px rgba(185, 163, 232, 0.3), 0 0 120px rgba(185, 163, 232, 0.14); }
-  50% { box-shadow: 0 0 80px rgba(185, 163, 232, 0.5), 0 0 180px rgba(185, 163, 232, 0.24); }
 }
 @media (prefers-reduced-motion: reduce) {
   .confronto-box::before { animation: none; }
@@ -1085,7 +1075,6 @@ html.pagina-scelta body {
   font-weight: 800;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  box-shadow: 0 0 28px rgba(185, 163, 232, 0.55);
 }
 .pillole {
   list-style: none;
@@ -1105,7 +1094,7 @@ html.pagina-scelta body {
 .nota-confine {
   max-width: 1500px;
   padding: 22px 28px;
-  border-left: 4px solid var(--accent);
+  border: 1px solid var(--accent);
   background: rgba(255, 255, 255, 0.04);
   font-size: 23px;
   line-height: 1.5;
