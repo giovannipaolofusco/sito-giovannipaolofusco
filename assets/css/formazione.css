@@ -1,4 +1,4 @@
-.prezzo-testo { display: block; font-size: 0.6em; letter-spacing: -0.03em; }
+.prezzo-testo { display: block; font-size: 0.6em; letter-spacing: -0.01em; }
 /* Base: azzera le regole globali di main, h1-h2 e p del sito. */
 main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: block; overflow-x: clip; }
 .bz :where(h1, h2, h3, p, ul, ol, li, figure) { margin: 0; padding: 0; max-width: none; font-size: inherit; color: inherit; letter-spacing: normal; text-transform: none; line-height: inherit; font-weight: inherit; display: revert; }
@@ -20,7 +20,7 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .notte__occhiello { font-size: 14px; font-weight: 700; color: var(--accent-color); }
 @keyframes parola { from { opacity: 0.15; transform: translate3d(0, 0.35em, 0); filter: blur(6px); } }
 .notte__azioni { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
-.notte__h2 { margin-top: 8px !important; font-size: clamp(32px, 5.5vw, 72px); font-weight: 800; letter-spacing: -0.045em; line-height: 1; color: var(--text-primary); }
+.notte__h2 { margin-top: 8px !important; font-size: clamp(32px, 5.5vw, 56px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; color: var(--text-primary); }
 .notte__desc { margin-top: 18px !important; max-width: 52ch; font-size: 18px; line-height: 1.55; color: var(--text-secondary); }
 
 /* Titolo che sale dalle maschere: il testo e' nel DOM da subito, l'animazione
@@ -43,10 +43,10 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .tn__hero { position: relative; min-height: calc(100dvh - 80px); display: grid; align-items: center; padding-block: 48px; overflow: hidden; }
 .tn__griglia { position: relative; display: grid; gap: 32px; align-items: center; min-width: 0; }
 @media (min-width: 1024px) { .tn__griglia { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.tn__h1 { margin-top: 14px !important; font-size: clamp(38px, 5.2vw, 76px); font-weight: 800; letter-spacing: -0.055em; line-height: 0.96; color: var(--text-primary); }
+.tn__h1 { margin-top: 14px !important; font-size: clamp(38px, 5.2vw, 56px); font-weight: 700; letter-spacing: -0.01em; line-height: 0.96; color: var(--text-primary); }
 .tn__sotto { margin-top: 20px !important; font-size: clamp(18px, 1.8vw, 21px); line-height: 1.5; color: var(--text-secondary); max-width: 44ch; }
 .tn__fatti { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px !important; font-size: 15px; color: var(--text-secondary); }
-.tn__fatti b { display: block; font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); }
+.tn__fatti b { display: block; font-size: 24px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); }
 /* La mappa resta su fondo scuro in entrambi i temi: colori della mappa 3D e del disegno SVG sono pensati per quello. */
 .tn__figura { --text-primary: #ededed; --text-secondary: #a7a2b0; --border-color: #26212e; --accent-color: #c6b3ee; background: #141317; color: #ededed; border: 1px solid #26212e; border-radius: 20px; padding: clamp(12px, 2vw, 20px); box-shadow: 0 30px 80px rgba(67, 35, 122, 0.16); }
 @keyframes tn-pulsa { 0% { transform: scale(1); } 40% { transform: scale(1.9); filter: drop-shadow(0 0 10px #c2aeec); } 100% { transform: scale(1); } }
@@ -54,11 +54,11 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 
 /* Livelli su fondo scuro: niente scorrimento orizzontale. I prezzi restano fermi. */
 .lv { padding-block: clamp(72px, 10vw, 128px); border-top: 1px solid var(--border-color); }
-.lv__titolo { font-size: clamp(34px, 5vw, 64px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--text-primary); }
+.lv__titolo { font-size: clamp(34px, 5vw, 52px); font-weight: 700; letter-spacing: -0.01em; line-height: 1; color: var(--text-primary); }
 .lv__sotto { margin-top: 14px !important; font-size: 18px; color: var(--text-secondary); }
 .lv__linea { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; margin-top: 44px; }
 .lv__riempi { display: block; height: 100%; background: var(--accent-color); transform-origin: left center; }
-.lv__stop { position: relative; justify-self: center; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 3px solid var(--border-color); background: var(--bg-color); font-weight: 800; font-size: 14px; color: var(--text-secondary); transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; }
+.lv__stop { position: relative; justify-self: center; width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; border: 3px solid var(--border-color); background: var(--bg-color); font-weight: 700; font-size: 14px; color: var(--text-secondary); transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; }
 .lv__stop.is-raggiunta { border-color: var(--accent-color); color: var(--text-primary); }
 @media (max-width: 1099px) { .lv__linea { display: none; } }
 .lv__gradino { font-size: 13px; font-weight: 700; color: var(--accent-color); }
@@ -67,23 +67,23 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 @media (min-width: 900px) { .pd__passi { grid-template-columns: repeat(4, minmax(0, 1fr)); } .pd__passi::before { content: ''; position: absolute; left: 0; right: 0; top: 30px; height: 1px; background: linear-gradient(90deg, transparent, #b9a3e8, transparent); } }
 .pd__passo { position: relative; display: grid; gap: 8px; align-content: start; padding: 22px; border: 1px solid var(--border-color); border-radius: 16px; background: var(--card-bg); transition: border-color 0.3s ease, transform 0.35s var(--ease); }
 .pd__passo:hover { border-color: rgba(185, 163, 232, 0.6); }
-.pd__quando { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-color); }
-.pd__cosa { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); }
+.pd__quando { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-color); }
+.pd__cosa { font-size: 20px; font-weight: 700; letter-spacing: -0.01em; color: var(--text-primary); }
 .pd__testo { font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
 .lv__scheda { position: relative; display: grid; align-content: start; gap: 10px; padding: 28px 24px; border: 1px solid var(--border-color); border-radius: 18px; background: var(--bg-color); transform-style: preserve-3d; overflow: hidden; }
 .lv__scheda:hover { border-color: rgba(185, 163, 232, 0.6); }
-.lv__num { font-size: 14px; font-weight: 800; color: var(--accent-color); }
-.lv__h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--text-primary); }
+.lv__num { font-size: 14px; font-weight: 700; color: var(--accent-color); }
+.lv__h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.1; color: var(--text-primary); }
 .lv__desc { font-size: 15px; line-height: 1.55; color: var(--text-secondary); }
 .lv__ris { font-size: 15px; line-height: 1.5; color: var(--text-primary); }
-.lv__prezzo { margin-top: 6px !important; font-size: 52px; font-weight: 800; letter-spacing: -0.05em; line-height: 1; color: var(--text-primary); }
+.lv__prezzo { margin-top: 6px !important; font-size: 52px; font-weight: 700; letter-spacing: -0.01em; line-height: 1; color: var(--text-primary); }
 .lv__meta { font-size: 13px; color: var(--text-secondary); }
 .lv__btn { margin-top: 6px; border-radius: 0; }
 .lv__scaletta { margin-top: 6px; border-top: 1px solid var(--border-color); }
-.lv__scaletta summary { display: flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 800; color: var(--accent-color); cursor: pointer; }
+.lv__scaletta summary { display: flex; align-items: center; min-height: 44px; font-size: 14px; font-weight: 700; color: var(--accent-color); cursor: pointer; }
 .lv__scaletta ol { display: grid; gap: 8px; padding-bottom: 6px !important; }
 .lv__scaletta li { display: grid; grid-template-columns: 40px 1fr; gap: 8px; font-size: 13px; line-height: 1.45; color: var(--text-secondary); }
-.lv__scaletta li span { font-weight: 800; color: var(--text-primary); font-variant-numeric: tabular-nums; }
+.lv__scaletta li span { font-weight: 700; color: var(--text-primary); font-variant-numeric: tabular-nums; }
 .lv__nota { margin-top: 24px !important; font-size: 15px; color: var(--text-secondary); max-width: 70ch; }
 /* Percorso verticale */
 .lv__percorso-griglia { display: grid; gap: 40px; }
@@ -101,7 +101,7 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .t3d canvas { display: block; width: 100% !important; height: 100% !important; }
 .tn__figura--3d .terra__mappa { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .t3d__etichetta { position: absolute; left: 0; top: 0; font-size: 13px; font-weight: 700; color: #ededed; white-space: nowrap; pointer-events: none; text-shadow: 0 0 10px #000, 0 0 2px #000; transition: opacity 0.4s ease; }
-.t3d__etichetta--fondi { font-size: 16px; font-weight: 800; }
+.t3d__etichetta--fondi { font-size: 16px; font-weight: 700; }
 .terra__foto { will-change: transform; }
 
 /* Mappa piatta (riserva senza WebGL) e legenda comune al 3D: tre fasce di viaggio.

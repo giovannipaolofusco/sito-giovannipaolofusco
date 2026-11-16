@@ -29,7 +29,7 @@
 @font-face {
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 800;
+  font-weight: 700;
   font-display: swap;
   src: url('/assets/fonts/inter-v20-latin-800.woff2') format('woff2');
 }
@@ -159,7 +159,7 @@ body > nav {
 .nav-title {
   font-weight: 700;
   font-size: 16px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
   color: var(--text-primary);
   /* Una riga sola: col testo ingrandito la barra fissa resta alta 80px e non
      copre la pagina. Il nome completo resta nel footer e nell'alt del logo. */
@@ -278,9 +278,9 @@ main {
 }
 
 h1 {
-  font-size: clamp(40px, 8vw, 72px);
-  font-weight: 800;
-  letter-spacing: -0.05em;
+  font-size: clamp(40px, 8vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
   margin-bottom: 16px;
   line-height: 1;
   color: var(--text-primary);
