@@ -160,10 +160,6 @@ img, video, canvas, svg {
   line-height: 1.02;
   max-width: 1500px;
 }
-.cover h1 em {
-  font-style: normal;
-  color: var(--accent);
-}
 .cover p.sub {
   font-size: 38px;
   color: var(--muted);
@@ -403,7 +399,7 @@ img, video, canvas, svg {
 
 .cover p.launch-note {
   max-width: 1240px;
-  padding-left: 22px;
+  padding: 14px 22px;
   border: 1px solid var(--accent);
   font-size: 24px;
   line-height: 1.45;
@@ -963,19 +959,12 @@ html.pagina-scelta body {
   display: block;
   border-radius: 12px;
 }
-.qr-tessera::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: 12px;
-}
 .chiusura.active .qr img { animation: qr-rivela 0.9s var(--ease) both; }
 @keyframes qr-rivela {
   from { clip-path: circle(0% at 50% 50%); transform: scale(0.92); }
   to { clip-path: circle(75% at 50% 50%); transform: scale(1); }
 }
 @media (prefers-reduced-motion: reduce) {
-  .qr-tessera::before,
   .chiusura.active .qr img { animation: none; }
 }
 .qr figcaption { font-size: 18px; color: var(--muted); }
@@ -1020,9 +1009,6 @@ html.pagina-scelta body {
   border-radius: 22px;
   background: #26212e;
   pointer-events: none;
-}
-@media (prefers-reduced-motion: reduce) {
-  .confronto-box::before { animation: none; }
 }
 .confronto td.consigliato { border-bottom-color: rgba(194, 174, 236, 0.25); }
 

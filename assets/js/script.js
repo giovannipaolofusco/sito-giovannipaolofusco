@@ -258,3 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
     avviso.hidden = false;
   });
 })();
+
+// Pulsante del footer: senza la libreria del banner porta alla sezione 4.4 dell'informativa.
+document.querySelectorAll('.footer-cookie').forEach(function (bottone) {
+  bottone.addEventListener('click', function () {
+    const cmp = window.CookieConsent;
+    if (cmp && typeof cmp.showPreferences === 'function') return;
+    const inglese = document.documentElement.lang === 'en';
+    window.location.href = (inglese ? '/en/privacy/' : '/privacy/') + '#gestione-consenso';
+  });
+});

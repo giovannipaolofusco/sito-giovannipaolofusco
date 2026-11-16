@@ -125,7 +125,6 @@
     <main id="contenuto">
       <h1>Privacy & Cookie Policy</h1>
       <p>Giovanni Paolo Fusco</p>
-      <p>Ultimo aggiornamento: 16 novembre 2026</p>
       <p class="informativa__premessa">
         Informativa resa ai sensi degli artt. 13 e 14 del Regolamento (UE) 2016/679 ("GDPR"), del D.Lgs. 30 giugno 2003, n. 196 ("Codice in materia di protezione dei dati personali", come modificato dal D.Lgs. 101/2018) e del Provvedimento del Garante per la protezione dei dati personali n. 231 del 10 giugno 2021 recante "Linee guida cookie e altri strumenti di tracciamento".
       </p>
@@ -252,44 +251,16 @@
               <td>Ricorda se hai scelto il tema chiaro o scuro</td>
               <td>Fino alla cancellazione dei dati del browser</td>
             </tr>
-            <tr>
-              <td><code>gpf-visited</code></td>
-              <td>Proprio (sessionStorage)</td>
-              <td>Tecnico</td>
-              <td>Riconosce se sei appena arrivato sul sito, per non proporti l'installazione dell'app alla prima pagina</td>
-              <td>Fino alla chiusura della scheda</td>
-            </tr>
-            <tr>
-              <td><code>intro-vista</code></td>
-              <td>Proprio (sessionStorage)</td>
-              <td>Tecnico</td>
-              <td>Ricorda che hai già visto l'animazione di apertura della home, per non ripetertela a ogni visita della stessa sessione</td>
-              <td>Fino alla chiusura della scheda</td>
-            </tr>
-            <tr>
-              <td><code>link-apertura-vista</code></td>
-              <td>Proprio (sessionStorage)</td>
-              <td>Tecnico</td>
-              <td>Ricorda che hai già visto l'animazione di apertura della pagina dei link, per non ripetertela nella stessa sessione</td>
-              <td>Fino alla chiusura della scheda</td>
-            </tr>
-            <tr>
-              <td><code>gpf-ios-hint</code></td>
-              <td>Proprio (localStorage)</td>
-              <td>Tecnico</td>
-              <td>Ricorda che hai chiuso l'invito a installare l'app su iPhone o iPad, per non riproportelo</td>
-              <td>30 giorni</td>
-            </tr>
           </tbody>
         </table>
       </div>
       <p>
-        Le ultime cinque voci non sono cookie ma archivi locali del browser (<code>localStorage</code> e <code>sessionStorage</code>): restano sul tuo dispositivo, non vengono trasmessi ad alcun server né a terze parti e non contengono identificativi che permettano di riconoscerti. Sono strumenti tecnici ai sensi dell'art. 122 del Codice Privacy e non richiedono quindi il tuo consenso preventivo. Sono elencati qui per completezza, perché sono tutto ciò che questo sito memorizza sul tuo dispositivo oltre ai cookie sopra indicati.
+        L'ultima voce non è un cookie ma un archivio locale del browser (<code>localStorage</code>): resta sul tuo dispositivo, non viene trasmessa ad alcun server né a terze parti e non contiene identificativi che permettano di riconoscerti. È uno strumento tecnico ai sensi dell'art. 122 del Codice Privacy e non richiede quindi il tuo consenso preventivo. È elencata qui per completezza, perché è tutto ciò che questo sito memorizza sul tuo dispositivo oltre ai cookie sopra indicati.
       </p>
 
-      <h3>4.4 Gestione del consenso</h3>
+      <h3 id="gestione-consenso">4.4 Gestione del consenso</h3>
       <p>
-        Il sito utilizza uno strumento di gestione del consenso (Consent Management Platform) che blocca preventivamente i cookie non tecnici finché l'utente non presta il proprio consenso esplicito tramite l'apposito banner, presentato al primo accesso. L'utente può in qualsiasi momento modificare o revocare le proprie preferenze riaprendo il pannello dedicato tramite il pulsante:
+        Il sito utilizza uno strumento di gestione del consenso (Consent Management Platform) che blocca preventivamente i cookie non tecnici finché l'utente non presta il proprio consenso esplicito tramite l'apposito banner, presentato al primo accesso. Il banner offre «Accetta tutti» e «Rifiuta tutti» con lo stesso peso, e «Gestisci preferenze» per scegliere categoria per categoria; chiuderlo con la X equivale a rifiutare. L'utente può in qualsiasi momento modificare o revocare le proprie preferenze riaprendo il pannello dedicato tramite il pulsante:
       </p>
       <div class="informativa__azione">
         <button type="button" id="riapri-preferenze-cookie" data-cc="show-preferencesModal" class="btn btn-secondary">
@@ -362,6 +333,9 @@
         Qualora dati personali vengano trasferiti verso Paesi extra-UE/SEE (in particolare Stati Uniti) da parte di fornitori terzi utilizzati dal sito, tale trasferimento avviene sulla base di uno strumento che garantisce un livello di protezione adeguato ai sensi degli artt. 44-46 GDPR, quale l'adesione del fornitore all'EU-U.S. Data Privacy Framework (DPF) — riconosciuto adeguato dalla Commissione Europea con decisione del 10 luglio 2023 — oppure le Clausole Contrattuali Standard approvate dalla Commissione Europea.
       </p>
       <p>
+        Lo stesso vale per le email che mi invii: sono inoltrate a un account Gmail di Google, e possono quindi essere conservate anche negli Stati Uniti, sulla base dell'adesione di Google LLC al DPF.
+      </p>
+      <p>
         <em>Nota di aggiornamento normativo: la decisione di adeguatezza relativa al DPF è oggetto di un ricorso pendente dinanzi alla Corte di Giustizia dell'Unione Europea. Alla data di ultimo aggiornamento della presente informativa il DPF risulta pienamente valido ed efficace; il Titolare si impegna a monitorare eventuali sviluppi e ad aggiornare la presente informativa in caso di modifiche del quadro normativo sui trasferimenti internazionali di dati.</em>
       </p>
       <p>
@@ -388,7 +362,10 @@
       </p>
       <p>
         <strong>Base giuridica:</strong> legittimo interesse del Titolare a garantire la disponibilità, le prestazioni e la sicurezza del sito web (art. 6, par. 1, lett. f, GDPR).<br>
-        <strong>Trasferimento dati:</strong> Cloudflare, Inc. aderisce all'EU-U.S. Data Privacy Framework (DPF), l'accordo internazionale riconosciuto adeguato dalla Commissione Europea che assicura la conformità agli standard europei di protezione dei dati per i trasferimenti verso gli Stati Uniti. Per maggiori informazioni consulta la <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy di Cloudflare</a>.
+        <strong>Trasferimento dati:</strong> Cloudflare, Inc. ha sede negli Stati Uniti e aderisce all'EU-U.S. Data Privacy Framework (DPF), oggetto della decisione di adeguatezza della Commissione europea del 10 luglio 2023. Il contratto con Cloudflare (Data Processing Addendum) prevede inoltre le clausole contrattuali tipo approvate dalla Commissione europea (decisione (UE) 2021/914), che si applicano se l'adesione al DPF venisse meno. Cloudflare si avvale di società del proprio gruppo e di altri fornitori, alcuni con sede fuori dall'UE, elencati nella <a href="https://www.cloudflare.com/gdpr/subprocessors/" target="_blank" rel="noopener noreferrer">pagina dei sub-responsabili di Cloudflare</a>. Se una pagina non si carica per un errore di rete, il browser può inviare a Cloudflare un breve rapporto tecnico sull'errore (Network Error Logging), con le stesse finalità di sicurezza e stabilità. Per maggiori informazioni consulta la <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener noreferrer">Privacy Policy di Cloudflare</a>.
+      </p>
+      <p>
+        Fino al 16 novembre 2026 il sito era ospitato da Netlify, Inc. (Stati Uniti), che può conservare per un periodo limitato i registri tecnici delle visite precedenti.
       </p>
 
       <h2 id="diritti">9. I Tuoi Diritti (Artt. 15-22 GDPR)</h2>
@@ -398,9 +375,9 @@
         <li><strong>Diritto di rettifica (art. 16):</strong> ottenere la correzione di dati inesatti o l'integrazione di dati incompleti.</li>
         <li><strong>Diritto alla cancellazione / all'oblio (art. 17):</strong> ottenere la cancellazione dei propri dati, nei casi previsti dalla norma (es. dati non più necessari, revoca del consenso).</li>
         <li><strong>Diritto di limitazione di trattamento (art. 18):</strong> ottenere la limitazione del trattamento in presenza di determinate condizioni (es. contestazione dell'esattezza dei dati).</li>
-        <li><strong>Diritto alla portabilità dei dati (art. 20):</strong> ricevere in un formato strutturato, di uso comune e leggibile da dispositivo automatico, i dati forniti al Titolare sulla base del consenso, ove tecnicamente applicabile.</li>
+        <li><strong>Diritto alla portabilità dei dati (art. 20):</strong> ricevere in un formato strutturato, di uso comune e leggibile da dispositivo automatico, i dati forniti al Titolare sulla base del consenso o di misure precontrattuali richieste da te, ove tecnicamente applicabile.</li>
         <li><strong>Diritto di opposizione (art. 21):</strong> opporsi in qualsiasi momento al trattamento basato sul legittimo interesse del Titolare, per motivi connessi alla propria situazione particolare.</li>
-        <li><strong>Diritto di revoca del consenso:</strong> revocare in qualsiasi momento un consenso precedentemente prestato (es. per i cookie analitici), senza pregiudicare la liceità del trattamento basata sul consenso prima della revoca.</li>
+        <li><strong>Diritto di revoca del consenso:</strong> revocare in qualsiasi momento un consenso precedentemente prestato (es. per i cookie analitici), senza pregiudicare la liceità del trattamento basata sul consenso prima della revoca. La revoca è semplice quanto il consenso: per i cookie basta il pulsante «Gestisci preferenze cookie» della <a href="#gestione-consenso">sezione 4.4</a>, negli altri casi una email a <a href="mailto:info@giovannipaolofusco.it">info@giovannipaolofusco.it</a>.</li>
         <li><strong>Diritto di non essere sottoposto a decisioni automatizzate (art. 22):</strong> questo sito non effettua processi decisionali automatizzati né attività di profilazione che producano effetti giuridici sull'utente.</li>
       </ul>
       <p>
@@ -414,12 +391,12 @@
 
       <h2 id="minori">11. Minori</h2>
       <p>
-        Il sito non è specificamente rivolto a minori di anni 16 e non raccoglie consapevolmente dati personali di minori senza il consenso di chi ne esercita la responsabilità genitoriale. Qualora il Titolare venga a conoscenza di aver raccolto dati personali di un minore senza il necessario consenso, provvederà a cancellare tali informazioni tempestivamente.
+        Il sito non è rivolto a minori di 14 anni e non ne raccolgo consapevolmente i dati (art. 8 GDPR e art. 2-quinquies del Codice Privacy). Se sei un genitore, o chi esercita la responsabilità genitoriale, e ritieni che un minore di 14 anni mi abbia comunicato dati personali, scrivimi a <a href="mailto:info@giovannipaolofusco.it">info@giovannipaolofusco.it</a>: cancellerò quei dati senza ingiustificato ritardo.
       </p>
 
       <h2 id="modifiche">12. Modifiche alla Presente Informativa</h2>
       <p>
-        Il Titolare si riserva il diritto di apportare modifiche alla presente Privacy e Cookie Policy in qualsiasi momento, dandone pubblicità agli utenti su questa pagina e, se le modifiche sono sostanziali, informando gli utenti con mezzi adeguati. Si prega di consultare regolarmente questa pagina, facendo riferimento alla data di ultimo aggiornamento indicata in cima al documento.
+        Il Titolare si riserva il diritto di apportare modifiche alla presente Privacy e Cookie Policy in qualsiasi momento, dandone pubblicità agli utenti su questa pagina e, se le modifiche sono sostanziali, informando gli utenti con mezzi adeguati. Si prega di consultare regolarmente questa pagina, facendo riferimento alla data di ultimo aggiornamento indicata in fondo al documento.
       </p>
       <p>
         <strong>Trattamento per una finalità diversa (art. 13, par. 3, GDPR).</strong> Se il Titolare intendesse trattare i dati personali che ti riguardano per una finalità diversa da quella per cui li ha ottenuti — per esempio utilizzare per una comunicazione periodica l'indirizzo con cui gli hai scritto — te ne informerà <strong>prima</strong> di procedere, all'indirizzo email o al recapito che hai usato per contattarlo, fornendoti ogni informazione pertinente su quella nuova finalità e chiedendoti il consenso ove necessario. L'invito a consultare periodicamente questa pagina, riportato qui sopra, riguarda le modifiche dell'informativa e non sostituisce questo impegno.
@@ -430,6 +407,7 @@
         Per qualsiasi domanda relativa alla presente informativa o al trattamento dei tuoi dati personali, puoi contattarmi a:<br>
         <strong>Email:</strong> <a href="mailto:info@giovannipaolofusco.it">info@giovannipaolofusco.it</a>
       </p>
+      <p class="informativa__data">Ultimo aggiornamento: 16 novembre 2026</p>
     </main>
 
     <footer>
@@ -447,7 +425,7 @@
         <span aria-hidden="true">·</span>
         <a href="/contatti/">Contatti</a>
       </p>
-      <p><a href="/privacy/" class="active">Privacy & Cookie Policy</a></p>
+      <p><a href="/privacy/" class="active">Privacy & Cookie Policy</a> <span aria-hidden="true">·</span> <button type="button" class="footer-cookie" data-cc="show-preferencesModal">Gestisci preferenze cookie</button></p>
       <p class="footer-legge">Professionista ai sensi della Legge 14 gennaio 2013, n. 4 — professione non organizzata in ordini o collegi.</p>
     </footer>
 
