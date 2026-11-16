@@ -18,7 +18,7 @@ const publicFiles = [
   'CV-Giovanni-Paolo-Fusco-EN.pdf',
   'CV-Giovanni-Paolo-Fusco.pdf',
   'favicon.ico',
-  'cc8cc868c178b5f8fd031e3e98ff5cd5.txt', // chiave IndexNow (CLAUDE.md §6.14): nome e contenuto coincidono
+  'cc8cc868c178b5f8fd031e3e98ff5cd5.txt', // chiave IndexNow: nome e contenuto coincidono
   'llms.txt',
   'robots.txt',
   'site.webmanifest',

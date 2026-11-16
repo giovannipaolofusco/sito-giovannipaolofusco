@@ -1,11 +1,11 @@
 (function () {
-  var VISITED_KEY = 'gpf-visited';
-  var IOS_HINT_KEY = 'gpf-ios-hint';
-  var IOS_HINT_GIORNI = 30;
-  var hasVisitedBefore = sessionStorage.getItem(VISITED_KEY) === '1';
+  const VISITED_KEY = 'gpf-visited';
+  const IOS_HINT_KEY = 'gpf-ios-hint';
+  const IOS_HINT_GIORNI = 30;
+  const hasVisitedBefore = sessionStorage.getItem(VISITED_KEY) === '1';
   sessionStorage.setItem(VISITED_KEY, '1');
 
-  var isEn = document.documentElement.lang === 'en';
+  const isEn = document.documentElement.lang === 'en';
 
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', function () {
@@ -13,8 +13,8 @@
     });
   }
 
-  var deferredPrompt = null;
-  var installBtn = null;
+  let deferredPrompt = null;
+  let installBtn = null;
 
   function createInstallButton() {
     if (installBtn) return installBtn;
@@ -64,9 +64,9 @@
 
   function hintDismissed() {
     try {
-      var salvato = localStorage.getItem(IOS_HINT_KEY);
+      const salvato = localStorage.getItem(IOS_HINT_KEY);
       if (!salvato) return false;
-      var quando = parseInt(salvato, 10);
+      const quando = parseInt(salvato, 10);
       if (!quando || isNaN(quando)) return false;
       return Date.now() - quando < IOS_HINT_GIORNI * 24 * 60 * 60 * 1000;
     } catch (error) {
@@ -75,16 +75,16 @@
   }
 
   function showIosHint() {
-    var hint = document.createElement('aside');
+    const hint = document.createElement('aside');
     hint.className = 'pwa-ios-hint';
 
-    var text = document.createElement('p');
+    const text = document.createElement('p');
     text.className = 'pwa-ios-hint__text';
     text.textContent = isEn
       ? 'Install this site as an app: tap Share, then "Add to Home Screen".'
       : 'Installa questo sito come app: tocca Condividi, poi "Aggiungi alla schermata Home".';
 
-    var close = document.createElement('button');
+    const close = document.createElement('button');
     close.type = 'button';
     close.className = 'pwa-ios-hint__close';
     close.textContent = '×';

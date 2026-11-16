@@ -69,7 +69,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v36/);
+  assert.match(worker, /gpf-shell-v37/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gpf-shell-v36';
+const CACHE_NAME = 'gpf-shell-v37';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
@@ -32,15 +32,10 @@ const SHELL_ASSETS = [
   '/assets/img/logo-nav.jpg',
   '/assets/img/foto-chi-sono.jpg',
   '/assets/img/foto-chi-sono.webp',
-  '/assets/js/motion.js',
   '/assets/js/tema.js',
   '/assets/js/webgl-support.js',
   '/assets/js/condividi.js',
-  '/assets/libs/three/three.module-r187.min.js',
-  '/assets/libs/three/three.core-r187.min.js',
   '/assets/libs/cookieconsent/cookieconsent-3.3.0.umd.js',
-  '/assets/libs/gsap/gsap-3.15.1.min.js',
-  '/assets/libs/gsap/ScrollTrigger-3.15.1.min.js',
   '/assets/fonts/ibm-plex-mono-latin-regular.woff2',
   '/assets/fonts/ibm-plex-mono-latin-500.woff2',
   '/assets/favicon/favicon.ico',
@@ -64,6 +59,11 @@ function isDocument(request, url) {
     url.pathname.endsWith('.json') ||
     url.pathname.endsWith('.vcf')
   );
+}
+
+// Le librerie hanno la versione nel nome: entrano in cache alla prima richiesta e non si riscaricano.
+function isVersionedLib(url) {
+  return url.pathname.startsWith('/assets/libs/');
 }
 
 function isPdf(url) {
@@ -130,7 +130,7 @@ self.addEventListener('fetch', (event) => {
   if (EXCLUDED_PATHS.includes(url.pathname)) return;
   if (/\.(mp4|webm)$/.test(url.pathname)) return;
 
-  if (isDocument(event.request, url) || isPdf(url) || isRevalidatable(url)) {
+  if (!isVersionedLib(url) && (isDocument(event.request, url) || isPdf(url) || isRevalidatable(url))) {
     event.respondWith(networkFirst(event));
     return;
   }

@@ -1,6 +1,4 @@
-// Comparsa allo scroll reversibile (CLAUDE.md §10ter): l'elemento compare
-// entrando, torna nascosto quando esce del tutto dallo schermo e ricompare
-// al passaggio successivo. Cio' che e' gia' visibile all'apertura non si anima.
+// Reversibile: l'elemento si nasconde quando esce dallo schermo; cio' che e' gia' visibile all'apertura non si anima.
 export function initScrollReveal(options = {}) {
   const root = options.root || document.documentElement;
   const items = [...(options.items || document.querySelectorAll('[data-motion]'))];

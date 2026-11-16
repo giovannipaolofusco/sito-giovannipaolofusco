@@ -13,8 +13,7 @@
     utm_campaign: 'link-bio',
   };
 
-  // Tutti i collegamenti interni della pagina (Sito web, Servizi, Formazione AI): fino al
-  // 15/11/2026 lo prendeva solo il primo, e chi sceglieva gli altri perdeva la sorgente.
+  // Tutti i collegamenti interni, non solo il primo: altrimenti gli altri perdono la sorgente.
   const destinazioni = document.querySelectorAll('.link-bio__links a[href^="/"]');
   if (!destinazioni.length) return;
 

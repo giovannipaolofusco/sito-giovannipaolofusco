@@ -1,61 +1,58 @@
 (function () {
-  // Prezzo di lancio: vale per i contratti firmati entro il 31/12/2026 (Allegato
-  // Tecnico, sezione 7). Il markup porta il listino; fino alla scadenza qui si
-  // aggiunge il prezzo di lancio. Dopo, o se lo script non parte, resta il listino.
-  var SCADENZA_LANCIO = new Date('2026-12-31T23:59:59+01:00').getTime();
+  // Il markup porta il listino: fino alla scadenza si aggiunge il prezzo di lancio, dopo o senza JavaScript resta il listino.
+  const SCADENZA_LANCIO = new Date('2026-12-31T23:59:59+01:00').getTime();
   if (Date.now() <= SCADENZA_LANCIO) {
     document.documentElement.classList.add('lancio-attivo');
     document.querySelectorAll('[data-lancio]').forEach(function (el) {
-      var listino = el.textContent.trim();
+      const listino = el.textContent.trim();
       el.textContent = '';
-      var lancio = document.createElement('span');
+      const lancio = document.createElement('span');
       lancio.className = 'prezzo-lancio';
       lancio.textContent = el.getAttribute('data-lancio');
-      var vecchio = document.createElement('s');
+      const vecchio = document.createElement('s');
       vecchio.className = 'prezzo-listino';
       vecchio.textContent = listino;
       el.append(lancio, ' ', vecchio);
     });
   }
 
-  var stage = document.getElementById('deckStage');
+  const stage = document.getElementById('deckStage');
   if (!stage) return;
 
-  var slides = Array.from(stage.querySelectorAll('.slide'));
-  var sequenza = slides.filter(function (s) { return !s.classList.contains('slide--nascosta'); });
-  var nascoste = slides.filter(function (s) { return s.classList.contains('slide--nascosta'); });
-  var current = Math.max(0, slides.findIndex(function (s) { return s.classList.contains('active'); }));
-  var ritorno = null;
-  var animating = false;
-
+  const slides = Array.from(stage.querySelectorAll('.slide'));
+  const sequenza = slides.filter(function (s) { return !s.classList.contains('slide--nascosta'); });
+  const nascoste = slides.filter(function (s) { return s.classList.contains('slide--nascosta'); });
+  let current = Math.max(0, slides.findIndex(function (s) { return s.classList.contains('active'); }));
+  let ritorno = null;
+  let animating = false;
 
   function scaleStage() {
-    var factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
-    var x = (window.innerWidth - 1920 * factor) / 2;
-    var y = (window.innerHeight - 1080 * factor) / 2;
+    const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+    const x = (window.innerWidth - 1920 * factor) / 2;
+    const y = (window.innerHeight - 1080 * factor) / 2;
     stage.style.transform = 'translate(' + x + 'px, ' + y + 'px) scale(' + factor + ')';
   }
   scaleStage();
   window.addEventListener('resize', scaleStage);
   window.addEventListener('orientationchange', scaleStage);
 
-  var progressFill = document.getElementById('progressFill');
-  var counter = document.getElementById('counter');
-  var btnPrev = document.getElementById('btnPrev');
-  var btnNext = document.getElementById('btnNext');
-  var btnExtra = document.getElementById('btnExtra');
+  const progressFill = document.getElementById('progressFill');
+  const counter = document.getElementById('counter');
+  const btnPrev = document.getElementById('btnPrev');
+  const btnNext = document.getElementById('btnNext');
+  const btnExtra = document.getElementById('btnExtra');
 
   // Posizione nella sequenza: una slide nascosta conta come quella da cui si e' partiti.
   function posizione() {
-    var s = slides[current];
-    var i = sequenza.indexOf(s);
+    const s = slides[current];
+    const i = sequenza.indexOf(s);
     if (i >= 0) return i;
     return ritorno !== null ? sequenza.indexOf(slides[ritorno]) : 0;
   }
 
   function updateChrome() {
-    var i = posizione();
-    var nascosta = slides[current].classList.contains('slide--nascosta');
+    const i = posizione();
+    const nascosta = slides[current].classList.contains('slide--nascosta');
     progressFill.style.width = ((i + 1) / sequenza.length * 100) + '%';
     counter.textContent = nascosta ? 'Extra' : (i + 1) + ' / ' + sequenza.length;
     btnPrev.disabled = !nascosta && i === 0;
@@ -71,8 +68,8 @@
     animating = true;
     stage.setAttribute('data-dir', dir);
 
-    var outgoing = slides[current];
-    var incoming = slides[index];
+    const outgoing = slides[current];
+    const incoming = slides[index];
 
     outgoing.classList.add('leaving');
     incoming.classList.add('entering');
@@ -93,12 +90,12 @@
 
   function next() {
     if (slides[current].classList.contains('slide--nascosta')) return chiudiExtra();
-    var i = sequenza.indexOf(slides[current]);
+    const i = sequenza.indexOf(slides[current]);
     if (i < sequenza.length - 1) goTo(slides.indexOf(sequenza[i + 1]), 'next');
   }
   function prev() {
     if (slides[current].classList.contains('slide--nascosta')) return chiudiExtra();
-    var i = sequenza.indexOf(slides[current]);
+    const i = sequenza.indexOf(slides[current]);
     if (i > 0) goTo(slides.indexOf(sequenza[i - 1]), 'prev');
   }
 
@@ -109,7 +106,7 @@
   }
   function chiudiExtra() {
     if (ritorno === null) return;
-    var destinazione = ritorno;
+    const destinazione = ritorno;
     ritorno = null;
     goTo(destinazione, 'prev');
   }
@@ -120,7 +117,7 @@
   // cliccabili, anche quelli dentro le slide.
   document.addEventListener('click', function (e) {
     if (e.target.closest('a, button, video')) return;
-    var x = e.clientX / window.innerWidth;
+    const x = e.clientX / window.innerWidth;
     if (x < 0.4) prev(); else if (x > 0.6) next();
   });
   if (btnExtra) {
@@ -129,20 +126,20 @@
     });
   }
 
-  var btnFullscreen = document.getElementById('btnFullscreen');
-  var ICON_ENTER = '<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/>';
-  var ICON_EXIT = '<path d="M9 3v3a2 2 0 0 1-2 2H4M15 3v3a2 2 0 0 0 2 2h3M4 16h3a2 2 0 0 1 2 2v3M20 16h-3a2 2 0 0 0-2 2v3"/>';
+  const btnFullscreen = document.getElementById('btnFullscreen');
+  const ICON_ENTER = '<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M21 16v3a2 2 0 0 1-2 2h-3M8 21H5a2 2 0 0 1-2-2v-3"/>';
+  const ICON_EXIT = '<path d="M9 3v3a2 2 0 0 1-2 2H4M15 3v3a2 2 0 0 0 2 2h3M4 16h3a2 2 0 0 1 2 2v3M20 16h-3a2 2 0 0 0-2 2v3"/>';
 
   if (document.fullscreenEnabled || document.webkitFullscreenEnabled) {
-    var updateFullscreenIcon = function () {
-      var isFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    const updateFullscreenIcon = function () {
+      const isFull = !!(document.fullscreenElement || document.webkitFullscreenElement);
       btnFullscreen.querySelector('svg').innerHTML = isFull ? ICON_EXIT : ICON_ENTER;
       btnFullscreen.setAttribute('aria-label', isFull ? 'Esci da schermo intero' : 'Schermo intero');
     };
     btnFullscreen.addEventListener('click', function () {
-      var el = document.documentElement;
+      const el = document.documentElement;
       if (!document.fullscreenElement && !document.webkitFullscreenElement) {
-        var richiesta = (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+        const richiesta = (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
         if (richiesta && richiesta.catch) richiesta.catch(function () {});
       } else {
         (document.exitFullscreen || document.webkitExitFullscreen).call(document);
@@ -167,14 +164,14 @@
     else if (e.key === 'Escape' && slides[current].classList.contains('slide--nascosta')) { chiudiExtra(); }
   });
 
-  var touchStartX = 0, touchStartY = 0;
+  let touchStartX = 0, touchStartY = 0;
   window.addEventListener('touchstart', function (e) {
     touchStartX = e.changedTouches[0].clientX;
     touchStartY = e.changedTouches[0].clientY;
   }, { passive: true });
   window.addEventListener('touchend', function (e) {
-    var dx = e.changedTouches[0].clientX - touchStartX;
-    var dy = e.changedTouches[0].clientY - touchStartY;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
     if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy)) {
       if (dx < 0) next(); else prev();
     }

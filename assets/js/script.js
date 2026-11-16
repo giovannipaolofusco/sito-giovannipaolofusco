@@ -123,12 +123,11 @@ if (credlyContainer) {
 
       let badgesArray = normalizeBadges(data);
 
-      try {
-        const extraResponse = await fetch('/badges-extra.json');
-        if (extraResponse.ok) {
-          badgesArray = badgesArray.concat(normalizeBadges(await extraResponse.json()));
-        }
-      } catch (extraError) {
+      // badges-extra.json e' facoltativo: se manca o non si legge restano i badge principali.
+      const extraResponse = await fetch('/badges-extra.json').catch(() => null);
+      if (extraResponse && extraResponse.ok) {
+        const extra = await extraResponse.json().catch(() => []);
+        badgesArray = badgesArray.concat(normalizeBadges(extra));
       }
 
       badgesArray.sort((a, b) => {
@@ -138,7 +137,7 @@ if (credlyContainer) {
       });
 
       credlyContainer.innerHTML = '';
-      
+
       if (badgesArray.length === 0) {
         credlyContainer.innerHTML = `<li>${credlyMessages.noBadges}</li>`;
         return;
@@ -149,11 +148,11 @@ if (credlyContainer) {
         const imgUrl = badge.badge_template?.image?.url || badge.badge_template?.image_url || badge.image_url || '';
         const webpUrl = badge.badge_template?.image_webp || badge.image_webp || '';
         const date = badge.issued_at_date || badge.issued_at || '';
-        
+
         let formattedDate = '';
         if (date) {
-            const d = new Date(date);
-            formattedDate = !isNaN(d.getTime()) ? d.toLocaleDateString(currentLang === 'en' ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long', day: 'numeric' }) : date;
+          const d = new Date(date);
+          formattedDate = !isNaN(d.getTime()) ? d.toLocaleDateString(isEn ? 'en-US' : 'it-IT', { year: 'numeric', month: 'long', day: 'numeric' }) : date;
         }
 
         const badgeId = badge.id;
@@ -212,10 +211,8 @@ if (credlyContainer) {
     }
   }
 
-  if (credlyContainer.querySelector('.ct-badge')) {
-  } else {
-    fetchCredlyBadges();
-  }
+  // I badge sono gia' nel markup servito: si caricano da JSON solo se mancano.
+  if (!credlyContainer.querySelector('.ct-badge')) fetchCredlyBadges();
 }
 
 window.__ready = false;
@@ -232,11 +229,7 @@ window.__ready = false;
     document.fonts ? document.fonts.ready : Promise.resolve(),
     ...Array.from(document.images)
       .filter((img) => img.getBoundingClientRect().top < window.innerHeight * 1.5)
-      // Un'immagine lazy che il browser non ha ancora richiesto non fa parte
-      // dello stato a regime, e aspettarla appende __ready per sempre: decode()
-      // su una lazy mai richiesta non si risolve. E' accaduto il 20/09/2026 con
-      // la fascia dei badge, dove 21 immagini su 30 stavano fuori dalla vista
-      // orizzontale: la regressione visiva scadeva senza dire perche'.
+      // decode() su una lazy mai richiesta non si risolve e bloccherebbe __ready.
       .filter((img) => img.complete || img.loading !== 'lazy')
       .map((img) => (img.complete ? Promise.resolve() : img.decode().catch(() => {}))),
   ];
@@ -246,33 +239,21 @@ window.__ready = false;
   else window.addEventListener('load', pronto, { once: true });
 })();
 
-// Funzione per evidenziare la lingua attiva
-document.addEventListener('DOMContentLoaded', function() {
-  // Trova il bottone della lingua corrente e aggiungi la classe active
-  var pathname = window.location.pathname;
-  var bottoneIT = document.querySelector('.lang-selector .lang-btn:not([href])'); // Bottone IT non ha href
-  var bottoneEN = document.querySelector('.lang-btn[href*="en/"]'); // Bottone EN ha href che contiene "en/"
-
-  if (pathname.includes('/en/')) {
-    // Siamo nella versione inglese
-    if (bottoneEN) bottoneEN.classList.add('active');
-    if (bottoneIT) bottoneIT.classList.remove('active');
-  } else {
-    // Siamo nella versione italiana
-    if (bottoneIT) bottoneIT.classList.add('active');
-    if (bottoneEN) bottoneEN.classList.remove('active');
-  }
+document.addEventListener('DOMContentLoaded', () => {
+  const inglese = window.location.pathname.includes('/en/');
+  const bottoneIT = document.querySelector('.lang-selector .lang-btn:not([href])');
+  const bottoneEN = document.querySelector('.lang-btn[href*="en/"]');
+  if (bottoneIT) bottoneIT.classList.toggle('active', !inglese);
+  if (bottoneEN) bottoneEN.classList.toggle('active', inglese);
 });
 
-// Pulsante «Gestisci preferenze cookie» (solo nelle informative). Lo apre la
-// libreria del banner tramite data-cc; se la libreria non si e' caricata, il
-// click non farebbe niente: si mostra un avviso invece (CLAUDE.md §4).
+// Il pulsante apre le preferenze via data-cc: se la libreria del banner non e' carica, mostra un avviso.
 (function () {
-  var pulsante = document.getElementById('riapri-preferenze-cookie');
-  var avviso = document.getElementById('preferenze-non-disponibili');
+  const pulsante = document.getElementById('riapri-preferenze-cookie');
+  const avviso = document.getElementById('preferenze-non-disponibili');
   if (!pulsante || !avviso) return;
   pulsante.addEventListener('click', function () {
-    var cmp = window.CookieConsent;
+    const cmp = window.CookieConsent;
     if (cmp && typeof cmp.showPreferences === 'function') return;
     avviso.hidden = false;
   });

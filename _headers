@@ -1,5 +1,4 @@
-# Header di risposta — CLAUDE.md §6.9 (sicurezza) e §6.10 (cache).
-# scripts/build.mjs lo copia cosi' com'e' nella cartella pubblicata, dist/.
+# Header di sicurezza e di cache; scripts/build.mjs lo copia in dist/.
 
 /*
   X-Frame-Options: DENY
@@ -8,14 +7,11 @@
   Permissions-Policy: geolocation=(), microphone=(), camera=()
   Content-Security-Policy: default-src 'self'; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; style-src 'self'; script-src 'self' https://www.googletagmanager.com; font-src 'self'; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; worker-src 'self'; manifest-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'
 
-# /assets/* : revalidation quotidiana. Il progetto non versiona i nomi file
-# (niente hash nel nome), quindi una cache lunga congelerebbe per un anno un
-# CSS corretto oggi presso chi ha gia' visitato il sito.
+# Nomi senza hash: una cache lunga congelerebbe gli asset presso chi ha gia' visitato il sito.
 /assets/*
   Cache-Control: public, max-age=86400, must-revalidate
 
-# CSS e JavaScript non hanno nomi con hash: ogni visita li rivalida nel browser,
-# e sw.js li chiede prima alla rete, cosi' un deploy non resta fermo in nessuna cache.
+# CSS e JS si rivalidano a ogni visita, cosi' un deploy non resta fermo in cache.
 /assets/css/*
   Cache-Control: public, max-age=0, must-revalidate
 
@@ -35,9 +31,7 @@
   Content-Type: application/manifest+json
   Cache-Control: public, max-age=86400, must-revalidate
 
-# La vCard va servita come text/vcard: con text/plain il file si apre in una
-# scheda del browser e il contatto non entra in rubrica, senza alcun errore
-# visibile. La verifica che vale e' su un telefono reale, non su questo file.
+# Con text/plain la vCard si apre in una scheda invece di entrare in rubrica.
 /contatto.vcf
   Content-Type: text/vcard; charset=utf-8
   Cache-Control: public, max-age=86400, must-revalidate
