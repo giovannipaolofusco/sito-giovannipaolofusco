@@ -157,7 +157,7 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
   ]).map((page) => readFileSync(output(page), 'utf8')).join('\n');
   const excludedTerms = [
     'FSC' + 'GNN',
-    // «forfettario» e' ammesso dal 15/11/2026: la dicitura IVA dei prezzi nomina il regime, per decisione del titolare.
+    // «forfettario» e' ammesso: la dicitura IVA dei prezzi nomina il regime.
     'IN' + 'PS',
     'gestione' + ' previdenziale',
     '4/' + '2013'
@@ -209,9 +209,7 @@ test('il domicilio compare solo nelle quattro pagine ammesse', () => {
   }
 });
 
-// Presidio del 05/10/2026: ogni PDF pubblicato e' stato guardato da una persona.
-// Il registro si aggiorna a mano, mai da uno script. Copre anche i PDF fatti di
-// sole immagini, dove npm run test:pdf non trova testo da leggere.
+// Ogni PDF pubblicato e' stato guardato da una persona: il registro si aggiorna a mano, mai da uno script.
 test('ogni PDF in dist/ e\' nel registro delle impronte', () => {
   const registry = JSON.parse(readFileSync('tests/pdf-impronte.json', 'utf8'));
   const pdfs = readdirSync('dist', { recursive: true })
@@ -233,8 +231,7 @@ test('ogni PDF in dist/ e\' nel registro delle impronte', () => {
   ].join('\n'));
 });
 
-// Presidio del 05/10/2026: la sezione 6bis aveva sfalsato indice e testo.
-// Il test dice se un rimando punta a una sezione esistente, non se e' quella giusta.
+// Dice se un rimando punta a una sezione esistente, non se e' quella giusta.
 test('la privacy numera le sezioni senza salti e i rimandi puntano a sezioni esistenti', () => {
   for (const [page, word] of [['privacy/index.html', 'sezione'], ['en/privacy/index.html', 'section']]) {
     const html = readFileSync(output(page), 'utf8');
@@ -263,10 +260,7 @@ test('le icone della presentazione conservano la licenza di Lucide', () => {
   assert.match(svg, /Feather/);
 });
 
-// Presidio del 27/09/2026: le stesse pagine sono elencate a mano in piu' file
-// (sitemap, shell del Service Worker, redirect da .html, llms.txt) e la CSP sta
-// sia in _headers sia in ogni pagina. Nessun controllo segnalava un elenco
-// dimenticato: /privacy/ mancava dalla shell e llms.txt usava URL senza barra.
+// Le pagine sono elencate a mano in piu' file (sitemap, shell del Service Worker, redirect, llms.txt).
 function paginaDellaSitemap() {
   return [...readFileSync(output('sitemap.xml'), 'utf8').matchAll(/<loc>https:\/\/giovannipaolofusco\.it([^<]*)<\/loc>/g)]
     .map((m) => m[1]);
@@ -315,8 +309,7 @@ test('la chiave IndexNow e\' pubblicata in root con il proprio nome come contenu
   assert.equal(readFileSync(output(chiavi[0]), 'utf8').trim(), chiavi[0].replace('.txt', ''));
 });
 
-// Presidio del 14/11/2026: nessun test leggeva il JSON-LD come JSON. Un blocco
-// malformato non da' errori in pagina: Google lo scarta e basta.
+// Un JSON-LD malformato non da' errori in pagina: Google lo scarta e basta.
 test('il JSON-LD di ogni pagina della sitemap e\' JSON valido, senza recensioni', () => {
   for (const pagina of paginaDellaSitemap()) {
     const file = pagina === '/' ? 'index.html' : `${pagina.replace(/^\//, '')}index.html`;
@@ -351,10 +344,8 @@ test('la formazione AI dichiara quattro Course completi, FAQPage e BreadcrumbLis
       assert.ok(html.includes(domanda.name), `${file}: domanda non visibile in pagina: ${domanda.name}`);
     }
     assert.ok(grafo.some((nodo) => nodo['@type'] === 'BreadcrumbList'), `${file}: breadcrumb`);
-    // §10ter: prezzi e testi non entrano mai in un effetto di comparsa. Dal 15/11/2026 la mappa
-    // porta in legenda anche i supplementi di viaggio, quindi la pagina non ha comparse.
+    // Prezzi e supplementi di viaggio non entrano mai in un effetto di comparsa.
     assert.doesNotMatch(html, /\bdata-motion\b/, `${file}: effetto di comparsa in pagina`);
-    // Presidio del 15/11/2026: il titolo della pagina inglese era rimasto in italiano.
     if (file.startsWith('en/')) {
       const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, '');
       assert.doesNotMatch(h1, /\b(Corso|intelligenza|aziende|per)\b/, `${file}: titolo H1 in italiano: ${h1}`);
@@ -366,9 +357,7 @@ test('la formazione AI dichiara quattro Course completi, FAQPage e BreadcrumbLis
   }
 });
 
-// Presidio del 14/11/2026: la pagina nuova, generata copiando il menu di
-// Servizi, aveva «Formazione AI» due volte. Il controllo sui link guardava che
-// la voce ci fosse, non che fosse una sola.
+// Un menu copiato da un'altra pagina puo' ripetere una voce.
 test('il menu di ogni pagina ha voci uniche e una sola voce attiva', () => {
   const pagine = readdirSync('dist', { recursive: true }).map(String)
     .filter((file) => file.endsWith('.html') && !file.startsWith('presentazione'));
@@ -381,9 +370,7 @@ test('il menu di ogni pagina ha voci uniche e una sola voce attiva', () => {
   }
 });
 
-// Presidio del 15/11/2026: restyling delle pagine principali. Ogni pagina carica il foglio
-// e lo script comuni, nessuna richiama gli script delle grafiche tolte, e i contatti diretti
-// restano nel markup servito, leggibili anche se JavaScript non parte (CLAUDE.md §13bis.1).
+// I contatti diretti restano nel markup servito, leggibili anche se JavaScript non parte (regola di progetto).
 test('le pagine principali usano lo stile comune e restano leggibili senza JavaScript', () => {
   const tolti = /home-init|hero-scene|photo-particles|intro-anim|scroll-story|badge-fascia|\/cv\.js|servizi\.js|cv\.css/;
   for (const pre of ['', 'en/']) {
@@ -404,9 +391,7 @@ test('le pagine principali usano lo stile comune e restano leggibili senza JavaS
   }
 });
 
-// Presidio del 15/11/2026: il restyling aveva tolto i marcatori in cui il workflow
-// notturno scrive i badge (.github/scripts/rendi-badge-html.py), che si sarebbe fermato
-// alla prima esecuzione. I contatori della pagina devono seguire le card reali.
+// Il workflow notturno (.github/scripts/rendi-badge-html.py) scrive i badge fra i marcatori.
 test('certificazioni: badge fra i marcatori e contatori coerenti con le card', () => {
   for (const file of ['certificazioni/index.html', 'en/certificazioni/index.html']) {
     const sorgente = readFileSync(file.replace('/index.html', '.html'), 'utf8');
@@ -423,8 +408,7 @@ test('certificazioni: badge fra i marcatori e contatori coerenti con le card', (
   }
 });
 
-// Presidio del 15/11/2026: senza preload il titolo a peso 800 si reimpaginava all'arrivo del font
-// (CLS desktop 0,246 su Servizi). Le pagine principali precaricano i due font della prima schermata.
+// Senza preload il titolo a peso 800 si reimpagina all'arrivo del font (CLS).
 test('le pagine principali precaricano i font della prima schermata', () => {
   for (const pre of ['', 'en/']) {
     for (const pagina of ['index.html', 'servizi/index.html', 'formazione-ai/index.html', 'progetti/index.html', 'certificazioni/index.html', 'cv/index.html', 'contatti/index.html']) {
@@ -436,7 +420,6 @@ test('le pagine principali precaricano i font della prima schermata', () => {
   }
 });
 
-// Presidio del 15/11/2026 (fase A): durata, dicitura IVA ed email allineate su Formazione AI.
 test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@', () => {
   const casi = [
     ['formazione-ai/index.html', /3 ore circa, fino a 8 persone, da 390/, /<b>3 ore circa<\/b> per livello/, 'Prezzi finali: IVA non applicata (regime forfettario).'],
@@ -456,9 +439,7 @@ test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@'
   }
 });
 
-// Presidio del 15/11/2026 (migrazione a Cloudflare Pages): Cloudflare scarta le righe con "301!"
-// (verificato con wrangler pages dev 4.156.0), Netlify ha bisogno del "!" solo se il file esiste.
-// Quindi: niente "!" dove il file non c'e', e una regola senza "!" non puo' avere un file dietro.
+// Cloudflare scarta le righe con "301!" (wrangler pages dev 4.156.0), Netlify vuole il "!" solo se il file esiste.
 test('_redirects funziona sia su Netlify sia su Cloudflare Pages', () => {
   const righe = readFileSync(output('_redirects'), 'utf8').split('\n').map((r) => r.trim()).filter((r) => r && !r.startsWith('#'));
   const conHost = /^https?:\/\//;
@@ -475,7 +456,7 @@ test('_redirects funziona sia su Netlify sia su Cloudflare Pages', () => {
 });
 
 
-// Presidio del 15/11/2026 (migrazione a Cloudflare Pages): il parser di Netlify prende le righe
+// Il parser di Netlify prende le righe
 // "https://..." per un header e aggancia il noindex al blocco precedente, e scarta "! Header".
 // Quindi il _headers pubblicato per Netlify e' il sorgente senza quelle righe, e quello per Cloudflare
 // e' headersPerCloudflare(sorgente). La piattaforma si riconosce dal file pubblicato, perche'
