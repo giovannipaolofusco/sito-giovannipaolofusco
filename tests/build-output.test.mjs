@@ -423,7 +423,7 @@ test('le pagine principali precaricano i font della prima schermata', () => {
 test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@', () => {
   const casi = [
     ['formazione-ai/index.html', /3 ore circa, fino a 8 persone, da 390/, /<b>3 ore circa<\/b> per livello/, 'Prezzi finali: IVA non applicata (regime forfettario).'],
-    ['en/formazione-ai/index.html', /about 3 hours, up to 8 people, from €390/, /<b>About 3 hours<\/b> per level/, 'Final prices: no VAT applied (Italian flat-rate scheme).'],
+    ['en/formazione-ai/index.html', /[Aa]bout 3 hours, up to 8 people, from €390/, /<b>About 3 hours<\/b> per level/, 'Final prices: no VAT applied (Italian flat-rate scheme).'],
   ];
   for (const [file, meta, striscia, iva] of casi) {
     const html = readFileSync(output(file), 'utf8');
