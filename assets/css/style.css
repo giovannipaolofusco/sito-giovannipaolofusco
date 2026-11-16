@@ -66,9 +66,9 @@
   --nav-bg: #ffffff;
   --border-color: #eaeaea;
   --card-bg: #ffffff;
-  --accent-color: #6b2560;
+  --accent-color: #43237a;
   --transition: all 0.2s ease;
-  --accent-glow: rgba(107, 37, 96, 0.16);
+  --accent-glow: rgba(67, 35, 122, 0.16);
 }
 
 [data-theme='dark'] {
@@ -77,10 +77,10 @@
   --text-primary: #ededed;
   --text-secondary: #a0a0a0;
   --nav-bg: #0a0a0a;
-  --accent-glow: rgba(213, 139, 196, 0.22);
+  --accent-glow: rgba(185, 163, 232, 0.22);
   --border-color: #333333;
   --card-bg: #0a0a0a;
-  --accent-color: #d58bc4;
+  --accent-color: #b9a3e8;
 }
 
 * {
@@ -340,8 +340,8 @@ p {
 }
 
 [data-theme='dark'] .btn-primary {
-  background: #8e3a7e;
-  border-color: #8e3a7e;
+  background: #5a3496;
+  border-color: #5a3496;
 }
 
 .btn-secondary {
@@ -790,18 +790,18 @@ html.menu-aperto {
 
 /* Nel tema scuro il pulsante usa un tono piu' scuro dell'accento: il testo bianco resta sopra 4,5:1. */
 [data-theme='dark'] .link-bio__btn--primary {
-  background: #8e3a7e;
-  border-color: #8e3a7e;
+  background: #5a3496;
+  border-color: #5a3496;
 }
 
 /* Formazione AI: secondo servizio, pillola scura per distinguerla da Sito web e Servizi. */
 .link-bio__btn--formazione {
-  background: #141013;
-  border-color: #141013;
+  background: #141317;
+  border-color: #141317;
 }
 [data-theme='dark'] .link-bio__btn--formazione {
-  background: #1e161b;
-  border-color: #3e2f39;
+  background: #18151d;
+  border-color: #332c3e;
 }
 
 /* Social su una riga: icona sopra il nome, cosi' tre voci stanno anche a 320px. */
@@ -1073,8 +1073,8 @@ html.menu-aperto {
 }
 
 [data-theme='dark'] .pwa-install-btn {
-  background: #8e3a7e;
-  border-color: #8e3a7e;
+  background: #5a3496;
+  border-color: #5a3496;
 }
 
 @media (max-width: 640px) {
@@ -1171,7 +1171,7 @@ html.menu-aperto {
   padding: 12px 22px;
   min-height: 24px;
   border-radius: 12px;
-  background: #6b2560;
+  background: #43237a;
   color: #fff;
   font-size: 15px;
   font-weight: 700;

@@ -48,8 +48,8 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .tn__fatti { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 22px !important; font-size: 15px; color: var(--text-secondary); }
 .tn__fatti b { display: block; font-size: 24px; font-weight: 800; letter-spacing: -0.03em; color: var(--text-primary); }
 /* La mappa resta su fondo scuro in entrambi i temi: colori della mappa 3D e del disegno SVG sono pensati per quello. */
-.tn__figura { --text-primary: #ededed; --text-secondary: #aba2a8; --border-color: #2c2329; --accent-color: #e6a8d6; background: #141013; color: #ededed; border: 1px solid #2c2329; border-radius: 20px; padding: clamp(12px, 2vw, 20px); box-shadow: 0 30px 80px rgba(107, 37, 96, 0.16); }
-@keyframes tn-pulsa { 0% { transform: scale(1); } 40% { transform: scale(1.9); filter: drop-shadow(0 0 10px #d696c6); } 100% { transform: scale(1); } }
+.tn__figura { --text-primary: #ededed; --text-secondary: #a7a2b0; --border-color: #26212e; --accent-color: #c6b3ee; background: #141317; color: #ededed; border: 1px solid #26212e; border-radius: 20px; padding: clamp(12px, 2vw, 20px); box-shadow: 0 30px 80px rgba(67, 35, 122, 0.16); }
+@keyframes tn-pulsa { 0% { transform: scale(1); } 40% { transform: scale(1.9); filter: drop-shadow(0 0 10px #c2aeec); } 100% { transform: scale(1); } }
 .tn__docente { padding-block: 96px; border-top: 1px solid var(--border-color); }
 
 /* Livelli su fondo scuro: niente scorrimento orizzontale. I prezzi restano fermi. */
@@ -64,14 +64,14 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .lv__gradino { font-size: 13px; font-weight: 700; color: var(--accent-color); }
 .pd { padding-block: clamp(72px, 10vw, 128px); border-top: 1px solid var(--border-color); }
 .pd__passi { position: relative; display: grid; gap: 14px; margin-top: 40px !important; }
-@media (min-width: 900px) { .pd__passi { grid-template-columns: repeat(4, minmax(0, 1fr)); } .pd__passi::before { content: ''; position: absolute; left: 0; right: 0; top: 30px; height: 1px; background: linear-gradient(90deg, transparent, #d58bc4, transparent); } }
+@media (min-width: 900px) { .pd__passi { grid-template-columns: repeat(4, minmax(0, 1fr)); } .pd__passi::before { content: ''; position: absolute; left: 0; right: 0; top: 30px; height: 1px; background: linear-gradient(90deg, transparent, #b9a3e8, transparent); } }
 .pd__passo { position: relative; display: grid; gap: 8px; align-content: start; padding: 22px; border: 1px solid var(--border-color); border-radius: 16px; background: var(--card-bg); transition: border-color 0.3s ease, transform 0.35s var(--ease); }
-.pd__passo:hover { border-color: rgba(213, 139, 196, 0.6); }
+.pd__passo:hover { border-color: rgba(185, 163, 232, 0.6); }
 .pd__quando { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-color); }
 .pd__cosa { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; color: var(--text-primary); }
 .pd__testo { font-size: 15px; line-height: 1.5; color: var(--text-secondary); }
 .lv__scheda { position: relative; display: grid; align-content: start; gap: 10px; padding: 28px 24px; border: 1px solid var(--border-color); border-radius: 18px; background: var(--bg-color); transform-style: preserve-3d; overflow: hidden; }
-.lv__scheda:hover { border-color: rgba(213, 139, 196, 0.6); }
+.lv__scheda:hover { border-color: rgba(185, 163, 232, 0.6); }
 .lv__num { font-size: 14px; font-weight: 800; color: var(--accent-color); }
 .lv__h3 { font-size: clamp(24px, 2.4vw, 30px); font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; color: var(--text-primary); }
 .lv__desc { font-size: 15px; line-height: 1.55; color: var(--text-secondary); }
@@ -112,14 +112,14 @@ main.bz { max-width: none; width: 100%; padding: 0; margin: 80px 0 0; display: b
 .pm__voci { display: flex; flex-wrap: wrap; gap: 8px 22px; }
 .pm__voce { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; color: var(--text-primary); }
 .pm__dot { flex: none; width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
-.pm__dot--dentro { background: #ebc2e0; }
+.pm__dot--dentro { background: #d6c9f2; }
 .pm__dot--media { background: #a3a3b0; }
 .pm__dot--lontana { background: #6b6b78; }
 .pm__elenco { font-size: 14px; line-height: 1.5; color: var(--text-primary); }
 .pm__fonte { font-size: 12px; line-height: 1.5; color: var(--text-secondary); }
 .t3d__etichetta small { font-weight: 600; opacity: 0.8; font-size: 11px; margin-left: 4px; }
-.t3d__etichetta--forzata { z-index: 2; padding: 3px 8px; border-radius: 6px; background: rgba(10, 10, 10, 0.85); border: 1px solid #d58bc4; }
-.pm__suggerimento { position: absolute; z-index: 3; max-width: calc(100% - 8px); padding: 6px 10px; border: 1px solid #d58bc4; border-radius: 8px; background: rgba(10, 10, 10, 0.92); color: #ededed; font-size: 14px; font-weight: 700; line-height: 1.3; pointer-events: none; }
+.t3d__etichetta--forzata { z-index: 2; padding: 3px 8px; border-radius: 6px; background: rgba(10, 10, 10, 0.85); border: 1px solid #b9a3e8; }
+.pm__suggerimento { position: absolute; z-index: 3; max-width: calc(100% - 8px); padding: 6px 10px; border: 1px solid #b9a3e8; border-radius: 8px; background: rgba(10, 10, 10, 0.92); color: #ededed; font-size: 14px; font-weight: 700; line-height: 1.3; pointer-events: none; }
 .pm__suggerimento[hidden] { display: none; }
 /* Mappa 3D: fondo dietro le etichette, cosi' le aste delle colonne passano sotto il testo. */
-.t3d__etichetta { padding: 1px 6px; border-radius: 4px; background: rgba(20, 16, 19, 0.78); }
+.t3d__etichetta { padding: 1px 6px; border-radius: 4px; background: rgba(20, 19, 23, 0.78); }

@@ -42,7 +42,7 @@ async function avvia() {
     return p;
   }
   nuvola((a) => !a, 0x2c2c36, 0.028);
-  const area = nuvola((a) => a, 0xe6a8d6, 0.06);
+  const area = nuvola((a) => a, 0xc6b3ee, 0.06);
   area.material.blending = THREE.AdditiveBlending;
 
   const linea = (pts, colore, op) => {
@@ -58,7 +58,7 @@ async function avvia() {
     // Tre fasce di viaggio da Fondi, km su strada sul percorso piu' veloce: entro 25 incluso, 25-55 +30 euro, oltre 55 +60 euro.
     const fascia = c.km <= 25 ? 'dentro' : c.km <= 55 ? 'media' : 'lontana';
     const alt = fondi ? 1.15 : { dentro: 0.55, media: 0.3, lontana: 0.22 }[fascia];
-    const colore = { dentro: 0xebc2e0, media: 0xa3a3b0, lontana: 0x6b6b78 }[fascia];
+    const colore = { dentro: 0xd6c9f2, media: 0xa3a3b0, lontana: 0x6b6b78 }[fascia];
     const x = c.x * K, z = -c.y * K;
     const sfera = new THREE.Mesh(new THREE.SphereGeometry(fondi ? 0.075 : 0.045, 16, 16), new THREE.MeshBasicMaterial({ color: fondi ? 0xffffff : colore }));
     sfera.position.set(x, 0.02, z);
