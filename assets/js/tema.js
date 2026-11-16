@@ -1,5 +1,5 @@
 (function () {
-  var salvato = null;
+  let salvato = null;
   try {
     salvato = localStorage.getItem('theme');
   } catch (e) {}

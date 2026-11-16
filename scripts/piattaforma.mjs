@@ -1,7 +1,4 @@
-// Differenze fra Netlify e Cloudflare Pages che il build deve gestire, finche' il sito
-// gira su entrambe le piattaforme (migrazione del 2026). Verificate il 15/11/2026 sulla
-// documentazione ufficiale e con i parser veri: wrangler pages dev 4.156.0 per Cloudflare,
-// @netlify/headers-parser 10.1.1 per Netlify.
+// Differenze fra Netlify e Cloudflare Pages, provate con wrangler pages dev 4.156.0 e @netlify/headers-parser 10.1.1.
 import { execFileSync } from 'node:child_process';
 
 // Cloudflare Pages imposta CF_PAGES=1 nell'ambiente di build
