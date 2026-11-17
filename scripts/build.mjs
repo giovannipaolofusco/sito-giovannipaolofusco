@@ -43,8 +43,8 @@ async function listFiles(directory) {
 
 function withNavigationLogoPicture(html) {
   return html.replace(
-    /<img(?=[^>]*\bsrc="\/assets\/img\/logo-nav\.jpg")[^>]*>/g,
-    (image) => `<picture><source srcset="/assets/img/logo-nav.webp" type="image/webp">${image}</picture>`,
+    /<img(?=[^>]*\bsrc="\/assets\/img\/logo-nav-ritratto\.jpg")[^>]*>/g,
+    (image) => `<picture><source srcset="/assets/img/logo-nav-ritratto.webp" type="image/webp">${image}</picture>`,
   );
 }
 
