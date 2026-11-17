@@ -491,3 +491,16 @@ test('versione.json dice quale commit e quale piattaforma hanno costruito il sit
   assert.deepEqual(versione({ CF_PAGES_COMMIT_SHA: 'abc', COMMIT_REF: 'def' }).fonte, 'cloudflare-pages');
   assert.deepEqual(versione({ COMMIT_REF: 'def' }), { commit: 'def', fonte: 'netlify', data: versione({ COMMIT_REF: 'def' }).data });
 });
+
+// Le condizioni contrattuali: pagina fuori da menu e sitemap, noindex anche sul PDF,
+// data di pubblicazione scritta prima del merge.
+test('le condizioni 2026-11 sono pubblicate, noindex e fuori dalla sitemap', () => {
+  const page = readFileSync(output('condizioni/2026-11/index.html'), 'utf8');
+  assert.match(page, /<meta name="robots" content="noindex"/);
+  assert.match(page, /<link rel="canonical" href="https:\/\/giovannipaolofusco\.it\/condizioni\/2026-11\/"/);
+  assert.match(page, /href="condizioni-2026-11\.pdf"/);
+  assert.ok(existsSync(output('condizioni/2026-11/condizioni-2026-11.pdf')), 'PDF delle condizioni in dist/');
+  assert.doesNotMatch(readFileSync(output('sitemap.xml'), 'utf8'), /condizioni/);
+  assert.match(readFileSync(output('_headers'), 'utf8'), /\/condizioni\/\*\n  X-Robots-Tag: noindex/);
+  assert.doesNotMatch(page, /DATA_PUBBLICAZIONE/, 'segnaposto della data ancora presente: scrivere la data del merge');
+});

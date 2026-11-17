@@ -22,6 +22,10 @@
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
 
+# Le condizioni contrattuali restano consultabili ma fuori dai risultati di ricerca, PDF compreso.
+/condizioni/*
+  X-Robots-Tag: noindex
+
 # Mai cache immutabile su HTML, service worker e manifest.
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
