@@ -25,8 +25,8 @@ const publicFiles = [
   'sitemap.xml',
   'sw.js',
 ];
-// privacy-corsi/: informativa linkata dal questionario dei corsi, copiata senza minificazione.
-const publicDirectories = ['.well-known', 'assets', 'file', 'presentazione-pacchetti', 'privacy-corsi'];
+// condizioni/ e privacy-corsi/: documenti copiati senza minificazione, cosi' l'HTML servito resta quello del repository.
+const publicDirectories = ['.well-known', 'assets', 'condizioni', 'file', 'presentazione-pacchetti', 'privacy-corsi'];
 
 async function ensureParent(file) {
   await mkdir(dirname(file), { recursive: true });
