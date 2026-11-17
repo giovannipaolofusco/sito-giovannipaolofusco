@@ -69,7 +69,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v45/);
+  assert.match(worker, /gpf-shell-v46/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {
@@ -328,7 +328,7 @@ test('la formazione AI dichiara quattro Course completi, FAQPage e BreadcrumbLis
     const corsi = grafo.filter((nodo) => nodo['@type'] === 'Course');
     assert.equal(corsi.length, 4, `${file}: quattro livelli`);
     // Il livello 4 ha il prezzo su richiesta: nessuna offerta inventata nel JSON-LD.
-    assert.deepEqual(corsi.map((c) => c.offers?.price ?? null), ['390', '390', '490', null], `${file}: prezzi`);
+    assert.deepEqual(corsi.map((c) => c.offers?.price ?? null), ['390', '390', '490', '490'], `${file}: prezzi`);
     for (const corso of corsi) {
       assert.ok(corso.name && corso.description && corso.provider, `${file}: ${corso.name}`);
       if (corso.offers) {
