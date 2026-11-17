@@ -25,7 +25,8 @@ const publicFiles = [
   'sitemap.xml',
   'sw.js',
 ];
-const publicDirectories = ['.well-known', 'assets', 'file', 'presentazione-pacchetti'];
+// privacy-corsi/: informativa linkata dal questionario dei corsi, copiata senza minificazione.
+const publicDirectories = ['.well-known', 'assets', 'file', 'presentazione-pacchetti', 'privacy-corsi'];
 
 async function ensureParent(file) {
   await mkdir(dirname(file), { recursive: true });

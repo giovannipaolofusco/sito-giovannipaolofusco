@@ -1,0 +1,11 @@
+.informativa-corsi { max-width: 860px; }
+.informativa-corsi h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.15; }
+.informativa-corsi h2 { font-size: 20px; line-height: 1.25; color: var(--text-primary); margin-top: 32px; margin-bottom: 12px; }
+.informativa-corsi p, .informativa-corsi li { font-size: 17px; line-height: 1.6; overflow-wrap: anywhere; }
+.informativa-corsi p { margin-bottom: 14px; }
+.informativa-corsi ul { margin: 0 0 14px 1.25em; color: var(--text-secondary); }
+.informativa-corsi li { margin-bottom: 6px; }
+.informativa-corsi .tabella-cookie { min-width: 640px; }
+.informativa-corsi .tabella-cookie th, .informativa-corsi .tabella-cookie td { font-size: 15px; line-height: 1.5; text-align: left; vertical-align: top; color: var(--text-secondary); overflow-wrap: normal; }
+.informativa-corsi .tabella-cookie th { color: var(--text-primary); }
+.informativa-corsi ul ul { margin: 6px 0 0 1.25em; list-style: circle; }

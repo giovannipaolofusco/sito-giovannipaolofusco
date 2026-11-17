@@ -491,3 +491,13 @@ test('versione.json dice quale commit e quale piattaforma hanno costruito il sit
   assert.deepEqual(versione({ CF_PAGES_COMMIT_SHA: 'abc', COMMIT_REF: 'def' }).fonte, 'cloudflare-pages');
   assert.deepEqual(versione({ COMMIT_REF: 'def' }), { commit: 'def', fonte: 'netlify', data: versione({ COMMIT_REF: 'def' }).data });
 });
+
+// L'informativa dei corsi: linkata dal questionario e dalla Privacy, fuori da menu e sitemap, noindex.
+test('l informativa dei corsi e\' pubblicata, noindex e fuori dalla sitemap', () => {
+  const page = readFileSync(output('privacy-corsi/index.html'), 'utf8');
+  assert.match(page, /<meta name="robots" content="noindex"/);
+  assert.match(page, /<link rel="canonical" href="https:\/\/giovannipaolofusco\.it\/privacy-corsi\/"/);
+  assert.doesNotMatch(readFileSync(output('sitemap.xml'), 'utf8'), /privacy-corsi/);
+  assert.match(readFileSync(output('_headers'), 'utf8'), /\/privacy-corsi\/\*\n  X-Robots-Tag: noindex/);
+  assert.match(readFileSync(output('privacy/index.html'), 'utf8'), /href="\/privacy-corsi\/"/);
+});
