@@ -504,3 +504,13 @@ test('le condizioni 2026-11 sono pubblicate, noindex e fuori dalla sitemap', () 
   assert.match(readFileSync(output('_headers'), 'utf8'), /\/condizioni\/\*\n  X-Robots-Tag: noindex/);
   assert.doesNotMatch(page, /DATA_PUBBLICAZIONE/, 'segnaposto della data ancora presente: scrivere la data del merge');
 });
+
+// L'informativa dei corsi: linkata dal questionario e dalla Privacy, fuori da menu e sitemap, noindex.
+test('l informativa dei corsi e\' pubblicata, noindex e fuori dalla sitemap', () => {
+  const page = readFileSync(output('privacy-corsi/index.html'), 'utf8');
+  assert.match(page, /<meta name="robots" content="noindex"/);
+  assert.match(page, /<link rel="canonical" href="https:\/\/giovannipaolofusco\.it\/privacy-corsi\/"/);
+  assert.doesNotMatch(readFileSync(output('sitemap.xml'), 'utf8'), /privacy-corsi/);
+  assert.match(readFileSync(output('_headers'), 'utf8'), /\/privacy-corsi\/\*\n  X-Robots-Tag: noindex/);
+  assert.match(readFileSync(output('privacy/index.html'), 'utf8'), /href="\/privacy-corsi\/"/);
+});

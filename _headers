@@ -26,6 +26,10 @@
 /condizioni/*
   X-Robots-Tag: noindex
 
+# L'informativa dei corsi si apre dal questionario: consultabile, fuori dai risultati di ricerca.
+/privacy-corsi/*
+  X-Robots-Tag: noindex
+
 # Mai cache immutabile su HTML, service worker e manifest.
 /sw.js
   Cache-Control: public, max-age=0, must-revalidate
