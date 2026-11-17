@@ -1,0 +1,5 @@
+.condizioni { max-width: 760px; }
+.condizioni h1 { font-size: clamp(32px, 6vw, 44px); line-height: 1.15; }
+.condizioni h2 { font-size: 20px; line-height: 1.25; color: var(--text-primary); margin-top: 32px; margin-bottom: 12px; }
+.condizioni p { font-size: 17px; line-height: 1.6; margin-bottom: 14px; overflow-wrap: anywhere; }
+.condizioni .nota { margin-bottom: 32px; padding: 12px 16px; border: 1px solid var(--border-color); border-radius: 12px; background: var(--card-bg); }

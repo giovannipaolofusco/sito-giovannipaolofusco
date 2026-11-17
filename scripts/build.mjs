@@ -25,7 +25,8 @@ const publicFiles = [
   'sitemap.xml',
   'sw.js',
 ];
-const publicDirectories = ['.well-known', 'assets', 'file', 'presentazione-pacchetti'];
+// condizioni/: documenti contrattuali, copiati senza minificazione perche' l'HTML servito resti quello del repository.
+const publicDirectories = ['.well-known', 'assets', 'condizioni', 'file', 'presentazione-pacchetti'];
 
 async function ensureParent(file) {
   await mkdir(dirname(file), { recursive: true });
