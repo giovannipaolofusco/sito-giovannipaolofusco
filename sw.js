@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gpf-shell-v39';
+const CACHE_NAME = 'gpf-shell-v40';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
