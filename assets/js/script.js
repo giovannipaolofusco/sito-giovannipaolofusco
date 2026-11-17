@@ -11,34 +11,58 @@ document.querySelectorAll('img.nav-logo').forEach((logo) => {
 
 const themeToggle = document.getElementById('theme-toggle');
 const rootElement = document.documentElement;
+const temaSistema = window.matchMedia('(prefers-color-scheme: dark)');
+const inglese = (rootElement.lang || '').toLowerCase().startsWith('en');
 
 const sunIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>`;
 const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>`;
+const systemIcon = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle class="tema-anello" cx="12" cy="12" r="9"></circle><path d="M12 3a9 9 0 0 0 0 18z"></path></svg>`;
 
-function updateToggleIcon() {
-  const isDark = rootElement.getAttribute('data-theme') === 'dark';
+const ICONE = { light: sunIcon, dark: moonIcon, system: systemIcon };
+const NOMI = inglese
+  ? { light: 'light', dark: 'dark', system: 'system' }
+  : { light: 'chiaro', dark: 'scuro', system: 'di sistema' };
+const PROSSIMO = { system: 'light', light: 'dark', dark: 'system' };
+const VERSO = inglese
+  ? { light: 'light', dark: 'dark', system: 'system theme' }
+  : { light: 'chiaro', dark: 'scuro', system: 'al tema di sistema' };
+
+let sceltaTema = 'system';
+try {
+  const salvato = localStorage.getItem('theme');
+  if (salvato === 'light' || salvato === 'dark') sceltaTema = salvato;
+} catch (e) {}
+
+function applicaTema() {
+  const isDark = sceltaTema === 'dark' || (sceltaTema === 'system' && temaSistema.matches);
+  if (isDark) rootElement.setAttribute('data-theme', 'dark');
+  else rootElement.removeAttribute('data-theme');
   if (themeToggle) {
-    themeToggle.innerHTML = isDark ? sunIcon : moonIcon;
+    themeToggle.innerHTML = ICONE[sceltaTema];
+    const etichetta = inglese
+      ? `Theme: ${NOMI[sceltaTema]}. Switch to ${VERSO[PROSSIMO[sceltaTema]]}`
+      : `Tema: ${NOMI[sceltaTema]}. Passa ${PROSSIMO[sceltaTema] === 'system' ? '' : 'a '}${VERSO[PROSSIMO[sceltaTema]]}`;
+    themeToggle.setAttribute('aria-label', etichetta);
+    themeToggle.setAttribute('title', etichetta);
   }
   const themeMeta = document.querySelector('meta[name="theme-color"]');
-  if (themeMeta) {
-    themeMeta.content = isDark ? '#0a0a0a' : '#ffffff';
-  }
+  if (themeMeta) themeMeta.content = isDark ? '#0a0a0a' : '#ffffff';
 }
 
-updateToggleIcon();
+applicaTema();
+
+temaSistema.addEventListener('change', () => {
+  if (sceltaTema === 'system') applicaTema();
+});
 
 if (themeToggle) {
   themeToggle.addEventListener('click', () => {
-    const isDark = rootElement.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      rootElement.removeAttribute('data-theme');
-      try { localStorage.setItem('theme', 'light'); } catch (e) {}
-    } else {
-      rootElement.setAttribute('data-theme', 'dark');
-      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
-    }
-    updateToggleIcon();
+    sceltaTema = PROSSIMO[sceltaTema];
+    try {
+      if (sceltaTema === 'system') localStorage.removeItem('theme');
+      else localStorage.setItem('theme', sceltaTema);
+    } catch (e) {}
+    applicaTema();
   });
 }
 
