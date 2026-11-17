@@ -44,8 +44,8 @@ test('il build include i file serviti da Netlify e le risorse pubbliche', () => 
     'robots.txt',
     'assets/css/style.css',
     'assets/js/script.js',
-    'assets/img/logo-nav.jpg',
-    'assets/img/logo-nav.webp',
+    'assets/img/logo-nav-ritratto.jpg',
+    'assets/img/logo-nav-ritratto.webp',
     'presentazione-pacchetti/index.html',
     'presentazione-pacchetti/statico/index.html',
     'presentazione-pacchetti/fullstack/index.html',
@@ -61,7 +61,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
     const html = readFileSync(output(page), 'utf8');
     assert.match(
       html,
-      /<picture>\s*<source srcset="\/assets\/img\/logo-nav\.webp" type="image\/webp">\s*<img[^>]*src="\/assets\/img\/logo-nav\.jpg"[^>]*>\s*<\/picture>/,
+      /<picture>\s*<source srcset="\/assets\/img\/logo-nav-ritratto\.webp" type="image\/webp">\s*<img[^>]*src="\/assets\/img\/logo-nav-ritratto\.jpg"[^>]*>\s*<\/picture>/,
       page,
     );
   }
@@ -69,7 +69,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v37/);
+  assert.match(worker, /gpf-shell-v38/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {

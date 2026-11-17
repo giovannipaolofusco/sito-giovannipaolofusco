@@ -316,3 +316,5 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f4f2f7; --testo: #14131
 
 [data-theme='dark'] body.rxp .rx-barra a:first-child { background: var(--viola-btn); }
 @media (max-width: 639px) { .rx__codice { overflow-wrap: break-word; word-break: normal; font-size: 10px; } }
+.pg-prima__altro { padding-bottom: 4px; }
+.pg-prima__altro .rx__h2 { margin-top: 0 !important; font-size: clamp(24px, 3.4vw, 32px); }

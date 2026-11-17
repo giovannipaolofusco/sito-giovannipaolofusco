@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gpf-shell-v37';
+const CACHE_NAME = 'gpf-shell-v38';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
@@ -29,9 +29,9 @@ const SHELL_ASSETS = [
   '/assets/js/script.js',
   '/assets/js/cookieconsent-config.js',
   '/site.webmanifest',
-  '/assets/img/logo-nav.jpg',
-  '/assets/img/foto-chi-sono.jpg',
-  '/assets/img/foto-chi-sono.webp',
+  '/assets/img/logo-nav-ritratto.jpg',
+  '/assets/img/foto-ritratto.jpg',
+  '/assets/img/foto-ritratto.webp',
   '/assets/js/tema.js',
   '/assets/js/webgl-support.js',
   '/assets/js/condividi.js',
