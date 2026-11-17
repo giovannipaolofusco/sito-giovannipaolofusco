@@ -213,6 +213,10 @@ body > nav {
   border-color: var(--text-primary);
 }
 
+#theme-toggle .tema-anello {
+  fill: none;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;
