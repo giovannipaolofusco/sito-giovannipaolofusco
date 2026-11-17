@@ -113,7 +113,7 @@ a {
   transition: opacity 0.2s ease, color 0.2s ease;
 }
 
-:where(a:hover) {
+:where(a):hover {
   color: var(--text-primary);
 }
 
