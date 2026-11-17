@@ -17,6 +17,7 @@ gtag('consent', 'default', {
 });
 
 CookieConsent.run({
+  disablePageInteraction: true,
   cookie: {
     expiresAfterDays: 186
   },

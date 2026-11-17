@@ -73,3 +73,11 @@ docs/superpowers/
 
 # Stato locale di wrangler pages dev (simulatore Cloudflare Pages), mai nel repository.
 .wrangler/
+
+# Foto precedenti al 17/11/2026: tenute solo in locale, nessuna pagina le usa
+assets/img/foto-chi-sono.jpg
+assets/img/foto-chi-sono.webp
+assets/img/foto-avatar.jpg
+assets/img/foto-avatar.webp
+assets/img/logo-nav.jpg
+assets/img/og-card.jpg
