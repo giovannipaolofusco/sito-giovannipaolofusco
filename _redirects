@@ -49,7 +49,7 @@ https://giovannipaolofusco.netlify.app/*  https://giovannipaolofusco.it/:splat  
 
 # Indirizzo breve del QR sul biglietto da visita: se la demo cambia casa si
 # cambia solo questa riga. 302 perche' un 301 resta nella cache dei browser.
-/demo                    https://demo-pannello-git.netlify.app/   302
+/demo                    https://demo-pannello-git.pages.dev/   302
 
 # Pagine inesistenti sotto /en/: la 404 inglese invece di quella italiana.
 # Solo per Netlify: Cloudflare Pages non supporta lo stato 404 nei redirect

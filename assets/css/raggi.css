@@ -302,6 +302,7 @@ body.rxp { --fondo: #ffffff; --carta: #ffffff; --tenue: #f4f2f7; --testo: #14131
 /* Barra fissa su mobile: la pagina le lascia spazio in fondo, e l'invito a installare l'app sale sopra di lei. */
 @media (max-width: 767px) {
   body.rxp { padding-bottom: calc(80px + env(safe-area-inset-bottom)); }
+  html { scroll-padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 }
 /* In stampa niente controlli, e tutto il contenuto che a schermo si sceglie a pulsanti. */
 @media print {

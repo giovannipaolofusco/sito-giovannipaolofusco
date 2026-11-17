@@ -33,10 +33,10 @@ if (themeToggle) {
     const isDark = rootElement.getAttribute('data-theme') === 'dark';
     if (isDark) {
       rootElement.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch (e) {}
     } else {
       rootElement.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
+      try { localStorage.setItem('theme', 'dark'); } catch (e) {}
     }
     updateToggleIcon();
   });
