@@ -1,14 +1,5 @@
 import '/assets/libs/cookieconsent/cookieconsent-3.3.0.umd.js';
 
-await new Promise((fatto) => {
-  const foglio = document.createElement('link');
-  foglio.rel = 'stylesheet';
-  foglio.href = '/assets/css/cookieconsent.css';
-  foglio.onload = fatto;
-  foglio.onerror = fatto;
-  document.head.append(foglio);
-});
-
 window.dataLayer = window.dataLayer || [];
 function gtag() {
   window.dataLayer.push(arguments);
