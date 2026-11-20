@@ -505,7 +505,7 @@ svg {
   }
 }
 
-/* Sette voci: sopra 1080px stanno in riga, e «Formazione AI» non va a capo. Sotto, menu a scomparsa:
+/* Sei voci: sopra 1080px stanno in riga. Sotto, menu a scomparsa:
    fino al 15/11/2026 la soglia era 820px, e fra 821 e 1024px il nome toccava la prima voce. */
 @media (min-width: 1081px) {
   .nav-links a {
@@ -787,15 +787,6 @@ html.menu-aperto {
   border-color: #5a3496;
 }
 
-/* Formazione AI: secondo servizio, pillola scura per distinguerla da Sito web e Servizi. */
-.link-bio__btn--formazione {
-  background: #141317;
-  border-color: #141317;
-}
-[data-theme='dark'] .link-bio__btn--formazione {
-  background: #18151d;
-  border-color: #332c3e;
-}
 
 /* Social su una riga: icona sopra il nome, cosi' tre voci stanno anche a 320px. */
 .link-bio__social {

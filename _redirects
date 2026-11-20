@@ -27,7 +27,9 @@ https://giovannipaolofusco.netlify.app/*  https://giovannipaolofusco.it/:splat  
 /contatti.html           /contatti/             301
 /privacy.html            /privacy/              301
 /servizi.html            /servizi/              301
-/formazione-ai.html      /formazione-ai/        301
+/formazione-ai.html      /servizi/              301
+/formazione-ai/          /servizi/              301
+/formazione-ai           /servizi/              301
 
 /en/cv.html              /en/cv/                301
 /en/certificazioni.html  /en/certificazioni/    301
@@ -35,7 +37,9 @@ https://giovannipaolofusco.netlify.app/*  https://giovannipaolofusco.it/:splat  
 /en/contatti.html        /en/contatti/          301
 /en/privacy.html         /en/privacy/           301
 /en/servizi.html         /en/servizi/           301
-/en/formazione-ai.html   /en/formazione-ai/     301
+/en/formazione-ai.html   /en/servizi/           301
+/en/formazione-ai/       /en/servizi/           301
+/en/formazione-ai        /en/servizi/           301
 
 # Stessa classe di duplicato. /link e' distribuito con un QR stampato.
 /link.html               /link/                 301

@@ -8,7 +8,7 @@ import { headersPerCloudflare, suCloudflare, versione } from './piattaforma.mjs'
 
 const sourceRoot = process.cwd();
 const outputRoot = join(sourceRoot, 'dist');
-const routePages = ['servizi', 'formazione-ai', 'progetti', 'certificazioni', 'cv', 'contatti', 'privacy', 'link'];
+const routePages = ['servizi', 'progetti', 'certificazioni', 'cv', 'contatti', 'privacy', 'link'];
 const publicFiles = [
   '_headers',
   '_redirects',

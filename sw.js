@@ -1,10 +1,9 @@
-const CACHE_NAME = 'gpf-shell-v46';
+const CACHE_NAME = 'gpf-shell-v47';
 const NETWORK_TIMEOUT_MS = 3500;
 
 const SHELL_ASSETS = [
   '/',
   '/servizi/',
-  '/formazione-ai/',
   '/progetti/',
   '/certificazioni/',
   '/cv/',
@@ -12,7 +11,6 @@ const SHELL_ASSETS = [
   '/404',
   '/en/',
   '/en/servizi/',
-  '/en/formazione-ai/',
   '/en/progetti/',
   '/en/certificazioni/',
   '/en/cv/',
@@ -23,9 +21,6 @@ const SHELL_ASSETS = [
   '/assets/css/raggi.css',
   '/assets/js/raggi.js',
   '/assets/css/servizi.css',
-  '/assets/css/formazione.css',
-  '/assets/js/formazione.js',
-  '/assets/js/formazione-3d.js',
   '/assets/js/script.js',
   '/assets/js/cookieconsent-config.js',
   '/site.webmanifest',
