@@ -16,7 +16,7 @@ Sono Giovanni Paolo Fusco, sviluppatore web a Fondi (LT). Realizzo siti statici 
 | Hosting | Cloudflare Pages, con header di sicurezza in `_headers` e redirect in `_redirects`; `dist/versione.json` dice quale commit è online |
 | Offline | Service Worker (`sw.js`) per la cache delle risorse |
 | Certificazioni | GitHub Actions aggiorna ogni notte i badge Credly in `badges.json` e li scrive nelle pagine Certificazioni IT/EN |
-| Librerie | Ospitate sul sito, nessuna CDN: CookieConsent per il banner, GSAP e Three.js solo nella pagina Formazione AI e nella pagina link |
+| Librerie | Ospitate sul sito, nessuna CDN: CookieConsent per il banner, nessun'altra libreria |
 | Sicurezza | `/.well-known/security.txt` con il contatto per le segnalazioni |
 
 ## Avvio in locale
@@ -47,6 +47,6 @@ I'm Giovanni Paolo Fusco, a web developer in Fondi, Italy. I build fast static w
 - `node --test` checks the build output (a failure stops the deploy) and the PDF text.
 - Hosted on Cloudflare Pages with security headers (`_headers`) and redirects (`_redirects`), plus a Service Worker for caching.
 - A nightly GitHub Actions job refreshes Credly badges and writes them into the Certifications pages.
-- Third-party libraries are self-hosted, no CDN: CookieConsent for the banner, GSAP and Three.js only on the AI training and link pages.
+- Third-party libraries are self-hosted, no CDN: CookieConsent for the banner, no other library.
 
 **Run locally:** `npm install && npm run build && npx serve dist` (Node 22).

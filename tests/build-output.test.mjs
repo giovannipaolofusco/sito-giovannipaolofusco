@@ -8,7 +8,6 @@ import { headersPerCloudflare, versione } from '../scripts/piattaforma.mjs';
 const output = (path) => join('dist', path);
 const routePages = [
   'servizi',
-  'formazione-ai',
   'progetti',
   'certificazioni',
   'cv',
@@ -69,7 +68,7 @@ test('il logo di navigazione offre WebP senza togliere il fallback JPEG', () => 
 
 test('il Service Worker invalida la shell precedente del rilascio', () => {
   const worker = readFileSync(output('sw.js'), 'utf8');
-  assert.match(worker, /gpf-shell-v46/);
+  assert.match(worker, /gpf-shell-v47/);
 });
 
 test('i metadata e la sitemap usano l URL fisico con trailing slash', () => {
@@ -93,7 +92,6 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
     'index.html',
     '404.html',
     'servizi/index.html',
-    'formazione-ai/index.html',
     'progetti/index.html',
     'certificazioni/index.html',
     'cv/index.html',
@@ -104,7 +102,6 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
     'en/index.html',
     'en/404.html',
     'en/servizi/index.html',
-    'en/formazione-ai/index.html',
     'en/progetti/index.html',
     'en/certificazioni/index.html',
     'en/cv/index.html',
@@ -114,14 +111,12 @@ test('l output pubblico identifica il prestatore senza esporre dati esclusi', ()
   const structuredDataPages = [
     'index.html',
     'servizi/index.html',
-    'formazione-ai/index.html',
     'progetti/index.html',
     'certificazioni/index.html',
     'cv/index.html',
     'contatti/index.html',
     'en/index.html',
     'en/servizi/index.html',
-    'en/formazione-ai/index.html',
     'en/progetti/index.html',
     'en/certificazioni/index.html',
     'en/cv/index.html',
@@ -321,42 +316,6 @@ test('il JSON-LD di ogni pagina della sitemap e\' JSON valido, senza recensioni'
   }
 });
 
-test('la formazione AI dichiara quattro Course completi, FAQPage e BreadcrumbList', () => {
-  for (const file of ['formazione-ai/index.html', 'en/formazione-ai/index.html']) {
-    const html = readFileSync(output(file), 'utf8');
-    const grafo = JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1])['@graph'];
-    const corsi = grafo.filter((nodo) => nodo['@type'] === 'Course');
-    assert.equal(corsi.length, 4, `${file}: quattro livelli`);
-    // Il livello 4 ha il prezzo su richiesta: nessuna offerta inventata nel JSON-LD.
-    assert.deepEqual(corsi.map((c) => c.offers?.price ?? null), ['390', '390', '490', '490'], `${file}: prezzi`);
-    for (const corso of corsi) {
-      assert.ok(corso.name && corso.description && corso.provider, `${file}: ${corso.name}`);
-      if (corso.offers) {
-        assert.equal(corso.offers.priceCurrency, 'EUR');
-        assert.equal(corso.offers.category, 'Paid');
-      }
-      assert.equal(corso.hasCourseInstance.courseMode, 'Onsite');
-      assert.match(corso.hasCourseInstance.courseWorkload, /^PT\dH$/);
-    }
-    const faq = grafo.find((nodo) => nodo['@type'] === 'FAQPage');
-    assert.equal(faq.mainEntity.length, 7, `${file}: sette domande`);
-    for (const domanda of faq.mainEntity) {
-      assert.ok(html.includes(domanda.name), `${file}: domanda non visibile in pagina: ${domanda.name}`);
-    }
-    assert.ok(grafo.some((nodo) => nodo['@type'] === 'BreadcrumbList'), `${file}: breadcrumb`);
-    // Prezzi e supplementi di viaggio non entrano mai in un effetto di comparsa.
-    assert.doesNotMatch(html, /\bdata-motion\b/, `${file}: effetto di comparsa in pagina`);
-    if (file.startsWith('en/')) {
-      const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/)[1].replace(/<[^>]+>/g, '');
-      assert.doesNotMatch(h1, /\b(Corso|intelligenza|aziende|per)\b/, `${file}: titolo H1 in italiano: ${h1}`);
-    }
-    assert.equal((html.match(/class="lv__prezzo"/g) || []).length, 4, `${file}: quattro prezzi fermi`);
-    const persona = grafo.find((nodo) => nodo['@type'] === 'Person');
-    assert.equal(persona.vatID, 'IT03388590592');
-    assert.equal(persona.areaServed.length, 6);
-  }
-});
-
 // Un menu copiato da un'altra pagina puo' ripetere una voce.
 test('il menu di ogni pagina ha voci uniche e una sola voce attiva', () => {
   const pagine = readdirSync('dist', { recursive: true }).map(String)
@@ -384,7 +343,7 @@ test('le pagine principali usano lo stile comune e restano leggibili senza JavaS
       assert.match(html, /\+39 333 491 9401/, `${file}: telefono nel markup`);
     }
     const servizi = readFileSync(output(pre + 'servizi/index.html'), 'utf8');
-    assert.match(servizi, new RegExp(`href="/${pre}formazione-ai/"`), `${pre}servizi: porta verso la formazione`);
+    assert.doesNotMatch(servizi, /formazione-ai/, `${pre}servizi: porta verso la formazione tolta`);
     assert.equal((servizi.match(/class="rxq__voce"/g) || []).length, 8, `${pre}servizi: otto domande`);
     const dentro = (servizi.match(/<ul class="rx-dt__lista">(.*?)<\/ul>/s) || ['', ''])[1];
     assert.equal((dentro.match(/class="rx-dt__punto"/g) || []).length, 9, `${pre}servizi: nove voci in «Cosa c'è dentro ogni sito»`);
@@ -412,7 +371,7 @@ test('certificazioni: badge fra i marcatori e contatori coerenti con le card', (
 // Senza preload il titolo a peso 800 si reimpagina all'arrivo del font (CLS).
 test('le pagine principali precaricano i font della prima schermata', () => {
   for (const pre of ['', 'en/']) {
-    for (const pagina of ['index.html', 'servizi/index.html', 'formazione-ai/index.html', 'progetti/index.html', 'certificazioni/index.html', 'cv/index.html', 'contatti/index.html']) {
+    for (const pagina of ['index.html', 'servizi/index.html', 'progetti/index.html', 'certificazioni/index.html', 'cv/index.html', 'contatti/index.html']) {
       const head = readFileSync(output(pre + pagina), 'utf8').split('</head>')[0];
       for (const font of ['inter-v20-latin-800.woff2', 'inter-v20-latin-regular.woff2']) {
         assert.match(head, new RegExp(`<link[^>]*rel="?preload"?[^>]*${font.replace(/\./g, '\\.')}[^>]*crossorigin`), `${pre}${pagina}: preload di ${font}`);
@@ -421,19 +380,7 @@ test('le pagine principali precaricano i font della prima schermata', () => {
   }
 });
 
-test('Formazione AI: durata "3 ore circa", dicitura IVA unica, email solo info@', () => {
-  const casi = [
-    ['formazione-ai/index.html', /3 ore circa, fino a 8 persone, da 390/, /<b>3 ore circa<\/b> per livello/, 'Prezzi finali: IVA non applicata (regime forfettario).'],
-    ['en/formazione-ai/index.html', /[Aa]bout 3 hours, up to 8 people, from €390/, /<b>About 3 hours<\/b> per level/, 'Final prices: no VAT applied (Italian flat-rate scheme).'],
-  ];
-  for (const [file, meta, striscia, iva] of casi) {
-    const html = readFileSync(output(file), 'utf8');
-    const head = html.split('</head>')[0];
-    assert.ok([...head.matchAll(new RegExp(meta.source, 'g'))].length >= 4, `${file}: meta, og, twitter e JSON-LD con la durata nuova`);
-    assert.match(html, striscia, `${file}: striscia`);
-    assert.equal(html.split(iva).length - 1, 2, `${file}: dicitura IVA nei due punti`);
-    assert.doesNotMatch(html, /senza IVA da aggiungere|no VAT to add/, `${file}: dicitura vecchia`);
-  }
+test('email solo info@ nell output pubblico', () => {
   assert.match(readFileSync(output('.well-known/security.txt'), 'utf8'), /^Contact: mailto:info@giovannipaolofusco\.it$/m);
   for (const f of readdirSync('dist', { recursive: true }).map(String).filter((f) => /\.(html|txt|vcf|json)$/.test(f))) {
     assert.doesNotMatch(readFileSync(output(f), 'utf8'), /giovanni@giovannipaolofusco\.it/, `${f}: indirizzo di servizio pubblicato`);
@@ -513,4 +460,19 @@ test('l informativa dei corsi e\' pubblicata, noindex e fuori dalla sitemap', ()
   assert.doesNotMatch(readFileSync(output('sitemap.xml'), 'utf8'), /privacy-corsi/);
   assert.match(readFileSync(output('_headers'), 'utf8'), /\/privacy-corsi\/\*\n  X-Robots-Tag: noindex/);
   assert.match(readFileSync(output('privacy/index.html'), 'utf8'), /href="\/privacy-corsi\/"/);
+});
+
+// Dal 20/11/2026 il sito presenta solo il lavoro da sviluppatore: niente formazione AI, Telegram nuovo.
+test('formazione AI tolta: niente pagine, link interni o vecchio Telegram, redirect verso Servizi', () => {
+  assert.ok(!existsSync(output('formazione-ai')) && !existsSync(output('en/formazione-ai')), 'cartelle formazione-ai pubblicate');
+  for (const f of readdirSync('dist', { recursive: true }).map(String).filter((f) => /\.(html|txt|xml|js|json|webmanifest)$/.test(f))) {
+    const testo = readFileSync(output(f), 'utf8');
+    assert.doesNotMatch(testo, /href="(?:https:\/\/giovannipaolofusco\.it)?\/(?:en\/)?formazione-ai/, `${f}: link a /formazione-ai/`);
+    assert.doesNotMatch(testo, new RegExp('gioppy' + 'fx', 'i'), `${f}: vecchio Telegram`);
+  }
+  assert.doesNotMatch(readFileSync(output('sitemap.xml'), 'utf8'), /formazione-ai/, 'sitemap');
+  const redirects = readFileSync(output('_redirects'), 'utf8');
+  for (const [da, a] of [['/formazione-ai/', '/servizi/'], ['/en/formazione-ai/', '/en/servizi/']]) {
+    assert.match(redirects, new RegExp(`^${da.replace(/\//g, '\\/')}\\s+${a.replace(/\//g, '\\/')}\\s+301$`, 'm'), `redirect ${da}`);
+  }
 });
